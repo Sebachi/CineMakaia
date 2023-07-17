@@ -1,33 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { get_movie } from './services/request'
 
 function App() {
-  const [count, setCount] = useState(0)
+const [movieData, setMovieData] = useState(null);
+useEffect(() => {
+  get_movie(667538)
+  .then(data => {
+    // Cuando la Promesa se resuelva, actualizamos el estado con los datos de la película
+    setMovieData(data);
+  })
+  .catch(error => {
+    // Manejo de errores si ocurriera algún problema con la solicitud
+    console.error('Error al obtener los datos de la película:', error);
+  });
+}, [])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <h1>Movie Details</h1>
+      {movieData ? (
+        <div>
+          <h2>{movieData.title}</h2>
+          <p>{movieData.overview}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   )
 }

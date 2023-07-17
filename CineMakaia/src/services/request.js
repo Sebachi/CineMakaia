@@ -20,6 +20,4 @@ export const get_movie = async (id) => {
         console.log(error);
         return error;
       }
-
 }
-console.log('hola');

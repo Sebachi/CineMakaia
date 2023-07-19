@@ -107,6 +107,7 @@ $kanitBolder: 'Noto Sans', sans-serif;
         height: 100%;
         aspect-ratio: 674/1011;
         border-radius: 8px;
+        position: sticky;
     }
     &_2, &_4{
      //  max-height: 350px;
@@ -179,3 +180,25 @@ $kanitBolder: 'Noto Sans', sans-serif;
     }
 }
 }
+
+//Animaciones carrusel
+.fade-enter{
+   opacity: 0.1;
+ 
+ }
+ .fade-exit{
+   opacity: 1;
+ 
+ }
+ .fade-enter-active{
+   opacity: 1;
+
+ }
+ .fade-exit-active{
+   opacity: 0.1;
+ 
+ }
+ .fade-enter-active,
+ .fade-exit-active{
+    transition: all 350ms ease;
+ }

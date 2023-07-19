@@ -11,6 +11,27 @@ const autentication = {
       }
 }
 
+const nowPlaying = async () => {
+  try {
+    const listNowPlaying = []
+    const { data } = await axios.get(URL_NOW_PLAYING, autentication);
+    const response = data.results
+    for (let i = 0; i <= 9; i++) {
+      const element = response[i];
+      const currentMovie = {
+        "pelicula": (i + 1) ,
+        "movieId": element.id
+      }
+      listNowPlaying.push(currentMovie)
+    }
+  
+    return listNowPlaying;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
 
 export const get_movie = async (id) => {
     try {
@@ -21,3 +42,20 @@ export const get_movie = async (id) => {
         return error;
       }
 }
+
+
+export const getMoviesNowPlaying = async () => {
+  try {
+    const listNowPlaying = await nowPlaying()
+    const nowPlayingMovies = []
+    for (let i = 0; i <  listNowPlaying.length; i++) {
+        const element = listNowPlaying[i];
+        const data = await get_movie(element.movieId);
+        nowPlayingMovies.push(data)
+    }
+  return nowPlayingMovies
+
+  } catch (error) {
+    console.error("Error al obtener los datos de las películas", error);
+  }
+};

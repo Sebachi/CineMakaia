@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { get_movie } from '../../services/request';
 
 
-function  Main() {
+function  Home() {
 const [movieData, setMovieData] = useState(null);
 useEffect(() => {
   get_movie(667538)
@@ -30,4 +30,4 @@ useEffect(() => {
   )
 }
 
-export default Main
+export default Home

@@ -51,7 +51,9 @@ $kanitBolder: 'Noto Sans', sans-serif;
     border-radius: 8px;
     display: flex;
     justify-content: center;
+    transition: all 300ms ease;
     &:hover{
+        transition: all 300ms ease;
         z-index: 1;
         cursor: pointer;
        // opacity: 1;
@@ -112,6 +114,7 @@ $kanitBolder: 'Noto Sans', sans-serif;
     &_2, &_4{
      //  max-height: 350px;
       height: 105%;
+     
       &:hover{
         height: 100%;
       }
@@ -182,23 +185,191 @@ $kanitBolder: 'Noto Sans', sans-serif;
 }
 
 //Animaciones carrusel
-.fade-enter{
-   opacity: 0.1;
- 
- }
- .fade-exit{
-   opacity: 1;
- 
- }
- .fade-enter-active{
-   opacity: 1;
 
- }
- .fade-exit-active{
-   opacity: 0.1;
- 
- }
- .fade-enter-active,
- .fade-exit-active{
-    transition: all 350ms ease;
- }
+
+// /* Desplazamiento inicial de la tarjeta actual hacia la izquierda */
+// .fade-enter {
+//     opacity: 0.1;
+//     transform: translateX(100%);
+//   }
+  
+//   /* Desplazamiento de la tarjeta actual hacia la izquierda al salir */
+//   .fade-exit {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+  
+//   /* Transición durante la entrada y la salida de la tarjeta actual */
+//   .fade-enter-active,
+//   .fade-exit-active {
+//     transition: all 600ms ease;
+    
+//   }
+  
+//   /* Desplazamiento final de la tarjeta actual cuando entra */
+//   .fade-enter-active {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+  
+//   /* Desplazamiento final de la tarjeta actual cuando sale */
+//   .fade-exit-active {
+//     transform: translateX(-10%);
+//     opacity: 0.1;
+//   }
+  
+//   /* Ocultar la siguiente tarjeta hasta que entre en la vista */
+//   .fade-enter-done {
+//     transform: translateX(0);
+//   }
+  
+//   /* Desplazamiento inicial de la siguiente tarjeta hacia la derecha */
+//   .fade-next-enter {
+//     transform: translateX(-100%);
+//   }
+  
+//   /* Transición durante la entrada de la siguiente tarjeta */
+//   .fade-next-enter-active {
+//     transform: translateX(0);
+//   }
+  
+//   /* Estado final de la siguiente tarjeta cuando entra (ya en la vista) */
+//   .fade-next-enter-done {
+//     transform: translateX(0);
+//   }
+  
+//   /* Desplazamiento de la siguiente tarjeta hacia la izquierda al salir */
+//   .fade-next-exit {
+//     transform: translateX(0);
+//   }
+  
+//   /* Transición durante la salida de la siguiente tarjeta */
+//   .fade-next-exit-active {
+//     transform: translateX(-10%);
+//   }
+  
+//   /* Estado final de la siguiente tarjeta cuando sale (completamente fuera de la vista) */
+//   .fade-next-exit-done {
+//     transform: translateX(-100%);
+//   }
+
+
+
+
+/* Desplazamiento inicial de la tarjeta actual hacia la izquierda */
+.fade-enter {
+    opacity: 0.1;
+    transform: translateX(100%);
+    max-height: 100%;
+    & .carrousel_card {
+      &_1 {
+        opacity: 0;
+      }
+      &_3, &_5 {
+        max-height: 105%;
+      }
+      &_4 {
+        max-height: 110%;
+      }
+    }
+  }
+  
+  /* Desplazamiento de la tarjeta actual hacia la izquierda al salir */
+  .fade-exit {
+    transform: translateX(0);
+    opacity: 1;
+    max-height: 110%; /* Un valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+  }
+  
+  /* Transición durante la entrada y la salida de la tarjeta actual */
+  .fade-enter-active,
+  .fade-exit-active {
+    transition: all 700ms cubic-bezier(0.4, 0, 0.2, 1); /* Utilizamos una función de curva de velocidad más suave */
+    max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+  }
+  
+  /* Desplazamiento final de la tarjeta actual cuando entra */
+  .fade-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+  }
+  
+  /* Desplazamiento final de la tarjeta actual cuando sale */
+  .fade-exit-active {
+    transform: translateX(-10%);
+    opacity: 0.1;
+    max-height: 100%;
+    & .carrousel_card {
+      &_1 {
+        opacity: 0;
+      }
+      &_3, &_5 {
+        max-height: 105%;
+      }
+      &_4 {
+        max-height: 110%;
+      }
+    }
+  }
+  
+  /* Ocultar la siguiente tarjeta hasta que entre en la vista */
+  .fade-enter-done {
+    transform: translateX(0);
+  }
+  
+  /* Desplazamiento inicial de la siguiente tarjeta hacia la derecha */
+  .fade-next-enter {
+    transform: translateX(-100%);
+    max-height: 100%;
+    & .carrousel_card {
+      &_1 {
+        opacity: 0;
+      }
+      &_3, &_5 {
+        max-height: 105%;
+      }
+      &_4 {
+        max-height: 110%;
+      }
+    }
+  }
+  
+  /* Transición durante la entrada de la siguiente tarjeta */
+  .fade-next-enter-active {
+    transform: translateX(0);
+    max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+  }
+  
+  /* Estado final de la siguiente tarjeta cuando entra (ya en la vista) */
+  .fade-next-enter-done {
+    transform: translateX(0);
+  }
+  
+  /* Desplazamiento de la siguiente tarjeta hacia la izquierda al salir */
+  .fade-next-exit {
+    transform: translateX(0);
+    max-height: 110%; /* Un valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+  }
+  
+  /* Transición durante la salida de la siguiente tarjeta */
+  .fade-next-exit-active {
+    transform: translateX(-10%);
+    max-height: 100%;
+    & .carrousel_card {
+      &_1 {
+        opacity: 0;
+      }
+      &_3, &_5 {
+        max-height: 105%;
+      }
+      &_4 {
+        max-height: 110%;
+      }
+    }
+  }
+  
+  /* Estado final de la siguiente tarjeta cuando sale (completamente fuera de la vista) */
+  .fade-next-exit-done {
+    transform: translateX(-100%);
+  }

@@ -29,6 +29,7 @@ function Carousel() {
       try {
         const data = await getMoviesNowPlaying();
         setMoviesData([...data, data[0], data[1], data[2], data[3]]);
+        return data
       } catch (error) {
         console.error("Error al obtener los datos de la películas", error);
       }
@@ -37,7 +38,7 @@ function Carousel() {
 
     const interval = setInterval(() => {
       nextMovie();
-    }, 5000);
+    }, 10000);
 
     return () => {
       clearInterval(interval);
@@ -61,7 +62,7 @@ function Carousel() {
                 </figure>
               </div>
               {moviesData.slice(a, a + 5).map((movie, index) => (
-                 <SwitchTransition>
+                 <SwitchTransition  key={index+1}>
                  <CSSTransition
                    key={a}
                    addEndListener={(node, done) =>
@@ -73,6 +74,7 @@ function Carousel() {
                   className={`carousel_item fade-item carousel_card carousel_card_${index + 1}`}
                   key={movie.id}
                   id={movie.id}
+                  data-id={movie.idJson}
                 >
                   <img
                     className="carousel_card_img"

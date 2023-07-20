@@ -51,6 +51,7 @@ export const getMoviesNowPlaying = async () => {
     for (let i = 0; i <  listNowPlaying.length; i++) {
         const element = listNowPlaying[i];
         const data = await get_movie(element.movieId);
+        data.idJson = i + 1
         nowPlayingMovies.push(data)
     }
   return nowPlayingMovies
@@ -59,3 +60,4 @@ export const getMoviesNowPlaying = async () => {
     console.error("Error al obtener los datos de las películas", error);
   }
 };
+

@@ -38,7 +38,7 @@ function Carousel() {
 
     const interval = setInterval(() => {
       nextMovie();
-    }, 10000);
+    }, 60000);
 
     return () => {
       clearInterval(interval);
@@ -70,7 +70,7 @@ function Carousel() {
                    }
                    classNames="fade"
                  >
-                <figure
+                <article
                   className={`carousel_item fade-item carousel_card carousel_card_${index + 1}`}
                   key={movie.id}
                   id={movie.id}
@@ -99,7 +99,7 @@ function Carousel() {
                       {movie.runtime} m{" "}
                     </span>
                   </p>
-                </figure>
+                </article>
                 </CSSTransition>
         </SwitchTransition>
               ))}

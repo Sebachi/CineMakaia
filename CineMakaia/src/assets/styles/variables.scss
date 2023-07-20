@@ -12,6 +12,7 @@ $light-blue: #094891;
 $dark-gray: hsl(0, 0%, 55%);
 $very-dark-gray: hsl(0, 0%, 41%);
 $font-body-color: #a5a5a5;
+$shadow-card: 0px 0px 30px #000;
 
 @mixin mobile {
     @media (max-width: 725px) {

@@ -19,13 +19,13 @@ function TopNav() {
       <div className="topNav_UI">
         <div className="topNav_UI_function">
           <div className="topNav_UI_function_cinemas">
-          <label for="cinemas">Cines cercanos</label>{" "}
+          <label htmlFor="cinemas">Cines cercanos</label>{" "}
           <select name="cinemas" id="cinemas">
             <option value="Los Molinos">Los Molinos</option>
             <option value="el tesoro">El Tesoro</option>
           </select></div>
           <div className="topNav_UI_function_dates">
-          <label for="fDates">Fecha</label>{" "}
+          <label htmlFor="fDates">Fecha</label>{" "}
           <select name="fDates" id="fDates">
             <option value="Los Molinos">20/7/2023</option>
             <option value="el tesoro">21/7/2023</option>

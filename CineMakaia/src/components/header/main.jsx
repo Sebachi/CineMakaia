@@ -7,7 +7,7 @@ function Header() {
   return (
     <section className='header'>
         <TopNav/>
-        <Carousel />
+        <Carousel/>
     </section>
   )
 }

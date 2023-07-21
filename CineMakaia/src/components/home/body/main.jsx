@@ -16,7 +16,7 @@ function BodyHome() {
 
   <main className="mainHome">
     <p className="mainHome_text">
-    En cartelera:
+    En cartelera
     </p>
     <section className="mainHome_cards">
     {moviesData.map((movie) => (

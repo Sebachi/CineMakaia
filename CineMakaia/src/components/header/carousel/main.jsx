@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./main.scss";
-import { getMoviesNowPlaying } from "../../../services/request";
 import { formatterDate } from "../../../services/formatterDates";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { AppContext } from "../../../services/Appcontex";
 
 function Carousel() {
   const [moviesData, setMoviesData] = useState(null);
@@ -24,18 +24,14 @@ function Carousel() {
     }
   };
 
+  const first = useContext(AppContext)
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await getMoviesNowPlaying();
-        setMoviesData([...data, data[0], data[1], data[2], data[3]]);
-        return data
-      } catch (error) {
-        console.error("Error al obtener los datos de la películas", error);
-      }
-    };
-    getData();
+    if (first.length > 0) {
+      console.log(first);
+      setMoviesData([...first,first[0],first[1],first[2], first[3]]) }
+  }, [first]);
 
+  useEffect(() => {
     const interval = setInterval(() => {
       nextMovie();
     }, 60000);

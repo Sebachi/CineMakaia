@@ -10,13 +10,13 @@
   font-family: $Kanit;
   &_text {
     align-self: flex-start;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    font-size: calc(14px + 0.5vw);
+    font-size: calc(10px + 0.5vw);
   }
   &_cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     @include mobile {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }

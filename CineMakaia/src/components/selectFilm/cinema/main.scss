@@ -1,0 +1,11 @@
+@import "../../../assets/styles/variables.scss";
+
+.cinema__container {
+  border: purple solid 2px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+}

@@ -4,19 +4,20 @@ import "../assets/styles/reset.scss"
 
 // import Home from "../components/home/main.jsx";
 import Home from "../components/home/main.jsx";
+import SelectFilm from "../components/selectFilm/main.jsx"
 import { AppProvider } from "../services/Appcontex";
 
 const Router = () => {
-const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <AppProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SelectFilm />}>
 
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </AppProvider>
   );
 };

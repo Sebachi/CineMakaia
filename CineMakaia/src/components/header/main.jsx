@@ -3,10 +3,10 @@ import Carousel from './carousel/main'
 import "./main.scss"
 import TopNav from './nav/main'
 
-function Header() {
+function Header({isHome}) {
   return (
     <section className='header'>
-        <TopNav/>
+        <TopNav isHome={isHome}/>
         <Carousel/>
     </section>
   )

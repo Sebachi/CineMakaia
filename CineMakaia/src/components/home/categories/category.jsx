@@ -1,25 +1,42 @@
-import React, { useContext, useEffect, useState } from "react";
-import { formatterDate } from "../../../services/formatterDates";
-import "./main.scss";
-import { AppContext } from "../../../services/Appcontex";
+import React, { useContext, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
+import Header from '../../header/main';
+import { AppContext } from '../../../services/Appcontex';
+import { formatterDate } from '../../../services/formatterDates';
 
-function BodyHome() {
+function Category() {
+  const location = useLocation()
+  const [category, setCategory] = useState("")
+ 
   const [moviesData, setMoviesData] = useState(null);
+  const [moviesCategory, setMoviesCategory] = useState([])
   const first = useContext(AppContext)
   useEffect(() => {
    
-    if (first !== null) {setMoviesData(first) }
+    if (first !== null) {setMoviesData(first) 
+      setCategory(location.state)
+    }
 
-  }, [first]);
+  }, [first, location.state]);
 
-  return <>{moviesData ?
+  useEffect(()=> {
+    if (moviesData !== null) {
+    const filteredMovies = moviesData.filter((movie) =>
+    movie.genres.some((genre) => genre.name === category)
+  );
+
+  setMoviesCategory(filteredMovies);}
+}, [moviesData, category]);
+
+
+  return <>{moviesCategory.length > 0 ?
 <div className='bodyhome'>
   <main className="mainHome">
     <p className="mainHome_text">
     En cartelera
     </p>
     <section className="mainHome_cards">
-    {moviesData.map((movie) => (
+    {moviesCategory.map((movie) => (
        <article className="mainHome_cards_child" key={movie.idJson}>
            <figure className="mainHome_cards_child_figure">
             <img className="mainHome_cards_child_figure_img" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="poster_movie" />
@@ -44,8 +61,8 @@ function BodyHome() {
   </div>
 
 
-  : <p>Loading...</p>
+  : <p>No movies by this category ...</p>
   }</>;
 }
 
-export default BodyHome;
+export default Category

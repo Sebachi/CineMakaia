@@ -1,7 +1,12 @@
 import React from "react";
 import "./main.scss";
+import { useNavigate, useParams } from "react-router-dom";
 
-function TopNav() {
+function TopNav({isHome}) {
+  const navigate = useNavigate()
+  const handleClick = (category) => {
+    navigate(`${category}`, { state: category })
+  }
   return (
     <section className="topNav">
       <div className="topNav_logo">
@@ -10,12 +15,14 @@ function TopNav() {
         </figure>
         <strong className="topNav_logo_text">CineMakaia</strong>
       </div>
+      { isHome &&
       <div className="topNav_categories">
-        <p className="topNav_categories_button">Accion</p>
-        <p className="topNav_categories_button">Terror</p>
-        <p className="topNav_categories_button">Ciencia Ficcion</p>
-        <p className="topNav_categories_button">Comedia</p>
+        <p className="topNav_categories_button" onClick={()=> handleClick("Action")}>Accion</p>
+        <p className="topNav_categories_button" onClick={()=> handleClick("Comedy")}>Comedia</p>
+        <p className="topNav_categories_button" onClick={()=> handleClick("Drama")}>Drama</p>
+        <p className="topNav_categories_button" onClick={()=> handleClick("Adventure")}>Aventura</p>
       </div>
+     }
       <div className="topNav_UI">
         <div className="topNav_UI_function">
           <div className="topNav_UI_function_cinemas">

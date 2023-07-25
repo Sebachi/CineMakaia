@@ -27,7 +27,6 @@ function Carousel() {
   const first = useContext(AppContext)
   useEffect(() => {
     if (first.length > 0) {
-      console.log(first);
       setMoviesData([...first,first[0],first[1],first[2], first[3]]) }
   }, [first]);
 

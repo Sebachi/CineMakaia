@@ -19,7 +19,7 @@ const Router = () => {
             <Route   path="/" element={<BodyHome />} />
           <Route path=":nameCategory" index element={<Category/>}></Route>
           </Route>
-        {/* <Route path="/" element={<SelectFilm />}> */}
+       <Route path="/SelectFilm" element={<SelectFilm/>}/> 
         </Routes>
        
       </BrowserRouter>

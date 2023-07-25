@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./main.scss";
 import { useNavigate, useParams } from "react-router-dom";
 
 function TopNav({isHome}) {
   const navigate = useNavigate()
+ const currentCategory = useParams()
+
   const handleClick = (category) => {
+    currentCategory.nameCategory !== category ?
     navigate(`${category}`, { state: category })
+    :  navigate(`/`)
   }
+ const category2 = currentCategory.nameCategory
+const handleActiveCategory = (category) => {
+  return category2 === category ? "activeCategory" : "";
+}
+
   return (
     <section className="topNav">
       <div className="topNav_logo">
@@ -17,10 +26,10 @@ function TopNav({isHome}) {
       </div>
       { isHome &&
       <div className="topNav_categories">
-        <p className="topNav_categories_button" onClick={()=> handleClick("Action")}>Accion</p>
-        <p className="topNav_categories_button" onClick={()=> handleClick("Comedy")}>Comedia</p>
-        <p className="topNav_categories_button" onClick={()=> handleClick("Drama")}>Drama</p>
-        <p className="topNav_categories_button" onClick={()=> handleClick("Adventure")}>Aventura</p>
+        <p className={`topNav_categories_button ${handleActiveCategory("Action")}`} onClick={()=> handleClick("Action")}>Accion</p>
+        <p className={`topNav_categories_button ${handleActiveCategory("Comedy")}`} onClick={()=> handleClick("Comedy")}>Comedia</p>
+        <p className={`topNav_categories_button ${handleActiveCategory("Drama")}`} onClick={()=> handleClick("Drama")}>Drama</p>
+        <p className={`topNav_categories_button ${handleActiveCategory("Adventure")}`} onClick={()=> handleClick("Adventure")}>Aventura</p>
       </div>
      }
       <div className="topNav_UI">

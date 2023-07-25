@@ -75,7 +75,7 @@ function Carousel() {
                   key={movie.id}
                   id={movie.id}
                   data-id={movie.idJson}
-                   onClick={()=> handleMovieClick(movie.idJson - 1) }
+                   onClick={()=> handleMovieClick(movie.idJson) }
                 >
                   <img
                     className="carousel_card_img"

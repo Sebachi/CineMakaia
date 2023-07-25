@@ -12,7 +12,8 @@ const FilmInfo = () => {
   const dataId = location.state;
   useEffect(() => {
     if (first.length > 0) {
-      setMoviesData([...first, first[0], first[1], first[2], first[3]])
+      setMoviesData([[],  ...first])
+      console.log(moviesData);
     }
   }, [first]);
 

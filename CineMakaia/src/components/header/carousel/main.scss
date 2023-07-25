@@ -225,14 +225,14 @@
 
 /* Desplazamiento final de la tarjeta actual cuando entra */
 .fade-enter-active {
-  transform: translateX(0);
+ transform: translateX(0);
   //opacity: 1;
   max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
 }
 
 /* Desplazamiento final de la tarjeta actual cuando sale */
 .fade-exit-active {
-  transform: translateX(-10%);
+ // transform: translateX(-10%);
   //opacity: 0.1;
   max-height: 100%;
   & .carrousel_card {

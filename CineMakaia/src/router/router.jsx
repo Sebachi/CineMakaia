@@ -4,6 +4,7 @@ import "../assets/styles/reset.scss";
 
 // import Home from "../components/home/main.jsx";
 import Home from "../components/home/main.jsx";
+import SelectFilm from "../components/selectFilm/main.jsx"
 import { AppProvider } from "../services/Appcontex";
 import Category from "../components/home/categories/category.jsx"
 import BodyHome from "../components/home/body/main";
@@ -18,6 +19,7 @@ const Router = () => {
             <Route   path="/" element={<BodyHome />} />
           <Route path=":nameCategory" index element={<Category/>}></Route>
           </Route>
+        {/* <Route path="/" element={<SelectFilm />}> */}
         </Routes>
        
       </BrowserRouter>

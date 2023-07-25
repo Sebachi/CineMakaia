@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../header/main';
 import { AppContext } from '../../../services/Appcontex';
 import { formatterDate } from '../../../services/formatterDates';
@@ -7,7 +7,7 @@ import { formatterDate } from '../../../services/formatterDates';
 function Category() {
   const location = useLocation()
   const [category, setCategory] = useState("")
- 
+ const navigate = useNavigate()
   const [moviesData, setMoviesData] = useState(null);
   const [moviesCategory, setMoviesCategory] = useState([])
   const first = useContext(AppContext)
@@ -27,7 +27,9 @@ function Category() {
 
   setMoviesCategory(filteredMovies);}
 }, [moviesData, category]);
-
+const handleMovieClick = (dataId) => {
+  navigate(`/SelectFilm/${dataId}`, { state: dataId })
+}
 
   return <>{moviesCategory.length > 0 ?
 <div className='bodyhome'>
@@ -37,7 +39,7 @@ function Category() {
     </p>
     <section className="mainHome_cards">
     {moviesCategory.map((movie) => (
-       <article className="mainHome_cards_child" key={movie.idJson}>
+       <article className="mainHome_cards_child" key={movie.idJson} onClick={ () => handleMovieClick(movie.idJson -1)}>
            <figure className="mainHome_cards_child_figure">
             <img className="mainHome_cards_child_figure_img" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="poster_movie" />
             <div className="mainHome_cards_child_figure_hover"> <figure> <img src="/images/film_cyan.svg" alt="film_icon" /> </figure>

@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { formatterDate } from "../../../services/formatterDates";
 import "./main.scss";
 import { AppContext } from "../../../services/Appcontex";
+import { useNavigate } from "react-router-dom";
 
 function BodyHome() {
+  const  navigate = useNavigate()
   const [moviesData, setMoviesData] = useState(null);
   const first = useContext(AppContext)
   useEffect(() => {
@@ -11,7 +13,9 @@ function BodyHome() {
     if (first !== null) {setMoviesData(first) }
 
   }, [first]);
-
+  const handleMovieClick = (dataId) => {
+    navigate(`/SelectFilm/${dataId}`, { state: dataId })
+  }
   return <>{moviesData ?
 <div className='bodyhome'>
   <main className="mainHome">
@@ -20,7 +24,7 @@ function BodyHome() {
     </p>
     <section className="mainHome_cards">
     {moviesData.map((movie) => (
-       <article className="mainHome_cards_child" key={movie.idJson}>
+       <article className="mainHome_cards_child" key={movie.idJson} onClick={()=> handleMovieClick(movie.idJson - 1)}>
            <figure className="mainHome_cards_child_figure">
             <img className="mainHome_cards_child_figure_img" src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="poster_movie" />
             <div className="mainHome_cards_child_figure_hover"> <figure> <img src="/images/film_cyan.svg" alt="film_icon" /> </figure>

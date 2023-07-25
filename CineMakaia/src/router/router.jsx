@@ -19,8 +19,13 @@ const Router = () => {
             <Route   path="/" element={<BodyHome />} />
           <Route path=":nameCategory" index element={<Category/>}></Route>
           </Route>
-       <Route path="/SelectFilm" element={<SelectFilm/>}/> 
-        </Routes>
+          <Route path="/SelectFilm" > 
+
+          <Route path="/SelectFilm:selectFilm" element={<SelectFilm/>}/> 
+
+          
+          </Route>
+        </Routes>  
        
       </BrowserRouter>
     </AppProvider>

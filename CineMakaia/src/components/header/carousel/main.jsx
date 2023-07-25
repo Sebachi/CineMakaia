@@ -3,11 +3,12 @@ import "./main.scss";
 import { formatterDate } from "../../../services/formatterDates";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { AppContext } from "../../../services/Appcontex";
+import { useNavigate } from "react-router-dom";
 
 function Carousel() {
   const [moviesData, setMoviesData] = useState(null);
   const [a, setA] = useState(0);
-
+  const navigate = useNavigate()
   const nextMovie = () => {
     if (a < 9) {
       setA((prevA) => prevA + 1);
@@ -40,6 +41,10 @@ function Carousel() {
     };
   }, [a]);
 
+  const handleMovieClick = (dataId) => {
+    navigate(`/SelectFilm/${dataId}`, { state: dataId })
+  }
+
   return (
     <>
       {moviesData ? (
@@ -70,6 +75,7 @@ function Carousel() {
                   key={movie.id}
                   id={movie.id}
                   data-id={movie.idJson}
+                   onClick={()=> handleMovieClick(movie.idJson - 1) }
                 >
                   <img
                     className="carousel_card_img"

@@ -3,14 +3,15 @@ import { formatterDate } from "../../../services/formatterDates";
 import "./main.scss";
 import { AppContext } from "../../../services/Appcontex";
 import { get_movie } from "../../../services/request";
+import { useLocation } from "react-router-dom";
 
 const FilmInfo = () => {
+  const location = useLocation()
   const [moviesData, setMoviesData] = useState(null);
   const first = useContext(AppContext)
-  const dataId = 1;
+  const dataId = location.state;
   useEffect(() => {
     if (first.length > 0) {
-      console.log("leyendo array");
       setMoviesData([...first, first[0], first[1], first[2], first[3]])
     }
   }, [first]);

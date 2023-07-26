@@ -28,12 +28,12 @@
             font-family: $Kanit;
             font-weight: 600;
             color: $dark-blue;
-            font-size: 18px;
+            font-size: calc(12px + 0.4vw);
             letter-spacing: 1px;
             text-transform: uppercase;
         }
         &_figure{
-            height: 50px;
+            height: calc(25px + 0.4vw);
             & img{
                 height: 100%;
             }
@@ -86,13 +86,14 @@
             &_cinemas{
                 display: flex;
                 flex-direction: column;
-                font-size: calc(10px + 0.5vw);
+                font-size: calc(8px + 0.5vw);
                 & select {
                     border: 1px $font-body-color solid;
                     max-width: 200px;
                     min-width: 150px;
+                    font-size: calc(7px + 0.5vw);
                     @include mobile {
-                        min-width: 100px;
+                        min-width: 60px;
                     }
                     border-radius: 5px;
                     height: 30px;
@@ -117,13 +118,14 @@
             &_dates{
                 display: flex;
                 flex-direction: column;
-                font-size: calc(10px + 0.5vw);
+                font-size: calc(8px + 0.5vw);
                 & select {
                     border: 1px $font-body-color solid;
                     max-width: 200px;
                     min-width: 120px;
+                    font-size: calc(7px + 0.5vw);
                     @include mobile {
-                        min-width: 100px;
+                        min-width: 60px;
                     }
                     border-radius: 5px;
                     height: 30px;

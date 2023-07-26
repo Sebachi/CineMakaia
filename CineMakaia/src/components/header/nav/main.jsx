@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./main.scss";
 import { useNavigate, useParams } from "react-router-dom";
+import FormLogin from "../../Login/forms/main";
 
 function TopNav({isHome}) {
   const navigate = useNavigate()
  const currentCategory = useParams()
+ const [showLogin, setShowLogin] = useState(false);
 
+ const handleFigureClick = () => {
+   setShowLogin(true);
+ };
+ const handleLoginClose = () => {
+  setShowLogin(false);
+};
   const handleClick = (category) => {
     currentCategory.nameCategory !== category ?
     navigate(`${category}`, { state: category })
@@ -49,9 +57,10 @@ const handleActiveCategory = (category) => {
           </div>
         </div>
         <div className="topNav_UI_user">
-          <figure className="topNav_UI_user_figure">
+          <figure className="topNav_UI_user_figure" onClick={handleFigureClick}>
             <img src="/images/user-default.svg" alt="user-icon" />
           </figure>
+          {showLogin && <FormLogin onClose={handleLoginClose} />}
         </div>
       </div>
     </section>

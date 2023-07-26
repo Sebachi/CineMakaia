@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./main.scss"
-function FormLogin() {
-  
+function FormLogin({ onClose }) {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLoginClose = () => {
+    setShowLogin(false);
+  };
+
   
   
   
   
     return (
     <>
-    <div class="login" id="loginForm">
-     <div class="login_content">
-      <span class="login_close">&times;</span>
-      <h2>Login</h2>
-      <p>Contenido del modal...</p>
+    <div className="login" id="loginForm">
+     <div className="login_content">
+      <span className="login_close" onClick={onClose}>&times;</span>
+      <h2 className='login_title'>Bienvenido</h2>
+      <h3 className='login_subtitle'>Iniciar Sesión</h3>
+      <form className='login_form' >
+        <label className='login_form_label'>Correo electrónico</label>
+        <input className='login_form_input' type="text"   placeholder='example.email@gmail.com' name='email'/>
+        <label className='login_form_label'>Contraseña</label>
+        <input  className='login_form_input'  name='password' placeholder='Ingresa tu contraseña' type="password" />
+        <div className='login_form_submit' type="submit">Iniciar sesión</div>
+      </form>
       </div>
      </div>
     </>

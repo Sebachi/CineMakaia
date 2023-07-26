@@ -11,7 +11,7 @@ function  Home() {
   return(
       <>
       <Header isHome={true}/>
-      <FormLogin/>
+     
       <Outlet/>
       </>
     )

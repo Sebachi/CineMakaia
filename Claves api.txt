@@ -1,6 +1,0 @@
-Clave de la API
-
-7694f4cb240ce992f64d3cbfa469f594
-
-Token de acceso de lectura a la API
-eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Njk0ZjRjYjI0MGNlOTkyZjY0ZDNjYmZhNDY5ZjU5NCIsInN1YiI6IjY0YjE5YzUxNzg1NzBlMDBlMzNhMjdmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xV_BMjPu0vgNxSuVuz7torBh-1IAzAEqqIlVBZx8nTU

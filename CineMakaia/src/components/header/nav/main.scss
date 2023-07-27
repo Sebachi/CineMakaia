@@ -21,6 +21,7 @@
         display: flex;
         align-items: center;
         padding-left: 40px;
+        cursor: pointer;
         @include mobile{
             padding-left: 10px;
         }

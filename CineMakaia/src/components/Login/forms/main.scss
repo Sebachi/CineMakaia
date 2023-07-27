@@ -3,7 +3,7 @@
 .login{
     display: flex; 
   position: fixed; 
-  z-index: 9999;
+  z-index: 1;
   justify-content: center;
   align-items: center;
   left: 0;
@@ -82,6 +82,18 @@
       text-align: center;
     }
 }
+&_subtitle2{
+  padding-top: 5px;
+    color: #565d6d;
+    font-family: $Kanit;
+    font-size: 12px;
+    padding-top: 20px;
+    font-family: $kanitBolder;
+    @include mobile{
+      width: 90px;
+      text-align: center;
+    }
+}
 &_form{
   display: flex;
   flex-direction: column;
@@ -124,10 +136,28 @@
     border-radius: 5px;
     padding: 6px 0;
     margin-top: 20px;
+    border: 0;
     &:hover{
       background-color: $light-blue
     }
   }
+&_button{
+  cursor: pointer;
+    background-color: $dark-cyan;
+    color: #fff;
+    font-family: $Kanit;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 6px 0px;
+    font-weight: 400;
+    width: 120px;
+    margin-top: 20px;
+    border: 0;
+    &:hover{
+      background-color: $light-blue
+    }
+}
 }
 
 }

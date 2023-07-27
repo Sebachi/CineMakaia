@@ -1,32 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import "../assets/styles/reset.scss";
-
-// import Home from "../components/home/main.jsx";
 import Home from "../components/home/main.jsx";
 import SelectFilm from "../components/selectFilm/main.jsx"
 import { AppProvider } from "../services/Appcontex";
 import Category from "../components/home/categories/category.jsx"
 import BodyHome from "../components/home/body/main";
+import PrivateRouter from "./privateRouter";
+import AdminHome from "../components/admin/adminHome/main";
 
 const Router = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const storedAuthentication =  JSON.parse(localStorage.getItem("IsLogin")) || false;
+  const [isLogin, setIsLogin] = useState(storedAuthentication);
+
+   
+
+
+
+
+  useEffect(() => {
+   localStorage.setItem("IsLogin", isLogin)
+  }, [isLogin])
+
   return (
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={<Home signIn={setIsLogin} login={isLogin}/>}>
             <Route   path="/" element={<BodyHome />} />
           <Route path=":nameCategory" index element={<Category/>}></Route>
           </Route>
-          <Route path="/SelectFilm" > 
-
-          <Route path="/SelectFilm:selectFilm" element={<SelectFilm/>}/> 
-
-          
+          <Route path="/SelectFilm/:selectFilm" element={<SelectFilm signIn={setIsLogin} login={isLogin} />} />
+          <Route element={<PrivateRouter isAutenticate={isLogin}/>}>
+            <Route path="/adminPanel" element={<AdminHome/>}/>
           </Route>
-        </Routes>  
-       
+        </Routes>
       </BrowserRouter>
     </AppProvider>
   );

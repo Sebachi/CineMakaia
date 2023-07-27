@@ -3,10 +3,16 @@ import "./main.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import FormLogin from "../../Login/forms/main";
 
-function TopNav({isHome}) {
+function TopNav({isHome, signIn, login}) {
   const navigate = useNavigate()
  const currentCategory = useParams()
  const [showLogin, setShowLogin] = useState(false);
+ const [adminInf, setAdminInf] = useState({});
+ useEffect(() => {
+  login && setAdminInf(JSON.parse(localStorage.getItem("UserInf")));
+}, [login]);
+
+
 
  const handleFigureClick = () => {
    setShowLogin(true);
@@ -19,6 +25,9 @@ function TopNav({isHome}) {
     navigate(`${category}`, { state: category })
     :  navigate(`/`)
   }
+  const handleHome = () =>{
+    navigate(`/`)
+  }
  const category2 = currentCategory.nameCategory
 const handleActiveCategory = (category) => {
   return category2 === category ? "activeCategory" : "";
@@ -26,7 +35,7 @@ const handleActiveCategory = (category) => {
 
   return (
     <section className="topNav">
-      <div className="topNav_logo">
+      <div className="topNav_logo" onClick={handleHome}>
         <figure className="topNav_logo_figure">
           <img src="/icon-makaia.png" alt="icon_makaia" />
         </figure>
@@ -58,9 +67,9 @@ const handleActiveCategory = (category) => {
         </div>
         <div className="topNav_UI_user">
           <figure className="topNav_UI_user_figure" onClick={handleFigureClick}>
-            <img src="/images/user-default.svg" alt="user-icon" />
+            <img src={login ? adminInf.image : "/images/user-default.svg"} alt="user-icon" />
           </figure>
-          {showLogin && <FormLogin onClose={handleLoginClose} />}
+          {showLogin && <FormLogin onClose={handleLoginClose} signIn={signIn} login={login}/>}
         </div>
       </div>
     </section>

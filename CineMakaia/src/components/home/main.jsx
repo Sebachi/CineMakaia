@@ -7,10 +7,10 @@ import { Outlet, useParams } from 'react-router-dom';
 import FormLogin from '../Login/forms/main.jsx';
 
 
-function  Home() {
+function  Home({signIn, login}) {
   return(
       <>
-      <Header isHome={true}/>
+      <Header isHome={true} signIn={signIn} login={login}/>
      
       <Outlet/>
       </>

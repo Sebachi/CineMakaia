@@ -1,0 +1,18 @@
+@import "../../../assets/styles/variables.scss";
+
+.MuiStack-root {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    overflow-x: hidden !important;
+   
+  }
+  .css-1pduc5x-MuiStack-root>.MuiTextField-root {
+    min-width: 85px !important;
+    
+}
+
+.MuiInputBase-input {
+  font-family: $font-Makaia !important;
+
+}

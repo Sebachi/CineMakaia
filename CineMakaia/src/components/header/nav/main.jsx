@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./main.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import FormLogin from "../../Login/forms/main";
+import BasicDatePicker from "../../pickers/datepicker/main.jsx";
+import SelectCinema from "../../pickers/selectCinema/main.jsx";
 
 function TopNav({isHome, signIn, login}) {
   const navigate = useNavigate()
@@ -50,21 +52,18 @@ const handleActiveCategory = (category) => {
       </div>
      }
       <div className="topNav_UI">
+      { isHome &&
         <div className="topNav_UI_function">
           <div className="topNav_UI_function_cinemas">
-          <label htmlFor="cinemas">Cines cercanos</label>{" "}
-          <select name="cinemas" id="cinemas">
-            <option value="Los Molinos">Los Molinos</option>
-            <option value="el tesoro">El Tesoro</option>
-          </select></div>
+          <label htmlFor="cinemas">Cines cercanos</label>
+          <SelectCinema/>
+          </div>
           <div className="topNav_UI_function_dates">
-          <label htmlFor="fDates">Fecha</label>{" "}
-          <select name="fDates" id="fDates">
-            <option value="Los Molinos">20/7/2023</option>
-            <option value="el tesoro">21/7/2023</option>
-          </select>
+          <label >Fecha</label>
+          <BasicDatePicker className="topNav_UI_function_dates_picker"/>
           </div>
         </div>
+        }
         <div className="topNav_UI_user">
           <figure className="topNav_UI_user_figure" onClick={handleFigureClick}>
             <img src={login ? adminInf.image : "/images/user-default.svg"} alt="user-icon" />

@@ -17,7 +17,7 @@ function FormLogin({ onClose, signIn, login }) {
   const resetUserInf = (e) => {
     e.preventDefault();
     signIn(false);
-    localStorage.setItem("UserInf", {});
+    localStorage.setItem("UserInf", JSON.stringify({}));
   };
   const handleAdminPanel = () => {
     navigate(`/adminPanel`)

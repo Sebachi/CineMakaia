@@ -36,6 +36,7 @@ export default function SelectCinema() {
           &:hover{
             & .MuiSvgIcon-root{
                 fill: #0098BC;
+                transform: scale(1.1);
               }
           }
           & .MuiSvgIcon-root{

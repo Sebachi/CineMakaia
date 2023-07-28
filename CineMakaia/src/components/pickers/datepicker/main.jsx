@@ -34,7 +34,6 @@ export default function BasicDatePicker() {
          padding: 0px;
          max-width: 130px;
          width: 18vw;
-         min-width: 90px;
        overflow-x: hidden !important;
         &:hover{
           border: 1px #03203A solid;

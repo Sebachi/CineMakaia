@@ -9,10 +9,22 @@
   }
   .css-1pduc5x-MuiStack-root>.MuiTextField-root {
     min-width: 85px !important;
-    
+    @include mobile{
+      min-width: 0px !important;
+      max-width: 130px;
+      width: 33px;
+    & .MuiInputBase-input {
+        display: none;
+    }
+    & .MuiOutlinedInput-notchedOutline{
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid $font-body-color;
+    }
+  }
 }
-
 .MuiInputBase-input {
   font-family: $font-Makaia !important;
 
 }
+

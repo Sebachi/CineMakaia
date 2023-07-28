@@ -34,7 +34,7 @@ const Router = () => {
           <Route path="/SelectFilm/:selectFilm" element={<SelectFilm signIn={setIsLogin} login={isLogin} />} />
           <Route element={<PrivateRouter isAutenticate={isLogin}/>}>
             <Route path="/adminPanel" element={<AdminHome signIn={setIsLogin} login={isLogin}/>}/>
-            <Route path="/adminPanel/:movieEdit" element={<MovieEditor/>}></Route>
+            <Route path="/adminPanel/:movieEdit" element={<MovieEditor signIn={setIsLogin} login={isLogin}/>}   ></Route>
           </Route>
         </Routes>
       </BrowserRouter>

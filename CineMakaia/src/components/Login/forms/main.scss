@@ -30,7 +30,7 @@
     border-radius: 8px;
     padding: 0px 60px;
     @include mobile {
-      height: 300px;
+      height: 350px;
       width: 200px;
     }
     
@@ -56,6 +56,11 @@
     cursor: pointer;
     transition: all ease 50ms;
     //
+    @include mobile{
+      height: 30px;
+    width: 30px;
+    font-size: 50px;
+    }
     &:hover, &:focus{
     color: #565d6d;
     text-decoration: none;
@@ -81,6 +86,7 @@
     @include mobile{
       width: 90px;
       text-align: center;
+      font-size: 15px;
     }
 }
 &_subtitle2{
@@ -93,6 +99,7 @@
     @include mobile{
       width: 90px;
       text-align: center;
+      font-size: 12px;
     }
 }
 &_form{
@@ -155,6 +162,9 @@
     width: 180px;
     margin-top: 20px;
     border: 0;
+    @include mobile{
+      width: 120px;
+    }
     &:hover{
       background-color: $light-blue
     }

@@ -5,7 +5,7 @@ import FormLogin from "../../Login/forms/main";
 import BasicDatePicker from "../../pickers/datepicker/main.jsx";
 import SelectCinema from "../../pickers/selectCinema/main.jsx";
 
-function TopNav({isHome, signIn, login}) {
+function TopNav({isHome, signIn, login, isAdmin}) {
   const navigate = useNavigate()
  const currentCategory = useParams()
  const [showLogin, setShowLogin] = useState(false);
@@ -68,6 +68,7 @@ const handleActiveCategory = (category) => {
           <figure className="topNav_UI_user_figure" onClick={handleFigureClick}>
             <img src={login ? adminInf.image : "/images/user-default.svg"} alt="user-icon" />
           </figure>
+          {isAdmin && <div className="topNav_UI_user_inf"><p className="topNav_UI_user_inf_name"> {adminInf.name} </p> <p className="topNav_UI_user_inf_des">View profile</p></div> }
           {showLogin && <FormLogin onClose={handleLoginClose} signIn={signIn} login={login}/>}
         </div>
       </div>

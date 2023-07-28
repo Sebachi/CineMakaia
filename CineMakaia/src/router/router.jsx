@@ -8,6 +8,7 @@ import Category from "../components/home/categories/category.jsx"
 import BodyHome from "../components/home/body/main";
 import PrivateRouter from "./privateRouter";
 import AdminHome from "../components/admin/adminHome/main";
+import MovieEditor from "../components/admin/movieEditor/main";
 
 const Router = () => {
   const storedAuthentication =  JSON.parse(localStorage.getItem("IsLogin")) || false;
@@ -32,7 +33,8 @@ const Router = () => {
           </Route>
           <Route path="/SelectFilm/:selectFilm" element={<SelectFilm signIn={setIsLogin} login={isLogin} />} />
           <Route element={<PrivateRouter isAutenticate={isLogin}/>}>
-            <Route path="/adminPanel" element={<AdminHome/>}/>
+            <Route path="/adminPanel" element={<AdminHome signIn={setIsLogin} login={isLogin}/>}/>
+            <Route path="/adminPanel/:movieEdit" element={<MovieEditor/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

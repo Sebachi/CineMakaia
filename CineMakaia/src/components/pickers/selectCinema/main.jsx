@@ -33,6 +33,7 @@ export default function SelectCinema() {
           max-width: 130px;
           width: 18vw;
           min-width: 90px;
+          padding-left: 5px;
           &:hover{
             & .MuiSvgIcon-root{
                 fill: #0098BC;
@@ -45,7 +46,7 @@ export default function SelectCinema() {
             fill: #094891;
           }
           & .MuiInputBase-root{
-           
+           padding-left: 5px;
           }
           & .MuiSelect-nativeInput{
             display:none;

@@ -18,9 +18,9 @@
     margin: 0; 
     padding: 0;
     border: 1px solid #888;
-    height: 320px;
-    width: 360px;
-    cursor: auto;
+    height: 380px;
+    width: 400px;
+    cursor: default;
 
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
   &_close{
     color: #565d6d;
     float: right;
-    font-size: 28px;
+
     font-weight: bold;
     position: absolute;
     top: -18px;
@@ -46,20 +46,21 @@
     padding: 0;
     margin: 0;
     border-radius: 50%;
-    height: 32px;
-    width: 32px;
+    height: 50px;
+    width: 50px;
     text-align: center;
     line-height: 22px;
     background-color: #f3f4f6;
-    font-size: 50px;
+    font-size: 115px;
     font-weight: 100;
+    cursor: pointer;
     transition: all ease 50ms;
     //
     &:hover, &:focus{
     color: #565d6d;
     text-decoration: none;
-    cursor: pointer;
-    font-weight: 600;
+   
+    font-weight: 500;
     }
   }
   &_title{
@@ -74,7 +75,7 @@
     padding-top: 5px;
     color: #c6c9d1;
     font-family: $Kanit;
-    font-size: 12px;
+    font-size: 19px;
     padding-bottom: 10px;
     font-family: $kanitBolder;
     @include mobile{
@@ -86,7 +87,7 @@
   padding-top: 5px;
     color: #565d6d;
     font-family: $Kanit;
-    font-size: 12px;
+    font-size: 16px;
     padding-top: 20px;
     font-family: $kanitBolder;
     @include mobile{
@@ -102,14 +103,14 @@
     color: #464c59;
     font-family: $kanitBolder;
     font-weight: 100;
-    font-size: 9px;
+    font-size: 13px;
     padding-top: 10px;
   }
   &_input{
     color: #c6c9d1;
     border: 0;
     padding: 6px 2px;
-    font-size: 9px;
+    font-size: 13px;
     width: 200px;
     @include mobile{
       width: 150px;
@@ -131,10 +132,10 @@
     background-color: $dark-cyan;
     color: #fff;
     font-family: $Kanit;
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
     border-radius: 5px;
-    padding: 6px 0;
+    padding: 10px 6px;
     margin-top: 20px;
     border: 0;
     &:hover{
@@ -146,12 +147,12 @@
     background-color: $dark-cyan;
     color: #fff;
     font-family: $Kanit;
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
     border-radius: 5px;
-    padding: 6px 0px;
+    padding: 10px 6px;
     font-weight: 400;
-    width: 120px;
+    width: 180px;
     margin-top: 20px;
     border: 0;
     &:hover{

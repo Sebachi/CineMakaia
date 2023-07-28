@@ -60,9 +60,9 @@ function FormLogin({ onClose, signIn, login }) {
       ) : (
         <section className="login" id="loginForm">
           <article className="login_content">
-            <span className="login_close" onClick={onClose}>
+            <div className="login_close" onClick={onClose}>
               &times;
-            </span>
+            </div>
             <h2 className="login_title">Bienvenido</h2>
             <h3 className="login_subtitle">Iniciar Sesión</h3>
             <form className="login_form" onSubmit={handleSubmit}>

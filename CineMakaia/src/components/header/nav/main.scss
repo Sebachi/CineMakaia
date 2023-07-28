@@ -11,12 +11,12 @@
     margin: 0;
     width: 100%;
     margin: 10px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-family: $Kanit;
     font-weight: 600;
+    padding-right: 10px;
     &_logo{
         display: flex;
         align-items: center;
@@ -153,6 +153,7 @@
             cursor: pointer;
             height: 45px;
             width: 45px;
+            
             @include mobile{
                 width: 35px;
                 min-width: 35px;

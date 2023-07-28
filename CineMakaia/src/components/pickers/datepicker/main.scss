@@ -13,18 +13,22 @@
       min-width: 0px !important;
       max-width: 130px;
       width: 33px;
+   
     & .MuiInputBase-input {
         display: none;
     }
     & .MuiOutlinedInput-notchedOutline{
       border: none;
       border-radius: 0;
-      border-bottom: 1px solid $font-body-color;
+    //  border-bottom: 1px solid $font-body-color;
     }
   }
 }
 .MuiInputBase-input {
   font-family: $font-Makaia !important;
 
+}
+.css-ap0ol5-MuiFormControl-root-MuiTextField-root {
+  border: 0 !important;
 }
 

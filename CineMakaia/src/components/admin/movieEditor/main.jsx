@@ -46,8 +46,8 @@ function MovieEditor({signIn, login}) {
         </div>
 
          <section>
-         <h3>Trailer</h3>
-         <iframe
+         <h3>Trailer de {movie.title}</h3>
+         <iframe id='youtube-player' className='trailer_admin'
            src={trailer}
            title={movie.title}
            frameBorder="0"

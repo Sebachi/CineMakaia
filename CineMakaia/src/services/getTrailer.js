@@ -7,7 +7,6 @@ export const get_trailer = async (movieId) => {
           item.type.toLowerCase().includes("trailer")
         );
         const trailer = `https://www.youtube.com/embed/${videoInf.key}`
-        
         return trailer;
       } catch (error) {
         console.log(error);

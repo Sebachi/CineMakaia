@@ -1,20 +1,196 @@
+@import "../../../assets/styles/variables.scss";
 
-.trailer_admin{
- width: 60vw;
- height: 600px;
- 
-}
-
-.ytp-large-play-button {
-    z-index: -999 !important;
-}
-
-#youtube-player::shadow .ytp-large-play-button.ytp-button {
-    background-color: red;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    font-size: 40px;
-    color: white;
+.movieEditor {
+  &_top {
+    display: flex;
+    @include mobile {
+      flex-wrap: wrap;
+    }
+    position: relative;
+    gap: 20px;
+    padding: 10px 60px 0 40px;
+    height: 600px;
+    &_figure {
+      min-height: 200px;
+      height: 650px;
+      width: auto;
+      & > img {
+        height: 100%;
+        // width: 100%;
+        aspect-ratio: 674/1011;
+        box-shadow: $shadow-card;
+      }
+    }
+    &_trailer {
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      &:hover {
+        .movieEditor_top_trailer_text {
+          display: none;
+        }
+      }
+      &_iframe {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        //z-index: 1;
+        filter: brightness(40%) saturate(20%);
+        cursor: pointer;
+        &:hover {
+          filter: none;
+        }
+      }
+      &_text {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        gap: 10px;
+        //  z-index: 2;
+        color: #d9d9d9;
+        // border: 1px red solid;
+        // height: 300px;
+        left: 0;
+        bottom: 0;
+        padding: 40px;
+        font-family: $Kanit;
+      }
+    }
   }
+
+  // Text Iframe style
+
+  &_rated,
+  &_runtime {
+    font-family: $Kanit;
+    margin-top: 5px;
+    font-size: calc(7px + 0.5vw);
+    border: 1px solid #fff;
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
+    font-weight: 900;
+    padding: 5px;
+  }
+  &_runtime {
+    margin-left: 10px;
+  }
+  &_title {
+    color: #fff;
+    font-size: calc(50px + 0.3vw);
+    font-weight: 900;
+    width: 40%;
+    line-height: 60px;
+    padding-bottom: 10px;
+  }
+
+  // Bottom section
+  &_bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 120px 40px;
+    font-family: $Kanit;
+    &_text {
+      font-weight: 900;
+      padding-right: 120px;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      &_container {
+        display: flex;
+        flex-direction: column;
+      }
+      &_subtitle {
+        color: #78819a;
+      }
+      &_inf {
+        color: #989ca5;
+      }
+    }
+    &_editor {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &_calendar {
+        &_container {
+          display: flex;
+          gap: 20px;
+        }
+        &_days {
+          display: flex;
+          gap: 20px;
+          & > li {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            background-color: $lighter-blue;
+            padding: 10px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: $Kanit;
+            font-weight: 900;
+            color: #fff;
+            line-height: 20px;
+            &:hover{
+                background-color: $light-blue;
+            }
+            & .movie_dayNumber {
+              font-size: calc(14px + 0.5vw);
+              letter-spacing: 2px;
+            }
+            & .movie_dayName {
+              font-size: calc(7px + 0.5vw);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.movieEditor_calendar_button {
+  width: 90px;
+  height: 60px;
+  position: relative;
+  overflow-y: hidden;
+  &:hover {
+    overflow-y: hidden;
+  }
+  & .MuiSvgIcon-root {
+    width: 40px;
+    position: absolute;
+    height: 60px;
+    fill: #92abc8 !important;
+    &:hover{
+      transform: scale(1.1);
+      fill: $light-blue !important;
+    }
+  }
+  & .MuiOutlinedInput-notchedOutline{
+    border: 0;
+  }
+  & .MuiFormControl-root {
+    height: 67px !important;
+    &:hover {
+      border: 0!important;
+    }
+  }
+  & .MuiInputBase-root{
+    border: 0 !important;
+  }
+}
+
+.background_movieEditor {
+  position: absolute;
+  width: 100%;
+  height: 68%;
+  top: 0;
+  z-index: -999;
+  background-color: #d2dae2;
+}

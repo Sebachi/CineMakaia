@@ -8,6 +8,7 @@ import { ratedReader } from "../../../services/ratedReading";
 import { get_trailer } from "../../../services/getTrailer";
 import useDaysArray from "../../../hooks/useDaysArray";
 import DatePickerAdmin from "../datepickerAdmin/main";
+import dayjs from "dayjs";
 
 function MovieEditor({ signIn, login }) {
   const location = useLocation();
@@ -16,10 +17,16 @@ function MovieEditor({ signIn, login }) {
   const [trailer, setTrailer] = useState(null);
   const [selectedDay, setSelectedDay] = useState(new Date());
   const daysArray = useDaysArray(selectedDay);
-console.log(selectedDay);
+
   const handleChangeDate = (dateSelected)=>{
     setSelectedDay(dateSelected)
   }
+  useEffect(() => {
+    const dateLocal = dayjs(selectedDay).format("DD/MM/YYYY");
+    localStorage.setItem("dateAdmin", dateLocal)
+  }, [selectedDay])
+  
+
 
   useEffect(() => {
     const getMovieInf = async () => {
@@ -104,15 +111,15 @@ console.log(selectedDay);
                 <ul  className="movieEditor_bottom_editor_calendar_days">
                   {
                     daysArray.map((dayItem, index)=> (
-                      <>
+                      <React.Fragment key={dayItem.dayNumber}>
                       {
-                        index == 0 && <div className="movie_ActualMoth">{dayItem.month}</div>
+                        index == 0 && <div className="movie_ActualMoth" >{dayItem.month}</div>
                       }
-                      <li key={dayItem.dayNumber} className={(index == 0) ? "active_date" : ""} onClick={()=> handleChangeDate(dayItem.date)}>
+                      <li className={(index == 0) ? "active_date" : ""} onClick={()=> handleChangeDate(dayItem.date)}>
                         <span className="movie_dayNumber">{dayItem.dayNumber}</span>
                         <span className="movie_dayName">{dayItem.dayName}</span>
                       </li>
-                      </>
+                      </React.Fragment>
                     ))
                   }
                 </ul>

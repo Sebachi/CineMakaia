@@ -73,7 +73,10 @@
   }
 
   // Text Iframe style
-
+  &_release, &_genres{
+    font-size: calc(9px + 0.5vw);
+    font-weight: 900;
+  }
   &_rated,
   &_runtime {
     font-family: $Kanit;
@@ -132,12 +135,16 @@
         &_container {
           display: flex;
           gap: 20px;
+          height: 90px;
+          align-items: flex-end;
+          position: relative;
         }
         &_days {
           display: flex;
           gap: 20px;
           & > li {
             cursor: pointer;
+            height: 60px;
             list-style: none;
             display: flex;
             flex-direction: column;
@@ -169,6 +176,8 @@
             color: $light-blue;
             text-transform: uppercase;
             font-weight: 900;
+            position: absolute;
+            top: 0;
           }
         }
       }
@@ -176,6 +185,8 @@
   }
 }
 
+
+// CALENDAR EDITOR
 .movieEditor_calendar_button {
   width: 90px;
   height: 60px;
@@ -208,6 +219,9 @@
   }
 }
 
+
+
+// HEADER BACKGROUND
 .background_movieEditor {
   position: absolute;
   width: 100%;

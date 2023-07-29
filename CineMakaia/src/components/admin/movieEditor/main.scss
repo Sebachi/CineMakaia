@@ -30,6 +30,9 @@
         .movieEditor_top_trailer_text {
           display: none;
         }
+        .movieEditor_top_trailer_play{
+          display: none;
+        }
       }
       &_iframe {
         height: 100%;
@@ -55,6 +58,16 @@
         bottom: 0;
         padding: 40px;
         font-family: $Kanit;
+      }
+      &_play{
+        position: absolute;
+        height: 100px;
+        top: 42%;
+        right: 47%;
+        & > img{
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -137,6 +150,7 @@
             color: #fff;
             line-height: 20px;
             &:hover{
+              transform: scale(1.1);
                 background-color: $light-blue;
             }
             & .movie_dayNumber {
@@ -147,6 +161,14 @@
               font-size: calc(7px + 0.5vw);
               font-weight: 500;
             }
+          }
+          & .active_date{
+            background-color: $light-blue;
+          }
+          & .movie_ActualMoth{
+            color: $light-blue;
+            text-transform: uppercase;
+            font-weight: 900;
           }
         }
       }

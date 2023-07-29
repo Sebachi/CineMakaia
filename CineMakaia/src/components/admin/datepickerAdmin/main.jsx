@@ -8,23 +8,23 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { css } from "@emotion/react";
 
-export default function DatePickerAdmin() {
-  const valueLocalstorage = localStorage.getItem("dateAdmin") || false;
-  const [value, setValue] = valueLocalstorage
-    ? useState(dayjs(valueLocalstorage))
-    : useState(dayjs());
-  React.useEffect(() => {
-    localStorage.setItem("dateAdmin", value);
-  }, [value]);
+export default function DatePickerAdmin({selectedDay, setSelectedDay}) {
+  const currentValue = selectedDay ? dayjs(selectedDay).format("DD/MM/YYYY") : "";
+
+  const [value, setValue] = useState(currentValue)
+  
+  const handleDatePickerChange = (newValue) => {
+    const formattedValue = newValue.format("ddd MMM DD YYYY HH:mm:ss Z");
+    setValue(newValue);
+    setSelectedDay(formattedValue);
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker", "DatePicker"]}>
         <DatePicker
           value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
+          onChange={(newValue) => handleDatePickerChange(newValue)}
           views={["day", "month", "year"]}
           format="DD/MM/YYYY"
           className="picker_admin"

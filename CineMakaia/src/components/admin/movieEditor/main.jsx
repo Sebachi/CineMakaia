@@ -6,16 +6,21 @@ import { formatterDate } from "../../../services/formatterDates";
 import { get_movieOmdb } from "../../../services/requestOmdb";
 import { ratedReader } from "../../../services/ratedReading";
 import { get_trailer } from "../../../services/getTrailer";
-import { getDaysArray } from "../../../services/daysArray";
+import useDaysArray from "../../../hooks/useDaysArray";
 import DatePickerAdmin from "../datepickerAdmin/main";
 
 function MovieEditor({ signIn, login }) {
   const location = useLocation();
   const movie = location.state;
-  //console.log(location.state);
   const [movieOmdb, setMovieOmdb] = useState(null);
   const [trailer, setTrailer] = useState(null);
-  const daysArray = getDaysArray()
+  const [selectedDay, setSelectedDay] = useState(new Date());
+  const daysArray = useDaysArray(selectedDay);
+console.log(selectedDay);
+  const handleChangeDate = (dateSelected)=>{
+    setSelectedDay(dateSelected)
+  }
+
   useEffect(() => {
     const getMovieInf = async () => {
       try {
@@ -66,6 +71,7 @@ function MovieEditor({ signIn, login }) {
                   <span className="movieEditor_runtime"> {movie.runtime} Min</span>
                 </span>
               </div>
+              <figure className="movieEditor_top_trailer_play"><img src="/images/play-circle.svg" alt="play-circle" /></figure>
             </section>
           </article>
 
@@ -97,16 +103,21 @@ function MovieEditor({ signIn, login }) {
               <div className="movieEditor_bottom_editor_calendar_container">
                 <ul  className="movieEditor_bottom_editor_calendar_days">
                   {
-                    daysArray.map(dayItem=> (
-                      <li key={dayItem.dayNumber}>
+                    daysArray.map((dayItem, index)=> (
+                      <>
+                      {
+                        index == 0 && <div className="movie_ActualMoth">{dayItem.month}</div>
+                      }
+                      <li key={dayItem.dayNumber} className={(index == 0) ? "active_date" : ""} onClick={()=> handleChangeDate(dayItem.date)}>
                         <span className="movie_dayNumber">{dayItem.dayNumber}</span>
                         <span className="movie_dayName">{dayItem.dayName}</span>
                       </li>
+                      </>
                     ))
                   }
                 </ul>
                 <div className="movieEditor_calendar_button">
-                 <DatePickerAdmin/>
+                 <DatePickerAdmin selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
                 </div>
               </div>
               <div>

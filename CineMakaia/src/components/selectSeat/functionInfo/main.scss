@@ -1,0 +1,77 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.FuncionInfo__container {
+  width: 40%;
+
+  padding: 10px;
+  background-color: $light-cyan;
+  border-radius: 10px;
+  font-family: $font-Makaia;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & .FuncionInfo__film {
+    width: 100%;
+    display: flex;
+
+    &__figure {
+      width: 20%;
+
+      & img {
+        width: 100%;
+      }
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+
+      & p {
+        font-weight: bold;
+
+        & span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  & .FuncionInfo__cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__info {
+      font-weight: bold;
+    }
+
+    &__price {
+      font-weight: bold;
+      font-size: 28px;
+    }
+
+  }
+
+  & .FuncionInfo__continue {
+    padding: 10px;
+    width: 100%;
+    background-color: $lighter-blue;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+
+    &__activated {
+      padding: 10px;
+      width: 100%;
+      background-color: $dark-blue;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

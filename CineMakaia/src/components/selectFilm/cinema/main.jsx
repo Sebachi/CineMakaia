@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./main.scss";
 import { get_tickets } from '../../../services/tickets.js';
 import { TicketContext } from '../../../services/Ticketcontext.jsx';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CinemaInfo = () => {
   const [ticketData, setTicketData] = useState([]);
@@ -22,6 +22,9 @@ const CinemaInfo = () => {
 
   const [showInfo, setShowInfo] = useState(0);
   const [selectedClick, setSelectedClick] = useState({ id: 99 })
+
+  const navigate = useNavigate()
+
   useEffect(() => {
     //proceso de validacion de teatro y fecha
     let cinemaName = localStorage.cinemaSelected;
@@ -49,7 +52,7 @@ const CinemaInfo = () => {
     });
 
     setShowInfo(showInfo + 1)
-    if (showInfo < 50) {
+    if (showInfo < 20) {
       setTicketData(tiqueteria2);
     }
     console.log(ticketData)
@@ -60,6 +63,12 @@ const CinemaInfo = () => {
     setSelectedClick(obj)
     console.log(selectedClick)
   }
+  const handleContinue = () => {
+
+
+    navigate(`seat`, { state: [selectedClick, dataId] })
+  }
+
 
   return (
     <>
@@ -80,7 +89,7 @@ const CinemaInfo = () => {
 
           </ul>
           {
-            selectedClick?.horario ? <p className="cinema__continue__activated">Seleccionar boletos</p> : <p className="cinema__continue">Seleccionar boletos2</p>
+            selectedClick?.horario ? <p className="cinema__continue__activated" onClick={handleContinue} >Seleccionar boletos</p> : <p className="cinema__continue">Seleccionar boletos</p>
           }
         </aside >
       ) : (

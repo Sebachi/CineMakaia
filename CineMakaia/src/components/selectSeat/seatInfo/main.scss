@@ -1,0 +1,50 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.SeatInfo__container {
+  width: 60%;
+
+  font-family: $font-Makaia;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & h3 {
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  & .SeatInfo__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+
+    &__box {
+      display: flex;
+      width: auto;
+      gap: 10px;
+      align-items: center;
+
+
+      &__in {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        border: solid 1px $dark-blue;
+        border-radius: 5px;
+
+        & button {
+          padding: 10px;
+        }
+
+        &__count {
+          pad: 10px 20px;
+        }
+      }
+    }
+  }
+
+}

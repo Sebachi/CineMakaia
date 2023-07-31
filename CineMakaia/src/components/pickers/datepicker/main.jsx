@@ -11,9 +11,16 @@ import { css } from '@emotion/react'
 
 export default function BasicDatePicker() {
   const valueLocalstorage = localStorage.getItem("dateFunction") || false
-  const [value, setValue] = valueLocalstorage? useState(dayjs(valueLocalstorage)) :  useState(dayjs())
+  const initialValue = valueLocalstorage
+  ? dayjs(valueLocalstorage, "DD/MM/YYYY")
+  : dayjs(); 
+
+  const [value, setValue] =  useState(initialValue)
   React.useEffect(() => {
-    localStorage.setItem("dateFunction", value)
+    console.log(value);
+    const dateLocal = dayjs(value).format("DD/MM/YYYY");
+
+    localStorage.setItem("dateFunction", dateLocal)
   }, [value])
 
 

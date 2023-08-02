@@ -1,8 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { newScreening } from '../../adminAlerts/newScreening';
+import { deleteShowSwal } from '../../adminAlerts/deleteShow';
+
 
 const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState }) => {
   const [arraySala, setArraySala] = useState([])
+  const [hover, setHover] = useState(false);
+  const [hoverState, setHoverState] = useState({})
+
+
+
+
+  const handleMouseEnter = (hoverId) => {
+    setHoverState((prevHoverState) => ({
+      ...prevHoverState,
+      [hoverId]: true,
+    }));
+  };
+  const handleMouseLeave = (hoverId) => {
+    setHoverState((prevHoverState) => ({
+      ...prevHoverState,
+      [hoverId]: false,
+    }));
+  };
+
 
   const horariosEnMinutos = {
     "10:00 AM": 600,
@@ -39,7 +60,19 @@ const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState
         arraySala.map((sala, index) => (
           <div key={`funcion_${sala[0].sala}_${sala[0].horario}`} className="editor">
             <p className="editor_salas">
-              <span className="editor_salas_sala">Sala {sala[0].sala}</span>
+              <div onMouseEnter={() => handleMouseEnter(`Sala ${sala[0].sala}`)}
+                onMouseLeave={() => handleMouseLeave(`Sala ${sala[0].sala}`)}
+                className="editor_salas_container"
+               >
+                <span className="editor_salas_sala"
+                >Sala {sala[0].sala}</span>
+                {
+                  hoverState[`Sala ${sala[0].sala}`] &&
+                  <figure className='editor_functions_hovers_button'>
+                    <img src="/images/cross_red.svg" alt="cross_red" />
+                  </figure>
+                }
+              </div>
               {
                 index === 0 && <span className="editor_functions_button" onClick={() => newScreening(sala[0].pelicula, sala[0].fecha, sala[0].teatro, staticState, setStaticState)}>Nueva Funcion <img src="/images/plus.svg" alt="arrow-down" /></span>
               }
@@ -47,12 +80,24 @@ const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState
             <ul className="editor_horarios">
               {
                 sala
-                .sort((a, b) => horariosEnMinutos[a.horario] - horariosEnMinutos[b.horario])
-                .map((movie) => (
-                  <li key={`funcion_${movie.id}_${movie.horario}`} className="editor_functions_button">
-                    {movie.horario}
-                  </li>
-                ))
+                  .sort((a, b) => horariosEnMinutos[a.horario] - horariosEnMinutos[b.horario])
+                  .map((movie) => (
+                    <li key={`funcion_${movie.id}_${movie.horario}`} className="editor_time"
+                      onMouseEnter={() => handleMouseEnter(movie.id)}
+                      onMouseLeave={() => handleMouseLeave(movie.id)}
+                    >
+                      {movie.horario} {hoverState[movie.id] &&
+                        <div className='editor_functions_hovers'>
+                          <figure className='editor_functions_hovers_button'>
+                            <img src="/images/edit_yellow.svg" alt="edit_yellow" />
+                          </figure>
+                          <figure className='editor_functions_hovers_button' onClick={()=>deleteShowSwal(movie.id, staticState, setStaticState)}>
+                            <img src="/images/cross_red.svg" alt="cross_red" />
+                          </figure>
+                        </div>
+                      }
+                    </li>
+                  ))
               }
             </ul>
           </div>

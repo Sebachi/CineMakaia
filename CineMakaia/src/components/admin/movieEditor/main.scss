@@ -297,18 +297,73 @@
 .editor {
   padding: 25px 50px;
 }
-
+.editor_time{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px $light-blue solid;
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: $light-blue;
+    font-size: calc(4px + 0.5vw);
+    background-color: #fff;
+    font-weight: 600;
+    &:hover {
+      // text-decoration: underline $light-blue;
+      transform: scale(1.1);
+    }
+    & > img {
+      height: calc(20px + 0.5vw);
+    }
+}
 .editor_salas {
   display: flex;
   justify-content: space-between;
   &_sala {
     font-size: calc(12px + 0.3vw);
   }
+  &_container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
 }
 .editor_horarios {
   display: flex;
   gap: 10px;
 }
+
+
+.editor_functions_hovers{
+  display: flex;
+  gap: 5px;
+  &_button{
+    height: 16px;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.1);
+    }
+    & > img {
+      height: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HEADER BACKGROUND
 .background_movieEditor {
@@ -319,6 +374,7 @@
   z-index: -999;
   background-color: #d2dae2;
 }
+
 //SWEETALERT STYLES
 .swal2-container {
   font-family: $Kanit !important;

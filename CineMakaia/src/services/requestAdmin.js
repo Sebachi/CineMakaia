@@ -13,7 +13,7 @@ export const patchFunction = async (idFunction, newFunction) => {
     }
   };
 
-  export const deleteFunction = async (idShow) => {
+  export const deleteShow = async (idShow) => {
     try {
       await axios.delete(`${endpointCinema.functions}/${idShow}`);
     } catch (error) {

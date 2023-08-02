@@ -294,15 +294,18 @@
 }
 
 // EDITOR
-.editor{
+.editor {
   padding: 25px 50px;
 }
 
 .editor_salas {
   display: flex;
   justify-content: space-between;
+  &_sala {
+    font-size: calc(12px + 0.3vw);
+  }
 }
-.editor_horarios{
+.editor_horarios {
   display: flex;
   gap: 10px;
 }
@@ -315,4 +318,66 @@
   top: 0;
   z-index: -999;
   background-color: #d2dae2;
+}
+//SWEETALERT STYLES
+.swal2-container {
+  font-family: $Kanit !important;
+  & .swal2-modal {
+    background-color: #d2dae2;
+    //height: 60%;
+    width: 30rem;
+    color: #000;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    gap: 20px;
+  }
+  & .swal2-title {
+    font-size: calc(20px + 0.5vw);
+    margin: 0;
+    text-transform: uppercase;
+  }
+  & .swal2-actions {
+    margin: 0;
+  }
+  & .swal2-confirm {
+    background-color: $dark-cyan;
+    font-family: $Kanit !important;
+    font-weight: 900;
+    margin-right: 20px;
+    border-radius: 20px;
+    font-size: calc(10px + 0.5vw);
+    transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+      background-color: $light-blue;
+    }
+  }
+  & .swal2-select {
+    width: 100%;
+    margin: 0;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px $font-gray solid;
+    font-size: calc(8px + 0.5vw);
+    & option {
+      font-family: $Kanit !important;
+      cursor: pointer;
+    }
+  }
+  & .swal2-cancel {
+    background-color: $font-gray;
+    border-radius: 20px;
+    font-family: $Kanit !important;
+    font-weight: 900;
+    font-size: calc(8px + 0.5vw);
+    transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+      background-color: $very-dark-gray;
+    }
+  }
 }

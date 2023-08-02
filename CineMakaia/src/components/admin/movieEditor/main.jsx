@@ -21,6 +21,8 @@ function MovieEditor({ signIn, login }) {
   const daysArray = useDaysArray(selectedDay);
   const [movieFunctions, setMovieFunctions] = useState([]);
   const [dateFunction, setDateFunction] = useState(false);
+  const [arraybyCinema, setArraybyCinema] = useState([])
+
 
   const handleChangeDate = (dateSelected) => {
     setSelectedDay(dateSelected);
@@ -28,11 +30,12 @@ function MovieEditor({ signIn, login }) {
   useEffect(() => {
     const dateLocal = dayjs(selectedDay).format("DD/MM/YYYY");
     localStorage.setItem("dateAdmin", dateLocal);
-    setDateFunction(localStorage.getItem("dateAdmin"));
-    
+
+
   }, [selectedDay]);
-  
+
   const [editorState, setEditorState] = useState({});
+
   const handleEditorToggle = (boxId) => {
     setEditorState((prevEditorState) => ({
       ...prevEditorState,
@@ -54,9 +57,29 @@ function MovieEditor({ signIn, login }) {
     getMovieInf();
   }, []);
 
+  useEffect(() => {
+    setDateFunction(localStorage.getItem("dateAdmin"));
+  }, [selectedDay])
 
- useGetMovie(movie.idJson, dateFunction, setMovieFunctions);
+  useGetMovie(movie.idJson, dateFunction, setMovieFunctions);
 
+
+ useEffect(() => {
+  if(movieFunctions.length > 0){
+    setArraybyCinema(movieFunctions.reduce((acc, obj) => {
+      const teatro = obj.teatro;
+      const existingArray = acc.find((arr) => arr[0].teatro === teatro);
+      
+      if (existingArray) {
+        existingArray.push(obj);
+      } else {
+        acc.push([obj]);
+      }
+      
+      return acc;
+    }, []));
+  }
+ }, [movieFunctions])
 
 
   return (
@@ -180,29 +203,33 @@ function MovieEditor({ signIn, login }) {
                 <div className="editor_functions_header">
                   <span>Funciones por multiplex </span>
                   <div className="editor_functions_button">
-                    Nuevo multiplex{" "}
+                    Nuevo multiplex
                     <img src="/images/plus.svg" alt="arrow-down" />
                   </div>
                 </div>
-                <div className="editor_functions_body">
-                  <span>Marco Plaza del Mar</span>
-                  <figure className="editor_functions_arrow">
-                    <img src="/images/arrow_up.svg" alt="arrow-down" />
-                  </figure>
-                </div>
-                <EditorBox editorState={setEditorState} />
-                <div className="editor_functions_body">
-                  <span>Marco Plaza del Mar</span>
-                  <figure className="editor_functions_arrow">
-                    <img src="/images/arrow_up.svg" alt="arrow-down" />
-                  </figure>
-                </div>
-                <div className="editor_functions_body">
-                  <span>Marco Plaza del Mar</span>
-                  <figure className="editor_functions_arrow">
-                    <img src="/images/arrow_up.svg" alt="arrow-down" />
-                  </figure>
-                </div>
+                {
+                  movieFunctions.length > 0 ?
+                   arraybyCinema.map((cinema, index) => (
+                      <div key={cinema[0].id}>
+                        <div className="editor_functions_body">
+                          <span>{cinema[0].teatro}</span>
+                          <figure className="editor_functions_arrow" onClick={()=>handleEditorToggle(index)}>
+                           { editorState[index] ? 
+                           <img src="/images/arrow-down.svg" alt="arrow-up" />
+                           :
+                           <img src="/images/arrow_up.svg" alt="arrow-down" />
+                           }
+                          </figure>
+                        </div>
+                       { editorState[index]&&
+                        <EditorBox editorState={setEditorState} movies={cinema}/>}
+                      </div>
+                    ))
+                    : (
+                      <div>Loading ...</div>
+                    )
+
+                }
               </section>
             </section>
           </article>

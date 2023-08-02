@@ -30,7 +30,7 @@
         .movieEditor_top_trailer_text {
           display: none;
         }
-        .movieEditor_top_trailer_play{
+        .movieEditor_top_trailer_play {
           display: none;
         }
       }
@@ -59,12 +59,12 @@
         padding: 40px;
         font-family: $Kanit;
       }
-      &_play{
+      &_play {
         position: absolute;
         height: 100px;
         top: 42%;
         right: 47%;
-        & > img{
+        & > img {
           width: 100%;
           height: 100%;
         }
@@ -73,7 +73,8 @@
   }
 
   // Text Iframe style
-  &_release, &_genres{
+  &_release,
+  &_genres {
     font-size: calc(9px + 0.5vw);
     font-weight: 900;
   }
@@ -100,6 +101,9 @@
     line-height: 60px;
     padding-bottom: 10px;
   }
+  &_genres {
+    padding-bottom: 15px;
+  }
 
   // Bottom section
   &_bottom {
@@ -110,6 +114,7 @@
     font-family: $Kanit;
     &_text {
       font-weight: 900;
+      text-transform: capitalize;
       padding-right: 120px;
       width: 40%;
       display: flex;
@@ -156,9 +161,9 @@
             font-weight: 900;
             color: #fff;
             line-height: 20px;
-            &:hover{
+            &:hover {
               transform: scale(1.1);
-                background-color: $light-blue;
+              background-color: $light-blue;
             }
             & .movie_dayNumber {
               font-size: calc(14px + 0.5vw);
@@ -169,10 +174,10 @@
               font-weight: 500;
             }
           }
-          & .active_date{
+          & .active_date {
             background-color: $light-blue;
           }
-          & .movie_ActualMoth{
+          & .movie_ActualMoth {
             color: $light-blue;
             text-transform: uppercase;
             font-weight: 900;
@@ -184,7 +189,6 @@
     }
   }
 }
-
 
 // CALENDAR EDITOR
 .movieEditor_calendar_button {
@@ -200,28 +204,24 @@
     position: absolute;
     height: 60px;
     fill: #92abc8 !important;
-    &:hover{
+    &:hover {
       transform: scale(1.1);
       fill: $light-blue !important;
     }
   }
-  & .MuiOutlinedInput-notchedOutline{
+  & .MuiOutlinedInput-notchedOutline {
     border: 0;
   }
   & .MuiFormControl-root {
     height: 67px !important;
     &:hover {
-      border: 0!important;
+      border: 0 !important;
     }
   }
-  & .MuiInputBase-root{
+  & .MuiInputBase-root {
     border: 0 !important;
   }
 }
-
-
-
-
 
 .editor_functions {
   border: 1px red solid;
@@ -233,7 +233,7 @@
   gap: 10px;
   border: 2px #f6f6f6 solid;
   border-radius: 5px;
-  &_header{
+  &_header {
     padding: 30px calc(30px + 1vw);
     display: flex;
     justify-content: space-between;
@@ -253,7 +253,7 @@
     border-radius: 5px;
     align-items: center;
   }
-  &_arrow{
+  &_arrow {
     height: calc(20px + 0.5vw);
     border: 1px $light-blue solid;
     border-radius: 50%;
@@ -262,20 +262,19 @@
     align-items: start;
     text-align: center;
     background-color: #fff;
-    &:hover{
+    &:hover {
       // text-decoration: underline $light-blue;
-       transform: scale(1.1);
-     }
-    & >img {
+      transform: scale(1.1);
+    }
+    & > img {
       width: 100%;
       height: 100%;
-    
     }
   }
-  &_button{
+  &_button {
     cursor: pointer;
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 10px;
     border: 1px $light-blue solid;
     padding: 8px 20px;
@@ -284,20 +283,29 @@
     font-size: calc(4px + 0.5vw);
     background-color: #fff;
     font-weight: 600;
-    &:hover{
-     // text-decoration: underline $light-blue;
+    &:hover {
+      // text-decoration: underline $light-blue;
       transform: scale(1.1);
     }
     & > img {
       height: calc(20px + 0.5vw);
     }
   }
-
 }
 
+// EDITOR
+.editor{
+  padding: 25px 50px;
+}
 
-
-
+.editor_salas {
+  display: flex;
+  justify-content: space-between;
+}
+.editor_horarios{
+  display: flex;
+  gap: 10px;
+}
 
 // HEADER BACKGROUND
 .background_movieEditor {

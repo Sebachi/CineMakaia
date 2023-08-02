@@ -10,8 +10,12 @@ import { css } from "@emotion/react";
 
 export default function DatePickerAdmin({selectedDay, setSelectedDay}) {
   const currentValue = selectedDay ? dayjs(selectedDay).format("DD/MM/YYYY") : "";
+  const [value, setValue] = useState(dayjs(selectedDay))
+React.useEffect(() => {
+ setValue(dayjs(selectedDay))
+}, [selectedDay])
 
-  const [value, setValue] = useState(currentValue)
+ 
   
   const handleDatePickerChange = (newValue) => {
     const formattedValue = newValue.format("ddd MMM DD YYYY HH:mm:ss Z");

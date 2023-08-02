@@ -11,18 +11,27 @@ import DatePickerAdmin from "../datepickerAdmin/main";
 import dayjs from "dayjs";
 import EditorBox from "./Editor/main";
 import { useGetMovie } from "../../../hooks/useGetMovies";
+import Swal from "sweetalert2";
+import { newMultiplex } from "../adminAlerts/newMultiplex";
 
 function MovieEditor({ signIn, login }) {
   const location = useLocation();
-  const movie = location.state;
+  const [movie, setMovie] = useState(location.state);
   const [movieOmdb, setMovieOmdb] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [selectedDay, setSelectedDay] = useState(new Date());
   const daysArray = useDaysArray(selectedDay);
-  const [movieFunctions, setMovieFunctions] = useState([]);
+  const [movieFunctions, setMovieFunctions] = useState(false);
   const [dateFunction, setDateFunction] = useState(false);
   const [arraybyCinema, setArraybyCinema] = useState([])
+  const [staticState, setStaticState]= useState(false)
 
+  useEffect(() => {
+
+    setMovie(location.state)
+
+  }, [staticState])
+  
 
   const handleChangeDate = (dateSelected) => {
     setSelectedDay(dateSelected);
@@ -31,8 +40,7 @@ function MovieEditor({ signIn, login }) {
     const dateLocal = dayjs(selectedDay).format("DD/MM/YYYY");
     localStorage.setItem("dateAdmin", dateLocal);
 
-
-  }, [selectedDay]);
+  }, [selectedDay, staticState]);
 
   const [editorState, setEditorState] = useState({});
 
@@ -42,6 +50,8 @@ function MovieEditor({ signIn, login }) {
       [boxId]: !prevEditorState[boxId],
     }));
   };
+
+ 
 
   useEffect(() => {
     const getMovieInf = async () => {
@@ -55,31 +65,32 @@ function MovieEditor({ signIn, login }) {
       }
     };
     getMovieInf();
-  }, []);
+  }, [staticState]);
 
   useEffect(() => {
     setDateFunction(localStorage.getItem("dateAdmin"));
-  }, [selectedDay])
+  }, [selectedDay, staticState])
 
-  useGetMovie(movie.idJson, dateFunction, setMovieFunctions);
+  useGetMovie(movie.idJson, dateFunction, setMovieFunctions, staticState);
+
+  useEffect(() => {
+    if (movieFunctions) {
+      setArraybyCinema(
+        movieFunctions.reduce((acc, obj) => {
+          const teatro = obj.teatro;
+          const existingArray = acc.find((arr) => arr[0].teatro === teatro);
+          if (existingArray) {
+            existingArray.push(obj);
+          } else {
+            acc.push([obj]);
+          }
+          return acc;
+        }, [])
+      );
+    }
+  }, [movieFunctions, staticState])
 
 
- useEffect(() => {
-  if(movieFunctions.length > 0){
-    setArraybyCinema(movieFunctions.reduce((acc, obj) => {
-      const teatro = obj.teatro;
-      const existingArray = acc.find((arr) => arr[0].teatro === teatro);
-      
-      if (existingArray) {
-        existingArray.push(obj);
-      } else {
-        acc.push([obj]);
-      }
-      
-      return acc;
-    }, []));
-  }
- }, [movieFunctions])
 
 
   return (
@@ -202,13 +213,13 @@ function MovieEditor({ signIn, login }) {
               <section className="editor_functions">
                 <div className="editor_functions_header">
                   <span>Funciones por multiplex </span>
-                  <div className="editor_functions_button">
+                  <div className="editor_functions_button" onClick={()=> newMultiplex(movie.idJson, dateFunction, setStaticState, staticState)}>
                     Nuevo multiplex
                     <img src="/images/plus.svg" alt="arrow-down" />
                   </div>
                 </div>
                 {
-                  movieFunctions.length > 0 ?
+                 
                    arraybyCinema.map((cinema, index) => (
                       <div key={cinema[0].id}>
                         <div className="editor_functions_body">
@@ -222,12 +233,10 @@ function MovieEditor({ signIn, login }) {
                           </figure>
                         </div>
                        { editorState[index]&&
-                        <EditorBox editorState={setEditorState} movies={cinema}/>}
+                        <EditorBox key={cinema[0].id} editorState={setEditorState} movies={cinema} staticState={staticState} setStaticState={setStaticState}/>}
                       </div>
                     ))
-                    : (
-                      <div>Loading ...</div>
-                    )
+                  
 
                 }
               </section>

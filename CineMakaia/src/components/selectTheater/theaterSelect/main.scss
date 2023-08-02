@@ -1,0 +1,66 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.SelectSeat__container {
+  width: 60%;
+
+  font-family: $font-Makaia;
+  display: flex;
+  flex-direction: column;
+  border: red solid 1px;
+  gap: 20px;
+
+  & .SelectSeat__template {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+
+    & span {
+      padding-right: 20px;
+    }
+  }
+
+  & .SelectSeat__hr {
+    width: 100%;
+    border-bottom: 1px solid red;
+  }
+
+  & .SelectSeat__seat {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &__box {
+      width: 50px;
+      height: 50px;
+      border: red solid 1px;
+      position: relative;
+
+      &__img {
+        height: 100%;
+      }
+
+      &__span {
+        color: white;
+        position: absolute;
+        top: 15%;
+        left: 35%;
+
+        border: solid 1px blue;
+
+      }
+    }
+  }
+
+  & .SelectSeat__seat__img {
+    width: 50px;
+    height: 50px;
+
+  }
+}

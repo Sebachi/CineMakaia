@@ -1,42 +1,56 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./main.scss"
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AppContext } from "../../../services/Appcontex.jsx";
 
 
-const FuncionInfo = () => {
+const FuncionInfo = ({ totalTicketPrice, totalTicketAmount, childTicket, adultTicket, grandTicket }) => {
   const first = useContext(AppContext)
-
+  const navigate = useNavigate()
   const location = useLocation()
   const functionInfo = location.state;
-  const functionContent = functionInfo[0];
-  const filmId = functionInfo[1];
-  const [filmContent, setFilmContent] = useState(null)
+  const functionContent = functionInfo[0]; //info funcion
+  const filmId = functionInfo[1]; //id de la pelicula
+  const [filmContent, setFilmContent] = useState(null) //info de la pelicula
+  const [ticketInfo, setTicketInfo] = useState({})
 
 
   const [moviesData, setMoviesData] = useState(null);
   const [showCounter, setShowCounter] = useState(0);
 
+  //validacion de pelicula
   useEffect(() => {
 
     if (first.length > 0) {
       setMoviesData([[], ...first])
+      console.log("info context")
       console.log(moviesData);
     }
+    console.log("informacion funcion e Id")
     console.log(functionContent)
     console.log(filmId)
 
     if (moviesData !== null) {
       setFilmContent(moviesData[filmId])
-    }
-    if (filmContent) {
       console.log(filmContent)
     } else {
       setShowCounter(showCounter + 1)
     }
-
-
   }, [first, showCounter]);
+
+  useEffect(() => {
+    setTicketInfo({
+      child: childTicket,
+      adult: adultTicket,
+      grand: grandTicket,
+      price: totalTicketPrice
+    }
+    )
+  }, [totalTicketAmount])
+
+  const handleContinue = () => {
+    navigate(`theater`, { state: [functionContent, filmContent, ticketInfo] })
+  }
 
   return (
     <>
@@ -47,7 +61,7 @@ const FuncionInfo = () => {
             <figure className='FuncionInfo__film__figure'>
               <img src={`https://image.tmdb.org/t/p/original/${filmContent.poster_path}`} alt="imagen de cartelera" />
             </figure>
-            <div FuncionInfo__film__description>
+            <div className='FuncionInfo__film__description'>
               <p>Pelicula <span>{filmContent.title}</span></p>
               <p>Complejo <span>{functionContent.teatro}</span></p>
               <p>Fecha <span>{functionContent.fecha}</span></p>
@@ -57,9 +71,12 @@ const FuncionInfo = () => {
           <p className='FuncionInfo__pretext'>Se realizara un cargo por servicio por cada boleto dentro de la orden</p>
           <div className='FuncionInfo__cost'>
             <span className='FuncionInfo__cost__info'>Total(IVA incluido):</span>
-            <span className='FuncionInfo__cost__price'>$250</span>
+            <span className='FuncionInfo__cost__price'>${totalTicketPrice}</span>
           </div>
-          <p className='FuncionInfo__continue__activated'>Continuar</p>
+          {
+            totalTicketPrice ? <p className='FuncionInfo__continue__activated' onClick={handleContinue} >Continuar</p> : <p className='FuncionInfo__continue'>Continuar</p>
+          }
+
         </section>
       ) : (
         <p>Loading...</p>

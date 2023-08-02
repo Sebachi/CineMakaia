@@ -1,38 +1,37 @@
-import React, { Children, useState } from 'react'
+import React, { Children, useEffect, useState } from 'react'
 import "./main.scss"
 
-const SeatInfo = () => {
-  const [adulto, setAdulto] = useState(0)
-  const [nino, setNino] = useState(0)
-  const [grand, setGrand] = useState(0)
+const SeatInfo = ({ childTicket, setChildTicket, adultTicket, setAdultTicket, grandTicket, setGrandTicket, baseChild, baseAdult, baseGrand }) => {
 
-  const baseChildren = 30
-  const baseAdult = 40
-  const baseGrand = 50
+  // const handleTotal = () => {
+  //   let totalTicket = (baseChild * childTicket) + (baseAdult * adultTicket) + (baseGrand * grandTicket)
+  //   setValue((baseChild * childTicket) + (baseAdult * adultTicket) + (baseGrand * grandTicket))
+  //   console.log(`cantidad niños ${childTicket}`)
+  //   console.log(`cantidad adultos ${adultTicket}`)
+  //   console.log(`cantidad ancianos ${grandTicket}`)
+  //   console.log(value)
+  // }
 
   const handleAdult = (seatCount) => {
-    if (adulto == 0 && seatCount < 0) {
+    if (adultTicket == 0 && seatCount < 0) {
       console.log("cantidad negativa invalida")
     } else {
-      setAdulto(adulto + seatCount)
+      setAdultTicket(adultTicket + seatCount)
     }
-
   }
   const handleChildren = (seatCount) => {
-    if (nino == 0 && seatCount < 0) {
+    if (childTicket == 0 && seatCount < 0) {
       console.log("cantidad negativa invalida")
     } else {
-      setNino(nino + seatCount)
+      setChildTicket(childTicket + seatCount)
     }
-
   }
   const handleGrand = (seatCount) => {
-    if (grand == 0 && seatCount < 0) {
+    if (grandTicket == 0 && seatCount < 0) {
       console.log("cantidad negativa invalida")
     } else {
-      setGrand(grand + seatCount)
+      setGrandTicket(grandTicket + seatCount)
     }
-
   }
 
   return (
@@ -42,11 +41,11 @@ const SeatInfo = () => {
       <article className='SeatInfo__btn'>
         <span>ADULTO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseAdult * adulto}</span>
+          <span>${baseAdult * adultTicket}</span>
           <div className='SeatInfo__btn__box__in'>
             <button onClick={() => { handleAdult(-1) }}>-</button>
-            <span className='SeatInfo__btn__box__in__count'>{adulto}</span>
-            <button onClick={() => { handleAdult(+1) }}>+</button>
+            <span className='SeatInfo__btn__box__in__count'>{adultTicket}</span>
+            <button onClick={() => { handleAdult(1) }}>+</button>
           </div>
         </div>
       </article>
@@ -54,10 +53,10 @@ const SeatInfo = () => {
       <article className='SeatInfo__btn'>
         <span>NIÑO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseChildren * nino}</span>
+          <span>${baseChild * childTicket}</span>
           <div className='SeatInfo__btn__box__in'>
             <button onClick={() => { handleChildren(-1) }}>-</button>
-            <span className='SeatInfo__btn__box__in__count'>{nino}</span>
+            <span className='SeatInfo__btn__box__in__count'>{childTicket}</span>
             <button onClick={() => { handleChildren(+1) }}>+</button>
           </div>
         </div>
@@ -66,10 +65,10 @@ const SeatInfo = () => {
       <article className='SeatInfo__btn'>
         <span>ANCIANO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseGrand * grand}</span>
+          <span>${baseGrand * grandTicket}</span>
           <div className='SeatInfo__btn__box__in'>
             <button onClick={() => { handleGrand(-1) }}>-</button>
-            <span className='SeatInfo__btn__box__in__count'>{grand}</span>
+            <span className='SeatInfo__btn__box__in__count'>{grandTicket}</span>
             <button onClick={() => { handleGrand(+1) }}>+</button>
           </div>
         </div>

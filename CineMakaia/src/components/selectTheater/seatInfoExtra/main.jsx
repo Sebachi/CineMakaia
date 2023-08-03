@@ -15,7 +15,7 @@ const SeatInfoExtra = () => {
 
   useEffect(() => {
     if ((location.state).length > 2) {
-      console.log(location.state)
+      //console.log(location.state)
       setValidAccess(true)
     }
   }, [])

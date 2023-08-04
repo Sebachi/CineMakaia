@@ -98,9 +98,7 @@ export const newScreening = async (idJSON, fecha, cinema, staticState, setStatic
         text: "Intenta de nuevo con otra sala de cine",
         cancelButtonText: 'Cancelar',
         showCancelButton: true,
-        confirmButtonColor: '#91CCD1',
         confirmButtonText: 'Listo!',
-        cancelButtonColor: '#d33',
 
       });
   

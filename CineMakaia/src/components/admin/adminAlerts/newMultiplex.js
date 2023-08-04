@@ -121,12 +121,10 @@ export const newMultiplex = async (idJSON, fecha, setStaticState, staticState) =
   
     if (data.length > 0) {
       const { isConfirmed } = await Swal.fire({
-        title:  'La funcion que intentas ocupar ya está en uso',
-        text: "Intenta de nuevo con otra sala de cine",
-        showCancelButton: true,
-        confirmButtonColor: '#91CCD1',
-        confirmButtonText: 'Listo!',
-        cancelButtonColor: '#d33',
+        title:  'La funcion que intentas crear ya está en uso',
+        text: "Intenta de nuevo con otro horario diferente",
+        showCancelButton: true, 
+        confirmButtonText: 'Listo!', 
         cancelButtonText: 'Cancelar',
       });
   

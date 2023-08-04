@@ -308,6 +308,11 @@
     font-size: calc(4px + 0.5vw);
     background-color: #fff;
     font-weight: 600;
+    &_input{
+      width: 60px;
+      border: none;
+      color: $light-blue;
+    }
     &:hover {
       // text-decoration: underline $light-blue;
       transform: scale(1.1);
@@ -319,8 +324,17 @@
 .editor_salas {
   display: flex;
   justify-content: space-between;
+  &_input{
+    width: 60px;
+    border: none;
+    text-decoration: underline;
+    font-size: calc(12px + 0.3vw);
+    font-family: $Kanit;
+    padding-bottom: 15px;
+  }
   &_sala {
     font-size: calc(12px + 0.3vw);
+    border-radius: 20px;
   }
   &_container{
     display: flex;
@@ -393,13 +407,15 @@
   & .swal2-title {
     font-size: calc(20px + 0.5vw);
     margin: 0;
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
   & .swal2-actions {
     margin: 0;
   }
   & .swal2-confirm {
-    background-color: $dark-cyan;
+    background-color: transparent;
+    color: $dark-cyan ;
+    border: 1px $dark-cyan solid;
     font-family: $Kanit !important;
     font-weight: 900;
     margin-right: 20px;
@@ -408,7 +424,8 @@
     transition: all 200ms ease;
     &:hover {
       transform: scale(1.1);
-      background-color: $light-blue;
+      color: $light-blue;
+      //background-color: transparent !important;
     }
   }
   & .swal2-select {
@@ -425,15 +442,18 @@
     }
   }
   & .swal2-cancel {
-    background-color: $font-gray;
+    background-color: transparent;
+    color: $dark-cyan ;
     border-radius: 20px;
     font-family: $Kanit !important;
+    border: 1px $dark-cyan solid;
     font-weight: 900;
     font-size: calc(8px + 0.5vw);
     transition: all 200ms ease;
     &:hover {
       transform: scale(1.1);
-      background-color: $very-dark-gray;
+      background-color: transparent;
+      color: $light-blue;
     }
   }
 }

@@ -11,6 +11,7 @@ import AdminHome from "../components/admin/adminHome/main";
 import MovieEditor from "../components/admin/movieEditor/main";
 import SelectSeat from "../components/selectSeat/main.jsx";
 import SelectTheater from "../components/selectTheater/main.jsx";
+import TranscriptPayout from "../components/transcriptPayout/main.jsx";
 
 const Router = () => {
   const storedAuthentication = JSON.parse(localStorage.getItem("IsLogin")) || false;
@@ -36,6 +37,7 @@ const Router = () => {
           <Route path="/SelectFilm/:selectFilm" element={<SelectFilm signIn={setIsLogin} login={isLogin} />} />
           <Route path="/SelectFilm/:selectFilm/seat" element={<SelectSeat signIn={setIsLogin} login={isLogin} />} />
           <Route path="/SelectFilm/:selectFilm/seat/theater" element={<SelectTheater signIn={setIsLogin} login={isLogin} />} />
+          <Route path="/SelectFilm/:selectFilm/seat/theater/payout" element={<TranscriptPayout signIn={setIsLogin} login={isLogin} />} />
           <Route element={<PrivateRouter isAutenticate={isLogin} />}>
             <Route path="/adminPanel" element={<AdminHome signIn={setIsLogin} login={isLogin} />} />
             <Route path="/adminPanel/:movieEdit" element={<MovieEditor signIn={setIsLogin} login={isLogin} />}   ></Route>

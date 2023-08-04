@@ -7,8 +7,14 @@ import chairOcupied from "../../../assets/chair-ocupado.svg"
 import { useLocation, useNavigate } from 'react-router-dom'
 import { get_tickets2 } from '../../../services/tickets.js'
 
-const SelectSeat = () => {
-  const TotalSeat = 30;
+const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId }) => {
+  //para recibir y dar informacion
+  const navigate = useNavigate()
+  const location = useLocation()
+  //almacenar dicha informacion
+  const functionId = location.state[0].id
+
+  const maxSeat = location.state[2].adult + location.state[2].child + location.state[2].grand;
   const [seatArray, setSeatArray] = useState([])
   const [showContainer, setShowContainer] = useState(0)
   const [showContainer2, setShowContainer2] = useState(0)
@@ -16,12 +22,6 @@ const SelectSeat = () => {
   const [seatStatus, setSeatStatus] = useState([])
 
   let newArray = []
-
-  //para recibir y dar informacion
-  const navigate = useNavigate()
-  const location = useLocation()
-  //almacenar dicha informacion
-  const functionId = location.state[0].id
 
   const getServer = async (id) => {
     let server = await get_tickets2(id)
@@ -70,31 +70,42 @@ const SelectSeat = () => {
 
   const handleSeatAvailable = (id) => {
     console.log(`clickeaste en la silla azul #${id + 1}`)
-    // const editList = seatStatus.map(item => item.id === id ? item.status : "selected")
-    // setSeatStatus(editList)
-    //opcion 2
-    const editList = seatStatus;
-    editList[id].status = "selected"
-    setSeatStatus(editList)
-    // console.log("lista de las sillas")
-    // console.log(seatArray)
-    console.log("estado de las sillas")
-    console.log(seatStatus)
-    setShowContainer3(showContainer3 + 1)
+    if (actualSeat < maxSeat) {
+      // const editList = seatStatus.map(item => item.id === id ? item.status : "selected")
+      // setSeatStatus(editList)
+      //opcion 2
+      const editList = seatStatus;
+      editList[id].status = "selected"
+      setSeatStatus(editList)
+
+      const editList2 = seatId;
+      const editList3 = seatArray[id].id
+      editList2.push(editList3)
+      setSeatId(editList2)
+
+      console.log("estado de las sillas")
+      console.log(seatStatus)
+      setShowContainer3(showContainer3 + 1)
+      setActualSeat(actualSeat + 1)
+    } else {
+      console.log("limite maximo alcanzado")
+    }
+
   }
   const handleSeatSelected = (id) => {
     console.log(`clickeaste en la silla naranja #${id + 1}`)
-
-    // const editList = seatStatus.map(item => item.id === id ? item.status : "available")
-    // setSeatStatus(editList)
     const editList = seatStatus;
     editList[id].status = "available"
     setSeatStatus(editList)
-    // console.log("lista de las sillas")
-    // console.log(seatArray)
+
+    const editList2 = seatId;
+    const editList3 = editList2.filter((item) => item != seatArray[id].id)
+    setSeatId(editList3)
+
     console.log("estado de las sillas")
     console.log(seatStatus)
     setShowContainer3(showContainer3 + 1)
+    setActualSeat(actualSeat - 1)
   }
 
 
@@ -139,4 +150,4 @@ const SelectSeat = () => {
   )
 }
 
-export default SelectSeat
+export default SelectSeatTheater

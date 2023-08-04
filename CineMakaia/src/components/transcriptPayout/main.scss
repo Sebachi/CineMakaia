@@ -1,0 +1,127 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
+.TranscriptPayout__container {
+  width: 100%;
+  padding: 40px 40px;
+  gap: 40px;
+  font-family: $font-Makaia;
+  display: flex;
+
+  &__form {
+    width: 60%;
+    border: blue solid 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__box {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & span {
+          width: 100%;
+        }
+
+        & input {
+          width: 100%;
+          background-color: $font-body-color;
+          padding: 5px;
+          border-radius: 5px;
+          border: none;
+        }
+
+        &__double {
+
+          width: 50%;
+        }
+      }
+
+      & .special {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__info {
+    width: 40%;
+    border: green solid 1px;
+    padding: 10px;
+    background-color: $light-cyan;
+    border-radius: 10px;
+    font-family: $font-Makaia;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & .TranscriptPayout__film {
+      width: 100%;
+      display: flex;
+
+      &__figure {
+        width: 20%;
+
+        & img {
+          width: 100%;
+        }
+      }
+
+      &__description {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+
+        & p {
+          font-weight: bold;
+
+          & span {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    & .TranscriptPayout__cost {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__info {
+        font-weight: bold;
+      }
+
+      &__price {
+        font-weight: bold;
+        font-size: 28px;
+      }
+
+    }
+
+    & .TranscriptPayout__continue {
+      padding: 10px;
+      width: 100%;
+      background-color: $lighter-blue;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+
+      &__activated {
+        padding: 10px;
+        width: 100%;
+        background-color: $dark-blue;
+        color: white;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

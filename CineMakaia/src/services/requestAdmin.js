@@ -40,3 +40,13 @@ export const patchFunction = async (idFunction, newFunction) => {
         return error;
       }
 }
+
+export const getValidationCinema = async (cinema, sala) => {
+  try {
+      const { data } = await axios.get(`${endpointCinema.functions}?teatro=${cinema}&sala=${sala}`);
+      return data
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+}

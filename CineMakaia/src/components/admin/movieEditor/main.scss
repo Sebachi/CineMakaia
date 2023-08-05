@@ -257,16 +257,19 @@
   position: relative;
   overflow-y: hidden;
   @include mobile{
-    width: 40px;
-
+    width: 60px;
   }
   &:hover {
     overflow-y: hidden;
   }
   & .MuiSvgIcon-root {
-    width: 40px;
+   width: 40px;
     position: absolute;
-    height: 60px;
+    @include mobile{
+    
+ 
+    }
+   height: 60px;
     fill: #92abc8 !important;
     &:hover {
       transform: scale(1.1);

@@ -5,6 +5,9 @@
     display: flex;
     @include mobile {
       flex-wrap: wrap;
+      height: auto;
+      justify-content: center;
+      padding: 0;
     }
     position: relative;
     gap: 20px;
@@ -14,6 +17,10 @@
       min-height: 200px;
       height: 650px;
       width: auto;
+      @include mobile{
+        width: auto;
+        height: 400px;
+      }
       & > img {
         height: 100%;
         // width: 100%;
@@ -26,6 +33,10 @@
       position: relative;
       cursor: pointer;
       height: 100%;
+      @include mobile{
+        width: auto;
+        height: 400px;
+      }
       &:hover {
         .movieEditor_top_trailer_text {
           display: none;
@@ -52,18 +63,30 @@
         gap: 10px;
         //  z-index: 2;
         color: #d9d9d9;
-        // border: 1px red solid;
+       
         // height: 300px;
+        @include mobile{
+         margin-bottom: 10px;
+          margin-left: 10px;
+          padding: 0;
+          gap: 10px;
+        }
         left: 0;
         bottom: 0;
         padding: 40px;
         font-family: $Kanit;
+
       }
       &_play {
         position: absolute;
         height: 100px;
         top: 42%;
         right: 47%;
+        @include mobile{
+          height: 60px;
+          top: 42%;
+        right: 40%;
+        }
         & > img {
           width: 100%;
           height: 100%;
@@ -77,6 +100,10 @@
   &_genres {
     font-size: calc(9px + 0.5vw);
     font-weight: 900;
+    @include mobile{
+      margin: 0;
+      padding: 0;
+    }
   }
   &_rated,
   &_runtime {
@@ -89,6 +116,10 @@
     border-radius: 5px;
     font-weight: 900;
     padding: 5px;
+    @include mobile{
+    padding: 3px;
+    margin: 0;
+    }
   }
   &_runtime {
     margin-left: 10px;
@@ -100,6 +131,12 @@
     width: 40%;
     line-height: 60px;
     padding-bottom: 10px;
+    @include mobile{
+      font-size: calc(30px + 0.3vw);
+      width: 100%;
+      line-height: 30px;
+      padding-bottom: 0px;
+    }
   }
   &_genres {
     padding-bottom: 15px;
@@ -112,6 +149,11 @@
     justify-content: space-between;
     padding: 120px 40px;
     font-family: $Kanit;
+    @include mobile{
+      flex-wrap: wrap;
+      padding: 50px 40px;
+      gap: 30px;
+    }
     &_text {
       font-weight: 900;
       text-transform: capitalize;
@@ -120,6 +162,11 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      @include mobile{
+        width: 100%;
+        //
+        padding-right: 0px;
+      }
       &_container {
         display: flex;
         flex-direction: column;
@@ -136,6 +183,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      
       &_calendar {
         &_container {
           display: flex;
@@ -143,10 +191,18 @@
           height: 90px;
           align-items: flex-end;
           position: relative;
+          @include mobile{
+            width: 100%;
+            gap: 5px; 
+          }
         }
         &_days {
           display: flex;
           gap: 20px;
+          @include mobile{
+            width: 100%;
+            gap: 5px;
+          }
           & > li {
             cursor: pointer;
             height: 60px;
@@ -155,6 +211,10 @@
             flex-direction: column;
             background-color: $lighter-blue;
             padding: 10px 20px;
+            @include mobile{
+              padding: 12px;
+              
+            }
             text-align: center;
             text-transform: uppercase;
             font-family: $Kanit;
@@ -196,6 +256,10 @@
   height: 60px;
   position: relative;
   overflow-y: hidden;
+  @include mobile{
+    width: 40px;
+
+  }
   &:hover {
     overflow-y: hidden;
   }
@@ -224,7 +288,7 @@
 }
 
 .editor_functions {
-  border: 1px red solid;
+ 
   width: 100%;
   margin-top: 50px;
   padding: 10px;
@@ -233,6 +297,9 @@
   gap: 10px;
   border: 2px #f6f6f6 solid;
   border-radius: 5px;
+  @include mobile{
+   
+  }
   &_header {
     padding: 30px calc(30px + 1vw);
     display: flex;
@@ -242,6 +309,10 @@
     align-items: center;
     font-weight: 900;
     font-size: calc(8px + 0.5vw);
+    @include mobile{
+     
+      padding: 0
+    }
   }
   &_body {
     padding: 20px calc(30px + 1vw) 20px 70px;
@@ -252,6 +323,9 @@
     background-color: #f6f6f6;
     border-radius: 5px;
     align-items: center;
+    @include mobile{
+      padding: 10px
+    }
   }
   &_arrow {
     height: calc(20px + 0.5vw);
@@ -262,6 +336,9 @@
     align-items: start;
     text-align: center;
     background-color: #fff;
+    @include mobile{
+      height: calc(15px + 0.5vw);
+    }
     &:hover {
       // text-decoration: underline $light-blue;
       transform: scale(1.1);
@@ -283,6 +360,10 @@
     font-size: calc(4px + 0.5vw);
     background-color: #fff;
     font-weight: 600;
+    @include mobile{
+      font-size: calc(7px + 0.5vw);
+      padding: 8px;
+    }
     &:hover {
       // text-decoration: underline $light-blue;
       transform: scale(1.1);
@@ -296,6 +377,10 @@
 // EDITOR
 .editor {
   padding: 25px 50px;
+  @include mobile{
+    font-size: calc(7px + 0.5vw);
+    padding: 8px;
+  }
 }
 .editor_time{
     display: flex;
@@ -308,6 +393,12 @@
     font-size: calc(4px + 0.5vw);
     background-color: #fff;
     font-weight: 600;
+    @include mobile{
+      font-size: calc(7px + 0.5vw);
+      padding: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
     &_input{
       width: 60px;
       border: none;
@@ -384,6 +475,9 @@
   position: absolute;
   width: 100%;
   height: 68%;
+  @include mobile{
+    height: 850px;
+  }
   top: 0;
   z-index: -999;
   background-color: #d2dae2;

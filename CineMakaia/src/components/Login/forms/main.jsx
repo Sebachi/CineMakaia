@@ -30,7 +30,7 @@ function FormLogin({ onClose, signIn, login }) {
       Swal.fire(
         `Excelente ${loggedUser.name}`,
         "Has iniciado sesion con exito!",
-        `success`
+        `success`,
       ).then(signIn(true), localStorage.setItem("UserInf", JSON.stringify(loggedUser)), handleAdminPanel(), onClose() );
     } else {
       Swal.fire(`Ups`, "Usuario no encontrado", `error`);

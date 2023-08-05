@@ -1,72 +1,102 @@
 @import "../../assets/styles/variables.scss";
 @import "../../assets/styles/reset.scss";
 
-.TranscriptPayout__container {
+.ValidatePayout__container {
   width: 100%;
   height: 100%;
   padding: 40px 40px;
   gap: 40px;
   font-family: $font-Makaia;
   display: flex;
+  flex-direction: column;
 
-  &__form {
-    width: 60%;
-    height: 350px;
+  &__status {
+    border: $dark-blue solid 1px;
+    background-color: $font-body-color;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
+    & img {
+      height: 50px;
+    }
+
+    & p {
+      font-weight: bold;
+    }
+  }
+
+  &__card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    height: auto;
 
-    & .form {
+    & .card__title {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      height: auto;
+      align-items: center;
+      justify-content: space-between;
 
+      & span {
+        color: $dark-blue;
+        background-color: $lighter-blue;
+        font-weight: 400;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    }
 
-      &__box {
+    & .card__box {
+      display: flex;
+      gap: 100px;
+      padding: 40px 0px;
+
+      &__inside {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
+        width: auto;
 
-
-        & span {
-          width: 100%;
-        }
-
-        & input {
-          width: 100%;
-          background-color: $font-body-color;
-          padding: 5px;
-          border-radius: 5px;
-          border: none;
-        }
-
-        &__double {
-
-          width: 50%;
+        & p {
+          min-width: 100px;
         }
       }
 
       & .special {
         flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0px;
+
+        & p {
+          width: 100%;
+        }
+
+        & img {
+          height: 50px;
+        }
+
+        & span {
+          padding-left: 10px;
+        }
       }
     }
+
   }
 
   &__info {
-    width: 40%;
-    height: auto;
+    width: 600px;
+    border: green solid 1px;
     padding: 10px;
-    background-color: $lighter-blue;
+    background-color: $light-cyan;
     border-radius: 10px;
     font-family: $font-Makaia;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-self: center;
 
-    & .TranscriptPayout__film {
+    & .ValidatePayout__film {
       width: 100%;
       display: flex;
 
@@ -81,8 +111,8 @@
       &__description {
         display: flex;
         flex-direction: column;
-        gap: 5px;
-        padding: 0px 10px;
+        gap: 10px;
+        padding: 10px;
 
         & p {
           font-weight: bold;
@@ -94,7 +124,7 @@
       }
     }
 
-    & .TranscriptPayout__cost {
+    & .ValidatePayout__cost {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -110,7 +140,7 @@
 
     }
 
-    & .TranscriptPayout__continue {
+    & .ValidatePayout__continue {
       padding: 10px;
       width: 100%;
       background-color: $lighter-blue;
@@ -129,5 +159,4 @@
       }
     }
   }
-
 }

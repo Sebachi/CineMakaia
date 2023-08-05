@@ -41,11 +41,11 @@ const SeatInfo = ({ childTicket, setChildTicket, adultTicket, setAdultTicket, gr
       <article className='SeatInfo__btn'>
         <span>ADULTO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseAdult * adultTicket}</span>
+          <span className='SeatInfo__btn__box__cost'>${baseAdult * adultTicket}</span>
           <div className='SeatInfo__btn__box__in'>
-            <button onClick={() => { handleAdult(-1) }}>-</button>
+            <button onClick={() => { handleAdult(-1) }} className='minus'>-</button>
             <span className='SeatInfo__btn__box__in__count'>{adultTicket}</span>
-            <button onClick={() => { handleAdult(1) }}>+</button>
+            <button onClick={() => { handleAdult(1) }} className='plus'>+</button>
           </div>
         </div>
       </article>
@@ -53,11 +53,11 @@ const SeatInfo = ({ childTicket, setChildTicket, adultTicket, setAdultTicket, gr
       <article className='SeatInfo__btn'>
         <span>NIÑO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseChild * childTicket}</span>
+          <span className='SeatInfo__btn__box__cost'>${baseChild * childTicket}</span>
           <div className='SeatInfo__btn__box__in'>
-            <button onClick={() => { handleChildren(-1) }}>-</button>
+            <button onClick={() => { handleChildren(-1) }} className='minus'>-</button>
             <span className='SeatInfo__btn__box__in__count'>{childTicket}</span>
-            <button onClick={() => { handleChildren(+1) }}>+</button>
+            <button onClick={() => { handleChildren(+1) }} className='plus'>+</button>
           </div>
         </div>
       </article>
@@ -65,11 +65,11 @@ const SeatInfo = ({ childTicket, setChildTicket, adultTicket, setAdultTicket, gr
       <article className='SeatInfo__btn'>
         <span>ANCIANO</span>
         <div className='SeatInfo__btn__box'>
-          <span>${baseGrand * grandTicket}</span>
+          <span className='SeatInfo__btn__box__cost'>${baseGrand * grandTicket}</span>
           <div className='SeatInfo__btn__box__in'>
-            <button onClick={() => { handleGrand(-1) }}>-</button>
+            <button onClick={() => { handleGrand(-1) }} className='minus'>-</button>
             <span className='SeatInfo__btn__box__in__count'>{grandTicket}</span>
-            <button onClick={() => { handleGrand(+1) }}>+</button>
+            <button onClick={() => { handleGrand(+1) }} className='plus'>+</button>
           </div>
         </div>
       </article>

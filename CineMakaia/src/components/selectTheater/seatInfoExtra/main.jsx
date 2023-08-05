@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import "./main.scss"
 
-const SeatInfoExtra = ({ actualSeat, setActualSeat, seatId }) => {
+const SeatInfoExtra = ({ actualSeat, setActualSeat, seatId, seatArray }) => {
   //para recibir y dar informacion
   const navigate = useNavigate()
   const location = useLocation()
@@ -20,10 +20,11 @@ const SeatInfoExtra = ({ actualSeat, setActualSeat, seatId }) => {
       //console.log(location.state)
       setValidAccess(true)
     }
+    console.log(ticketInfo)
   }, [])
 
   const handleContinue = () => {
-    navigate(`payout`, { state: [functionInfo, filmInfo, ticketInfo, seatId] })
+    navigate(`payout`, { state: [functionInfo, filmInfo, ticketInfo, seatId, seatArray] })
   }
 
 
@@ -42,11 +43,14 @@ const SeatInfoExtra = ({ actualSeat, setActualSeat, seatId }) => {
               <p>Fecha: <span>{functionInfo.fecha}</span></p>
               <p>Funcion: <span>{functionInfo.horario}</span></p>
               <p>Numero de sala: <span>{functionInfo.sala}</span></p>
-              <p>Boletos: <span>{`${ticketInfo.child} niños, ${ticketInfo.adult} adultos y ${ticketInfo.grand} ancianos`}</span></p>
+              <p>Boletos: <span>
+                {ticketInfo.child > 1 ? (`${ticketInfo.child} niños`) : (ticketInfo.child > 0 ? (`${ticketInfo.child} niño`) : (""))} {ticketInfo.adult > 1 ? (` ${ticketInfo.adult} adultos`) : (ticketInfo.adult > 0 ? (` ${ticketInfo.adult} adulto`) : (""))}
+                {ticketInfo.grand > 1 ? (` ${ticketInfo.grand} ancianos`) : (ticketInfo.grand > 0 ? (` ${ticketInfo.grand} anciano`) : (""))}
+              </span></p>
               <p>Asientos:
                 {
                   seatId.map((seat, index) => (
-                    <span key={index} >{seat}, </span>
+                    <span key={index} > {seat}</span>
                   ))
                 }
               </p>

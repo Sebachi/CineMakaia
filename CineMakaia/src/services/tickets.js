@@ -28,3 +28,14 @@ export const get_tickets2 = async (id) => {
     return error;
   }
 }
+
+export const patch_tickets2 = async (id, newSeats) => {
+  try {
+    await axios.patch(URL_FUNCT_ID2(id), newSeats);
+    const resultado = "funciono"
+    return resultado;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}

@@ -3,9 +3,10 @@
 
 .SeatInfoExtra__container {
   width: 40%;
+  height: 350px;
 
   padding: 10px;
-  background-color: $light-cyan;
+  background-color: $lighter-blue;
   border-radius: 10px;
   font-family: $font-Makaia;
   display: flex;
@@ -27,8 +28,8 @@
     &__description {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding: 10px;
+      gap: 5px;
+      padding: 0px 10px;
 
       & p {
         font-weight: bold;

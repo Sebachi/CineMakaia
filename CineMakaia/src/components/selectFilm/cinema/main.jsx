@@ -21,32 +21,32 @@ const CinemaInfo = () => {
   }
 
   const [showInfo, setShowInfo] = useState(0);
-  const [selectedClick, setSelectedClick] = useState({ id: 99 })
+  const [selectedClick, setSelectedClick] = useState({})
 
   const navigate = useNavigate()
 
   useEffect(() => {
     //proceso de validacion de teatro y fecha
-    let cinemaName = localStorage.cinemaSelected;
+    let cinemaName = JSON.parse(localStorage.cinemaSelected);
     let dateFunction = localStorage.getItem("dateFunction")
 
     setCinemaTheater(cinemaName)
-    console.log(cinemaTheater)
+    //console.log(cinemaTheater)
     setCinemaDate(dateFunction)
-    console.log(cinemaDate)
+    //console.log(cinemaDate)
 
     //proceso de validacion de pelicula
-    console.log(dataId);
     getServer(dataId)
-    console.log("lista de funciones")
-    console.log(cinemaFunctions)
+    //console.log("id de la pelicula")
+    console.log(dataId)
+    //console.log("lista de funciones antes del filtro")
+    //console.log(cinemaFunctions)
 
     let tiqueteria = cinemaFunctions;
-    console.log(tiqueteria.length)
     let tiqueteria2 = []
 
     tiqueteria.forEach((element, index) => {
-      if (cinemaName.includes(element.teatro)) {
+      if ((element.teatro.includes(cinemaName)) && (element.fecha.includes(dateFunction))) {
         tiqueteria2.push(element)
       }
     });
@@ -55,7 +55,7 @@ const CinemaInfo = () => {
     if (showInfo < 20) {
       setTicketData(tiqueteria2);
     }
-    console.log(ticketData)
+    //console.log(ticketData)
 
   }, [cinemaTheater, dataId, cinemaDate, ticketData]);
 
@@ -64,15 +64,12 @@ const CinemaInfo = () => {
     console.log(selectedClick)
   }
   const handleContinue = () => {
-
-
     navigate(`seat`, { state: [selectedClick, dataId] })
   }
 
 
   return (
     <>
-
       {ticketData ? (
         <aside className='cinema__container'>
           <h3 className='cinema__date' >Horarios disponibles {cinemaDate}</h3>

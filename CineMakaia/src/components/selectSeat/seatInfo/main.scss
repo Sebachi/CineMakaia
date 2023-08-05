@@ -35,13 +35,27 @@
         align-items: center;
         border: solid 1px $dark-blue;
         border-radius: 5px;
+        padding: 2px;
 
         & button {
-          padding: 10px;
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        & .minus {
+          background-color: $lighter-blue;
+          color: $dark-blue;
+        }
+
+        & .plus {
+          background-color: $dark-blue;
+          color: $lighter-blue;
         }
 
         &__count {
-          pad: 10px 20px;
+          padding: 10px 20px;
         }
       }
     }

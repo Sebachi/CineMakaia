@@ -7,7 +7,7 @@ import chairOcupied from "../../../assets/chair-ocupado.svg"
 import { useLocation, useNavigate } from 'react-router-dom'
 import { get_tickets2 } from '../../../services/tickets.js'
 
-const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId }) => {
+const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatArray, setSeatArray }) => {
   //para recibir y dar informacion
   const navigate = useNavigate()
   const location = useLocation()
@@ -15,7 +15,6 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId }) => 
   const functionId = location.state[0].id
 
   const maxSeat = location.state[2].adult + location.state[2].child + location.state[2].grand;
-  const [seatArray, setSeatArray] = useState([])
   const [showContainer, setShowContainer] = useState(0)
   const [showContainer2, setShowContainer2] = useState(0)
   const [showContainer3, setShowContainer3] = useState(0)
@@ -34,10 +33,9 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId }) => 
     if (seatArray.length == 0) {
       getServer(functionId)
       setShowContainer(showContainer + 1)
-
-      console.log("lista de sillas")
-      console.log(seatArray)
     }
+    console.log("lista de sillas")
+    console.log(seatArray)
 
   }, [showContainer])
 
@@ -130,16 +128,23 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId }) => 
               <div key={index} className='SelectSeat__seat__box'>
                 {seat.status == "false" ?
                   (seatStatus[index].status == "available" ?
-                    (<img src={chairAvailable} alt='asiento' className='SelectSeat__seat__box__img' onClick={() => { handleSeatAvailable(index) }} />)
+                    (<figure className='SelectSeat__seat__box__fig__img' onClick={() => { handleSeatAvailable(index) }} >
+                      <img src={chairAvailable} alt='asiento' className='SelectSeat__seat__box__fig__img' />
+                      <p className='SelectSeat__seat__box__fig__span'>{seat.id}</p>
+                    </figure>)
                     :
-                    (<img src={chairSelected} alt='asiento' className='SelectSeat__seat__box__img' onClick={() => { handleSeatSelected(index) }} />)
+                    (<figure className='SelectSeat__seat__box__fig__img' onClick={() => { handleSeatSelected(index) }}>
+                      <img src={chairSelected} alt='asiento' className='SelectSeat__seat__box__fig__img' />
+                      <p className='SelectSeat__seat__box__fig__span'>{seat.id}</p>
+                    </figure>)
 
                   ) :
-                  (<img src={chairOcupied} alt='asiento ocupado' className='SelectSeat__seat__box__img' />)
+                  (<figure className='SelectSeat__seat__box__fig__img'>
+                    <img src={chairOcupied} alt='asiento ocupado' className='SelectSeat__seat__box__fig__img' />
+                    <p className='SelectSeat__seat__box__fig__span'>{seat.id}</p>
+                  </figure>)
                 }
 
-
-                <p className='SelectSeat__seat__box__span'>{seat.id}</p>
               </div>
             ))
             }

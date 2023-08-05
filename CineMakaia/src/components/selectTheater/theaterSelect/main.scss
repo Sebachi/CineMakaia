@@ -28,6 +28,7 @@
 
   & .SelectSeat__hr {
     width: 100%;
+    border-bottom: 5px solid $dark-blue;
 
   }
 
@@ -39,18 +40,23 @@
     &__box {
       width: 50px;
       height: 50px;
-
       position: relative;
 
-      &__img {
-        height: 100%;
-      }
+      &__fig {
+        cursor: pointer;
 
-      &__span {
-        color: white;
-        position: absolute;
-        top: 15%;
-        left: 35%;
+        &__img {
+          height: 100%;
+          cursor: pointer;
+        }
+
+        &__span {
+          color: white;
+          position: absolute;
+          top: 15%;
+          left: 35%;
+          cursor: pointer;
+        }
       }
     }
   }

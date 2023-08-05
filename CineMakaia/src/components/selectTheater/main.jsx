@@ -10,19 +10,14 @@ function SelectTheater({ signIn, login }) {
   const maxSeat = location.state[2].adult + location.state[2].child + location.state[2].grand;
   const [actualSeat, setActualSeat] = useState(0)
   const [seatId, setSeatId] = useState([])
-  useEffect(() => {
-    console.log(location)
-    console.log("asientos maximos: ", maxSeat)
-    console.log("asientos actuales: ", actualSeat)
-    console.log(seatId)
-  }, [actualSeat])
+  const [seatArray, setSeatArray] = useState([])
 
   return (
     <>
       <Header signIn={signIn} login={login} />
       <div className='bodySeat'>
-        <SelectSeatTheater actualSeat={actualSeat} setActualSeat={setActualSeat} seatId={seatId} setSeatId={setSeatId} />
-        <SeatInfoExtra actualSeat={actualSeat} setActualSeat={setActualSeat} seatId={seatId} />
+        <SelectSeatTheater actualSeat={actualSeat} setActualSeat={setActualSeat} seatId={seatId} setSeatId={setSeatId} seatArray={seatArray} setSeatArray={setSeatArray} />
+        <SeatInfoExtra actualSeat={actualSeat} setActualSeat={setActualSeat} seatId={seatId} seatArray={seatArray} />
 
       </div>
 

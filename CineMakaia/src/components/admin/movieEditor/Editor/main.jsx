@@ -114,21 +114,6 @@ const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState
         arraySala.map((sala, index) => (
           <div key={`funcion_${sala[0].sala}_${sala[0].horario}`} className="editor">
             <section className="editor_salas">
-
-              {timeState[`Sala ${sala[0].sala}`] ? (
-                <input
-
-                  type="text"
-                  className="editor_salas_input"
-                  onMouseEnter={() => handleMouseEnter(`Sala ${sala[0].sala}`)}
-                    onMouseLeave={() => handleMouseLeave(`Sala ${sala[0].sala}`)}
-                  value={inputValue[`Sala ${sala[0].sala}`] || `Sala ${sala[0].sala}`}
-                  onChange={(e) => handleInputChange(e, `Sala ${sala[0].sala}`)}
-                  onKeyPress={(e) => editCinemaSwal(e, sala, inputValue, setTimeState, setStaticState, staticState, setInputValue)}
-                  ref={inputRef}
-                />
-              )
-                : (
                   <div onMouseEnter={() => handleMouseEnter(`Sala ${sala[0].sala}`)}
                     onMouseLeave={() => handleMouseLeave(`Sala ${sala[0].sala}`)}
                     className="editor_salas_container"
@@ -138,7 +123,7 @@ const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState
                     {
                       hoverState[`Sala ${sala[0].sala}`] &&
                       <>
-                        <figure className='editor_functions_hovers_button' onClick={() => handleEdit(`Sala ${sala[0].sala}`)}>
+                        <figure className='editor_functions_hovers_button' onClick={() => editCinemaSwal(sala, setStaticState, staticState)}>
                           <img src="/images/edit_yellow.svg" alt="edit_yellow" />
                         </figure>
                         <figure className='editor_functions_hovers_button' onClick={() => deleteCinemaSwal(sala, staticState, setStaticState)}>
@@ -147,8 +132,6 @@ const EditorBox = React.memo(({ editorState, movies, staticState, setStaticState
                       </>
                     }
                   </div>
-
-                )}
               {
                 index === 0 && <span className="editor_functions_button" onClick={() => newScreening(sala[0].pelicula, sala[0].fecha, sala[0].teatro, staticState, setStaticState)}>Nueva Funcion <img src="/images/plus.svg" alt="arrow-down" /></span>
               }

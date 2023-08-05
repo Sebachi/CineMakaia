@@ -420,7 +420,7 @@
     font-weight: 900;
     margin-right: 20px;
     border-radius: 20px;
-    font-size: calc(10px + 0.5vw);
+    font-size: calc(8px + 0.5vw) !important;
     transition: all 200ms ease;
     &:hover {
       transform: scale(1.1);

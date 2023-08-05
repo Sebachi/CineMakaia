@@ -61,9 +61,8 @@ export const newMultiplex = async (idJSON, fecha, setStaticState, staticState) =
     });
   
     if (cinema.isDismissed) {
-      return; // El usuario cerró el Swal, salimos de la función
+      return;
     }
-  
     const sala = await Swal.fire({
       title: 'Selecciona una sala',
       input: 'select',
@@ -83,7 +82,7 @@ export const newMultiplex = async (idJSON, fecha, setStaticState, staticState) =
     });
   
     if (sala.isDismissed) {
-      return; // El usuario cerró el Swal, salimos de la función
+      return; 
     }
   
     const horario = await Swal.fire({

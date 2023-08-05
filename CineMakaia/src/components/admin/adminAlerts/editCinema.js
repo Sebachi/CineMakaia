@@ -1,30 +1,23 @@
 import Swal from "sweetalert2"
-import { deleteShow, getValidationCinema, patchFunction } from "../../../services/requestAdmin"
+import {getValidationCinema, patchFunction } from "../../../services/requestAdmin"
 
-export const editCinemaSwal = async (e, sala, inputValue, setTimeState, setStaticState, staticState, setInputValue) => {
-    const nameState = `Sala ${sala[0].sala}`
-   
-
-    const extractNumberFromSala = (salaString) => {
-        const match = salaString.match(/\d+/); 
-        if (match) {
-          return Number(match[0]); 
-        }
-        return null; 
-      };
-      const data = await getValidationCinema(sala[0].teatro, extractNumberFromSala(inputValue[nameState]));
-
-    const handleAction = async (movie) => {
-        setTimeState((prevTimeState) => ({
-            ...prevTimeState,
-            [nameState]: false,
-        }));
-
-        const showEdit = {
-            ...movie,
-            sala: extractNumberFromSala(inputValue[nameState])
-        }
-        await patchFunction(movie.id, showEdit)
+export const editCinemaSwal = async (sala, setStaticState, staticState) => {
+    const theaters = {
+        1: "Sala 1",
+        2: "Sala 2",
+        3: "Sala 3",
+        4: "Sala 4",
+        5: "Sala 5",
+        6: "Sala 6",
+        7: "Sala 7",
+        8: "Sala 8",
+        9: "Sala 9",
+        10: "Sala 10",
+        11: "Sala 11",
+        12: "Sala 12",
+        13: "Sala 13",
+        14: "Sala 14",
+        15: "Sala 15"
     };
     const showSuccessAlert = () => {
         Swal.fire({
@@ -43,63 +36,54 @@ export const editCinemaSwal = async (e, sala, inputValue, setTimeState, setStati
         });
     };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            Swal.fire({
-                title: `¿Estas seguro que deseas editar la sala de todas las funciones con sala ${sala[0].sala}?`,
-                text: "No podras volver atras!",
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: 'No, mejor no 😅',
-                confirmButtonText: 'Editala 😝!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const handleEdit = async () => {
-                        if (data.length > 0) {
-                            console.log(data);
-                            await Swal.fire({
-                                title: 'La funcion que intentas ocupar ya está en uso',
-                                text: "Intenta de nuevo con otro horario diferente",
-                                confirmButtonText: 'Listo!',
-                            });
-                            setTimeState((prevTimeState) => ({
-                                ...prevTimeState,
-                                [nameState]: false,
-                            }));
-                        } else {
-                            try {
-                                for (const movie of sala) {
-                                    await handleAction(movie);
-                                }
-                                setTimeState((prevTimeState) => ({
-                                    ...prevTimeState,
-                                    [nameState]: false,
-                                }));
-                                setStaticState(!staticState);
-                                showSuccessAlert();
-                            }
-                            catch (error) {
-                                console.error('Error al eliminar funciones:', error);
-                                showErrorAlert();
-                            };
-                        }
-                    }
-                    handleEdit()
-                }
-                else if (result.isDismissed) {
-                    setInputValue((prevTimeState) => ({
-                        ...prevTimeState,
-                        [nameState]: nameState,
-                    }));
-                    setTimeState((prevTimeState) => ({
-                        ...prevTimeState,
-                        [nameState]: false,
-                    }));
-                    return;
-                }
-            })
+    const sala2 = await Swal.fire({
+        title: `Selecciona la sala por la cual deseas cambiar la sala ${sala[0].sala}`,
+        input: 'select',
+        confirmButtonText: 'Cambiar !',
+        cancelButtonText: 'Cancelar',
+        inputOptions: {
+            'Salas': theaters
+        },
+        inputPlaceholder: 'Selecciona una sala',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value) {
+                return 'Selecciona una sala';
+            }
+            return null;
+        }
+    });
+    if (sala2.isDismissed) {
+        return;
+    }
+    const data = await getValidationCinema(sala[0].teatro, sala2.value);
+    if (data.length > 0) {
+        const { isConfirmed } = await Swal.fire({
+            title: 'La sala que intentas ocupar ya esta en uso',
+            text: "Intenta de nuevo con otra sala diferente",
+            showCancelButton: true,
+            confirmButtonText: 'Listo!',
+            cancelButtonText: 'Cancelar',
+        });
+        if (isConfirmed) {
+            editCinemaSwal(sala);
         }
     }
-    handleKeyPress(e)
-};
-
+    else {
+        try {
+            for (const movie of sala) {
+                const showEdit = {
+                    ...movie,
+                    sala: sala2.value
+                }
+                await  patchFunction(movie.id, showEdit);
+            }
+            setStaticState(!staticState);
+            showSuccessAlert();
+        }
+        catch (error) {
+            console.error('Error al eliminar funciones:', error);
+            showErrorAlert();
+        };
+    }
+}

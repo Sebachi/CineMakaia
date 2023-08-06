@@ -1,0 +1,64 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.SeatInfo__container {
+  width: 60%;
+
+  font-family: $font-Makaia;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & h3 {
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  & .SeatInfo__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+
+    &__box {
+      display: flex;
+      width: auto;
+      gap: 10px;
+      align-items: center;
+
+
+      &__in {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        border: solid 1px $dark-blue;
+        border-radius: 5px;
+        padding: 2px;
+
+        & button {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        & .minus {
+          background-color: $lighter-blue;
+          color: $dark-blue;
+        }
+
+        & .plus {
+          background-color: $dark-blue;
+          color: $lighter-blue;
+        }
+
+        &__count {
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+
+}

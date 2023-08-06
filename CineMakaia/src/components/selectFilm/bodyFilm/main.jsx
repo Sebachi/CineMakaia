@@ -12,9 +12,13 @@ const FilmInfo = () => {
   const dataId = location.state;
   useEffect(() => {
     if (first.length > 0) {
-      setMoviesData([[],  ...first])
-      console.log(moviesData);
+      setMoviesData([[], ...first])
+      //console.log(moviesData);
     }
+    if (moviesData != null) {
+      console.log(moviesData[dataId])
+    }
+
   }, [first]);
 
   return (
@@ -30,7 +34,12 @@ const FilmInfo = () => {
               <p>{moviesData[dataId].title}: {moviesData[dataId].tagline} ({moviesData[dataId].release_date})</p>
               <div>
                 <p className="info__time">{moviesData[dataId].runtime} min</p>
-                <p className="info__genres">{moviesData[dataId].genres[0].name}</p>
+                {moviesData[dataId].genres.map(
+                  (element, index) => (
+                    <p className="info__genres" key={index}> {element.name}</p>
+
+                  )
+                )}
               </div>
             </article>
           </section>

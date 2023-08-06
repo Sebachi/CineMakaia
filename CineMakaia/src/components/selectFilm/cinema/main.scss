@@ -1,11 +1,61 @@
 @import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
 
 .cinema__container {
-  border: purple solid 2px;
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
   gap: 1rem;
+  font-family: $font-Makaia;
+
+  & ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    & .cinema__btn {
+      padding: 10px;
+      border: solid 1px $dark-blue;
+      color: $dark-blue;
+      list-style: none;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 5px;
+
+      &__activated {
+        background-color: $dark-blue;
+        border: solid 1px $dark-blue;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: default;
+      }
+
+    }
+  }
+
+  & .cinema__continue {
+    padding: 10px;
+    width: 100%;
+    background-color: $lighter-blue;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+
+    &__activated {
+      padding: 10px;
+      width: 100%;
+      background-color: $dark-blue;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+
 }

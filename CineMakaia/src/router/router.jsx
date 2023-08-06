@@ -9,32 +9,40 @@ import BodyHome from "../components/home/body/main";
 import PrivateRouter from "./privateRouter";
 import AdminHome from "../components/admin/adminHome/main";
 import MovieEditor from "../components/admin/movieEditor/main";
+import SelectSeat from "../components/selectSeat/main.jsx";
+import SelectTheater from "../components/selectTheater/main.jsx";
+import TranscriptPayout from "../components/transcriptPayout/main.jsx";
+import ValidatePayout from "../components/validatePayout/main.jsx";
 
 const Router = () => {
-  const storedAuthentication =  JSON.parse(localStorage.getItem("IsLogin")) || false;
+  const storedAuthentication = JSON.parse(localStorage.getItem("IsLogin")) || false;
   const [isLogin, setIsLogin] = useState(storedAuthentication);
 
-   
+
 
 
 
 
   useEffect(() => {
-   localStorage.setItem("IsLogin", isLogin)
+    localStorage.setItem("IsLogin", isLogin)
   }, [isLogin])
 
   return (
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home signIn={setIsLogin} login={isLogin}/>}>
-            <Route   path="/" element={<BodyHome />} />
-          <Route path=":nameCategory" index element={<Category/>}></Route>
+          <Route path="/" element={<Home signIn={setIsLogin} login={isLogin} />}>
+            <Route path="/" element={<BodyHome />} />
+            <Route path=":nameCategory" index element={<Category />}></Route>
           </Route>
           <Route path="/SelectFilm/:selectFilm" element={<SelectFilm signIn={setIsLogin} login={isLogin} />} />
-          <Route element={<PrivateRouter isAutenticate={isLogin}/>}>
-            <Route path="/adminPanel" element={<AdminHome signIn={setIsLogin} login={isLogin}/>}/>
-            <Route path="/adminPanel/:movieEdit" element={<MovieEditor signIn={setIsLogin} login={isLogin}/>}   ></Route>
+          <Route path="/SelectFilm/:selectFilm/seat" element={<SelectSeat signIn={setIsLogin} login={isLogin} />} />
+          <Route path="/SelectFilm/:selectFilm/seat/theater" element={<SelectTheater signIn={setIsLogin} login={isLogin} />} />
+          <Route path="/SelectFilm/:selectFilm/seat/theater/payout" element={<TranscriptPayout signIn={setIsLogin} login={isLogin} />} />
+          <Route path="/SelectFilm/:selectFilm/seat/theater/payout/validate" element={<ValidatePayout signIn={setIsLogin} login={isLogin} />} />
+          <Route element={<PrivateRouter isAutenticate={isLogin} />}>
+            <Route path="/adminPanel" element={<AdminHome signIn={setIsLogin} login={isLogin} />} />
+            <Route path="/adminPanel/:movieEdit" element={<MovieEditor signIn={setIsLogin} login={isLogin} />}   ></Route>
           </Route>
         </Routes>
       </BrowserRouter>

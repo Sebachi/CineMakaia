@@ -5,11 +5,11 @@ import CinemaInfo from './cinema/main.jsx';
 import FilmInfo from './bodyFilm/main.jsx';
 
 
-function SelectFilm({signIn, login}) {
+function SelectFilm({ signIn, login }) {
 
   return (
     <>
-      <Header  signIn={signIn} login={login}/>
+      <Header signIn={signIn} login={login} />
       <div className='bodyfilm'>
         <FilmInfo />
         <CinemaInfo />

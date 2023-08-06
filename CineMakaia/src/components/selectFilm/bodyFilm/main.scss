@@ -38,6 +38,7 @@
       & div {
         display: flex;
         gap: 1rem;
+        flex-wrap: wrap;
 
         & .info__time {
           color: #fff;
@@ -45,6 +46,7 @@
           background: #000;
           border-radius: 10px;
           padding: 0.5rem;
+          width: auto;
         }
 
         & .info__genres {
@@ -53,6 +55,8 @@
           background: #0c1458;
           border-radius: 10px;
           padding: 0.5rem;
+          width: auto;
+
         }
       }
 

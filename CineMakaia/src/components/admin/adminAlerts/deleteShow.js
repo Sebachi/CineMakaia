@@ -10,7 +10,7 @@ export const deleteShowSwal = async (idShow, staticState, setStaticState) => {
   Swal.fire({
     title: '¿Estas seguro que deseas eliminar esta funcion?',
     text: "No podras volver atras!",
-    icon: 'warning',
+    //icon: 'warning',
     showCancelButton: true,
     cancelButtonText: 'No, mejor no 😅',
     confirmButtonText: 'Eliminala 👿!'

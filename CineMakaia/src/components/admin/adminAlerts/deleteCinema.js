@@ -10,7 +10,7 @@ export const deleteCinemaSwal = async (cinema, staticState, setStaticState) => {
   Swal.fire({
     title: `¿Estas seguro que deseas eliminar todas las funciones en la sala ${cinema[0].sala}?`,
     text: "No podras volver atras!",
-    icon: 'warning',
+   // icon: 'warning',
     showCancelButton: true,
     cancelButtonText: 'No, mejor no 😅',
     confirmButtonText: 'Eliminala 👿!'

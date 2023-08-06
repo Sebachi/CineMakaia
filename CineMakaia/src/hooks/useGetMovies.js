@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { getMovieFunctions } from "../services/createMovieFunctions";
 
 export const useGetMovie = async (idJSONMovie, date, setMovieFunctions, staticState) => {
-  
     useEffect(() => {
         const fetchData = async () => {
             try {

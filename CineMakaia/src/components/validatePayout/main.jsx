@@ -27,7 +27,7 @@ const ValidatePayout = ({ signIn, login }) => {
   }, [])
 
   const handleContinue = () => {
-
+    navigate(`qr`, { state: [functionInfo, filmInfo, ticketInfo, seatId, serverStatus, cardData] })
   }
 
   return (
@@ -55,7 +55,7 @@ const ValidatePayout = ({ signIn, login }) => {
             </div>
             <div className='card__box__inside'>
               <p>Total</p>
-              <span>PCOL {ticketInfo.price}</span>
+              <span>${ticketInfo.price}</span>
             </div>
             <div className='card__box__inside special'>
               <p>Metodo de pago</p>
@@ -90,11 +90,7 @@ const ValidatePayout = ({ signIn, login }) => {
               </p>
             </div>
           </article>
-          <p className='ValidatePayout__pretext'>Se realizara un cargo por servicio por cada boleto dentro de la orden</p>
-          <div className='ValidatePayout__cost'>
-            <span className='ValidatePayout__cost__info'>Total(IVA incluido):</span>
-            <span className='ValidatePayout__cost__price'>${ticketInfo.price}</span>
-          </div>
+
           <p className='ValidatePayout__continue__activated' onClick={handleContinue} >Descargar boletos</p>
         </section>
 

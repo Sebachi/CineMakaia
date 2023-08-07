@@ -13,9 +13,11 @@
 
   & ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: center;
+
 
     & .cinema__btn {
       padding: 10px;
@@ -41,7 +43,7 @@
   & .cinema__continue {
     padding: 10px;
     width: 100%;
-    background-color: $lighter-blue;
+    background-color: $dark-gray;
     color: white;
     border-radius: 20px;
     text-align: center;

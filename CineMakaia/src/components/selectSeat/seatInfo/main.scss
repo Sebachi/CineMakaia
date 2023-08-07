@@ -18,8 +18,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     width: 100%;
+
+
+    &__text {
+      color: $very-dark-gray;
+      font-weight: 700;
+      font-size: 16px;
+    }
 
 
     &__box {
@@ -33,7 +39,7 @@
         display: flex;
         width: 100%;
         align-items: center;
-        border: solid 1px $dark-blue;
+        border: solid 1px black;
         border-radius: 5px;
         padding: 2px;
 
@@ -42,16 +48,18 @@
           height: 50px;
           border-radius: 5px;
           cursor: pointer;
+          font-size: 28px;
+          border: none;
         }
 
         & .minus {
-          background-color: $lighter-blue;
-          color: $dark-blue;
+          background-color: $background-inv;
+          color: $dark-gray;
         }
 
         & .plus {
           background-color: $dark-blue;
-          color: $lighter-blue;
+          color: white;
         }
 
         &__count {

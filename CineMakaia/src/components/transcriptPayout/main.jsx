@@ -4,7 +4,7 @@ import Header from '../header/main.jsx';
 import "./main.scss";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { patch_tickets2 } from '../../services/tickets.js';
+import { patch_tickets2, post_qr } from '../../services/tickets.js';
 
 const TranscriptPayout = ({ signIn, login }) => {
   const { register, handleSubmit, watch, errors } = useForm()
@@ -65,17 +65,54 @@ const TranscriptPayout = ({ signIn, login }) => {
     console.log(ramdomN)
   }, [])
 
+  //para crear el nuevo array a hacer patch
+  useEffect(() => {
+    let newArray1 = []
+    let newArray2 = []
+    serverArray.map((element) => newArray1.push(element.id))
+    seatId.map((element) => newArray1.push(element))
+    newArray1.sort((a, b) => a - b)
+    console.log("array post sort y pre objeto")
+    console.log(newArray1)
+    newArray1.map((element) => newArray2.push(
+      {
+        id: element,
+        status: "ocupied"
+      }
+    ))
+    console.log("array post arreglo a objeto")
+    console.log(newArray2)
+    setPatchArray(newArray2)
+
+  }, [])
+
 
   const patchServer = async (id, obj) => {
     let status = await patch_tickets2(id, obj)
     setSendStatus(status)
   }
 
+  const postVoucher = async (voucher) => {
+    await post_qr(voucher)
+  }
+
   const handleContinue = () => {
     const newkey = {
-      "asientos": serverArray
+      "asientos": patchArray
+    }
+
+    let qr = {
+      "id": ramdomN,
+      "pelicula": filmInfo.title,
+      "funcion": functionInfo.id,
+      "teatro": functionInfo.teatro,
+      "sala": functionInfo.sala,
+      "fecha": functionInfo.fecha,
+      "hora": functionInfo.horario,
+      "asientos": seatId
     }
     patchServer(functionInfo.id, newkey);
+    postVoucher(qr);
     let payoutInfo = [ramdomN, cardType, cardLastDigit];
     navigate(`validate`, { state: [functionInfo, filmInfo, ticketInfo, seatId, sendStatus, payoutInfo] })
 
@@ -98,24 +135,24 @@ const TranscriptPayout = ({ signIn, login }) => {
               <form onSubmit={handleSubmit(onSubmit)} className='form' >
                 <div className='form__box'>
                   <label htmlFor="userEmail">Correo electronico</label>
-                  <input type="text"  {...register("userEmail")} />
+                  <input type="text" placeholder='ingrese su correo electronico' {...register("userEmail")} />
                 </div>
                 <div className='form__box'>
                   <label htmlFor="userName">Nombre en la targeta</label>
-                  <input type="text" {...register("userName")} />
+                  <input type="text" placeholder='ingrese nombre en la targeta' {...register("userName")} />
                 </div>
                 <div className='form__box'>
                   <label htmlFor="userCard">Numero de la targeta</label>
-                  <input type="number" {...register("userCard")} />
+                  <input type="number" placeholder='1234 1234 1234 1234' {...register("userCard")} />
                 </div>
                 <div className='form__box special'>
                   <div className='form__box__double'>
                     <label htmlFor="userExp">Fecha de caducidad</label>
-                    <input type="month" value="2023-08" min="2018-01" {...register("userExp")} />
+                    <input type="month" min="2023-08" {...register("userExp")} />
                   </div>
                   <div className='form__box__double'>
                     <label htmlFor="cvv">CVV</label>
-                    <input {...register("cvv")} />
+                    <input type='number' placeholder='Enter CVV' {...register("cvv")} />
                   </div>
                 </div>
                 {/* <button type='submit' value="submit">dale form</button> */}

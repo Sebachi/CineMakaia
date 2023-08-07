@@ -20,19 +20,20 @@ const FuncionInfo = ({ totalTicketPrice, totalTicketAmount, childTicket, adultTi
 
   //validacion de pelicula
   useEffect(() => {
+    console.log(functionContent)
 
     if (first.length > 0) {
       setMoviesData([[], ...first])
-      console.log("info context")
-      console.log(moviesData);
+      //console.log("info context")
+      //console.log(moviesData);
     }
-    console.log("informacion funcion e Id")
-    console.log(functionContent)
-    console.log(filmId)
+    //console.log("informacion funcion e Id")
+    //console.log(functionContent)
+    //console.log(filmId)
 
     if (moviesData !== null) {
       setFilmContent(moviesData[filmId])
-      console.log(filmContent)
+      //console.log(filmContent)
     } else {
       setShowCounter(showCounter + 1)
     }
@@ -62,10 +63,10 @@ const FuncionInfo = ({ totalTicketPrice, totalTicketAmount, childTicket, adultTi
               <img src={`https://image.tmdb.org/t/p/original/${filmContent.poster_path}`} alt="imagen de cartelera" />
             </figure>
             <div className='FuncionInfo__film__description'>
-              <p>Pelicula <span>{filmContent.title}</span></p>
-              <p>Complejo <span>{functionContent.teatro}</span></p>
-              <p>Fecha <span>{functionContent.fecha}</span></p>
-              <p>Funcion <span>{functionContent.horario}</span></p>
+              <p>Pelicula: <span>{filmContent.title}</span></p>
+              <p>Complejo: <span>{functionContent.teatro}</span></p>
+              <p>Fecha: <span>{functionContent.fecha}</span></p>
+              <p>Funcion: <span>{functionContent.horario}</span></p>
             </div>
           </article>
           <p className='FuncionInfo__pretext'>Se realizara un cargo por servicio por cada boleto dentro de la orden</p>
@@ -79,7 +80,7 @@ const FuncionInfo = ({ totalTicketPrice, totalTicketAmount, childTicket, adultTi
 
         </section>
       ) : (
-        <p>Loading...</p>
+        <p>Cargando...</p>
       )}
     </>
   );

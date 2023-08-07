@@ -16,8 +16,10 @@ $shadow-card: 0px 0px 30px #000;
 $font-gray: #7f838e;
 $lighter-blue: #92abc8;
 $background-inv: #f3f4f6;
+$special-background: #F4F4F4FF;
+
 @mixin mobile {
-    @media (max-width: 725px) {
-      @content;
-    }
+  @media (max-width: 725px) {
+    @content;
   }
+}

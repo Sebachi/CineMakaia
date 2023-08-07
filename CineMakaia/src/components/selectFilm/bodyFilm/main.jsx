@@ -4,12 +4,16 @@ import "./main.scss";
 import { AppContext } from "../../../services/Appcontex";
 import { get_movie } from "../../../services/request";
 import { useLocation } from "react-router-dom";
+import { get_trailer } from "../../../services/getTrailer";
 
 const FilmInfo = () => {
   const location = useLocation()
   const [moviesData, setMoviesData] = useState(null);
   const first = useContext(AppContext)
-  const dataId = location.state;
+  //const [dataId, setDataId] = useState(1)
+  let dataId = location.state;
+  const [repeatCont, setRepeatCont] = useState(0)
+  const [trailer, setTrailer] = useState(null);
   useEffect(() => {
     if (first.length > 0) {
       setMoviesData([[], ...first])
@@ -20,6 +24,19 @@ const FilmInfo = () => {
     }
 
   }, [first]);
+
+  useEffect(() => {
+    const getMovieInf = async () => {
+      try {
+        const trailerUrl = await get_trailer(moviesData[dataId].id);
+        setTrailer(trailerUrl);
+      } catch (error) {
+        console.error("Error al obtener los datos de la película", error);
+        setRepeatCont(repeatCont + 1)
+      }
+    };
+    getMovieInf();
+  }, [first, dataId, repeatCont]);
 
   return (
     <>
@@ -46,11 +63,13 @@ const FilmInfo = () => {
           <section className="film__container__trailer">
             <h4>Trailer</h4>
             <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/hebWYacbdvc"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              id="youtube-player"
+              className="movieEditor_top_trailer_iframe"
+              src={trailer}
+              title="youtube-player"
+              allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </section>
           <section className="film__container__description">
             <h4>Sinopsis</h4>

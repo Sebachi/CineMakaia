@@ -12,7 +12,7 @@
 
   &__status {
     border: $dark-blue solid 1px;
-    background-color: $font-body-color;
+    background-color: $background-inv;
     border-radius: 5px;
     padding: 20px;
     display: flex;
@@ -59,6 +59,7 @@
 
         & p {
           min-width: 100px;
+          color: $dark-gray;
         }
       }
 
@@ -85,16 +86,18 @@
   }
 
   &__info {
-    width: 600px;
-    border: green solid 1px;
-    padding: 10px;
-    background-color: $light-cyan;
+    width: 725px;
+    min-width: 300px;
+    padding: 20px 10px;
+    background-color: $background-inv;
     border-radius: 10px;
     font-family: $font-Makaia;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-self: center;
+    box-shadow: 0px 0px 10px $dark-gray ;
+
 
     & .ValidatePayout__film {
       width: 100%;
@@ -111,8 +114,8 @@
       &__description {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        gap: 5px;
+        padding: 0px 10px;
 
         & p {
           font-weight: bold;

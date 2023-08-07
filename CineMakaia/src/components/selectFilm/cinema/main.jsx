@@ -73,7 +73,7 @@ const CinemaInfo = () => {
       {ticketData ? (
         <aside className='cinema__container'>
           <h3 className='cinema__date' >Horarios disponibles {cinemaDate}</h3>
-          <p className='cinema__text'>Elije el horario que prefieres</p>
+          <p className='cinema__text'>Elije el horario que prefieras.</p>
           <h4 className='cinema__theater'>{cinemaTheater}</h4>
           <ul>
             {

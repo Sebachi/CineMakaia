@@ -70,16 +70,16 @@ const CinemaInfo = () => {
 
       let tiqueteria = cinemaFunctions;
       let tiqueteria2 = []
-      tiqueteria.forEach((element, index) => {
-        if ((element.teatro.includes(cinemaTheater))) {
-          tiqueteria2.push(element)
-          let newSala = element.sala;
-          if (!countSalas.includes(newSala)) {
-            countSalas.push(newSala)
-          }
-
+      for (let index = 0; index < tiqueteria.length; index++) {
+        const element = tiqueteria[index];
+        if (element.teatro.includes(cinemaTheater)) {
+            tiqueteria2.push(element);
+            let newSala = element.sala;
+            if (!countSalas.includes(newSala)) {
+                countSalas.push(newSala);
+            }
         }
-      });
+    }
       setSalasArray(countSalas)
 
       setTicketData(tiqueteria2);

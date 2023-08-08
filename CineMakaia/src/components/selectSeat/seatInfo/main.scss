@@ -3,12 +3,13 @@
 
 .SeatInfo__container {
   width: 60%;
-
-  font-family: $font-Makaia;
+  font-family: $Kanit;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  @include mobile {
+    width: 100%;
+  }
   & h3 {
     font-weight: 700;
     font-size: 28px;
@@ -24,7 +25,8 @@
     &__text {
       color: $very-dark-gray;
       font-weight: 700;
-      font-size: 16px;
+      font-size: calc(10px + 0.3vw);
+      padding-left: 10px;
     }
 
 
@@ -50,16 +52,25 @@
           cursor: pointer;
           font-size: 28px;
           border: none;
+          &:hover {
+            transform: scale(1.1);
+          }
         }
 
         & .minus {
           background-color: $background-inv;
           color: $dark-gray;
+          &:hover {
+            border: 1px #000 solid;
+          }
         }
 
         & .plus {
-          background-color: $dark-blue;
+          background-color: $light-blue;
           color: white;
+          &:hover {
+            border: 1px #000 solid;
+          }
         }
 
         &__count {

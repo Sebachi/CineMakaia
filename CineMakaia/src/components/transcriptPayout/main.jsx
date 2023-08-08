@@ -135,11 +135,11 @@ const TranscriptPayout = ({ signIn, login }) => {
               <form onSubmit={handleSubmit(onSubmit)} className='form' >
                 <div className='form__box'>
                   <label htmlFor="userEmail">Correo electronico</label>
-                  <input type="text" placeholder='ingrese su correo electronico' {...register("userEmail")} />
+                  <input type="text" placeholder='Ingrese su correo electronico' {...register("userEmail")} />
                 </div>
                 <div className='form__box'>
                   <label htmlFor="userName">Nombre en la tarjeta</label>
-                  <input type="text" placeholder='ingrese nombre en la tarjeta' {...register("userName")} />
+                  <input type="text" placeholder='Ingrese nombre en la tarjeta' {...register("userName")} />
                 </div>
                 <div className='form__box'>
                   <label htmlFor="userCard">Numero de la tarjeta</label>

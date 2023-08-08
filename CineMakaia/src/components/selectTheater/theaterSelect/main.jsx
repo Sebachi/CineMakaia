@@ -159,12 +159,12 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
           <h3>Selecciona tus asientos</h3>
           <p>Para cambiar tu lugar asignado da click en el asiento deseado</p>
           <figure className='SelectSeat__template'>
-            <img src={chairSelected} alt="Seleccion" />
-            <span>Seleccion</span>
-            <img src={chairOcupied} alt="Ocupado" />
-            <span>Ocupado</span>
-            <img src={chairAvailable} alt="Disponible" />
-            <span>Disponible</span>
+            <div className='SelectSeat__template__container'><img src={chairSelected} alt="Seleccion" />
+            <span>Seleccion</span></div>
+            <div className='SelectSeat__template__container'><img src={chairOcupied} alt="Ocupado" />
+            <span>Ocupado</span></div>
+           <div className='SelectSeat__template__container'><img src={chairAvailable} alt="Disponible" />
+            <span>Disponible</span></div> 
           </figure>
           <div className='SelectSeat__hr'></div>
           <article className='SelectSeat__seat'>

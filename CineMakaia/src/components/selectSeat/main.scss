@@ -1,5 +1,12 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
 .bodySeat {
   display: flex;
+  @include mobile{
+    flex-wrap: wrap;
+  }
+
   padding: 40px 40px;
   gap: 40px;
 }

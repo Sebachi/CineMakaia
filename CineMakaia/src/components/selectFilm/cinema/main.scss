@@ -11,32 +11,53 @@
   gap: 1rem;
   font-family: $font-Makaia;
 
-  & ul {
+  & .cinema__hall {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+
+    & article {
+      display: flex;
+      flex-direction: column;
+      border-top: solid 5px $dark-gray;
+      gap: 10px;
 
 
-    & .cinema__btn {
-      padding: 10px;
-      border: solid 1px $dark-blue;
-      color: $dark-blue;
-      list-style: none;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 5px;
+      & p {
+        width: 100%;
 
-      &__activated {
-        background-color: $dark-blue;
-        border: solid 1px $dark-blue;
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: default;
       }
 
+
+      & ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: start;
+
+
+        & .cinema__btn {
+          padding: 10px;
+          border: solid 1px $dark-blue;
+          color: $dark-blue;
+          list-style: none;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 5px;
+
+          &__activated {
+            background-color: $dark-blue;
+            border: solid 1px $dark-blue;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: default;
+          }
+
+        }
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-const URL_API_CINEMA = "http://localhost:3033"
+const URL_API_CINEMA = "https://backend-cinemakaia.onrender.com"
 
 export const endpointCinema = {
     users: `${URL_API_CINEMA}/administrator`,

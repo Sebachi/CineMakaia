@@ -98,9 +98,10 @@ const FilmInfo = () => {
             )}
           </section>
           <section className="film__container__description">
-            {/* ... (your existing code) */}
+            <h4>Sinopsis</h4>
+            <p>{moviesData[dataId].overview}</p>
           </section>
-        </main>
+        </main >
       ) : (
         <p>Loading...</p>
       )}

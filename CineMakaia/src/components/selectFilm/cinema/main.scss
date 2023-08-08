@@ -10,40 +10,64 @@
   justify-content: start;
   gap: 1rem;
   font-family: $Kanit;
-  @include mobile {
+  @include mobile{
     width: 100%;
   }
-  & ul {
+  & .cinema__hall {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
-    & > li:hover {
-     transform: scale(1.1);
-     background-color: $light-blue;
-     color: #fff;
-     border: 0;
-    }
+    width: 100%;
 
-    & .cinema__btn {
-      padding: 10px;
-      border: solid 1px $light-blue;
-      color: $light-blue;
-      list-style: none;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 5px;
-     
-      &__activated {
-        background-color: $light-blue;
-        border: solid 1px $light-blue;
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: default;
+    & article {
+      padding-top: 15px;
+      display: flex;
+      flex-direction: column;
+      border-top: solid 5px $dark-gray;
+      gap: 10px;
+
+
+      & p {
+        width: 100%;
+        text-transform: capitalize;
       }
 
+
+      & ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: start;
+        & >li:hover{
+         
+             transform: scale(1.1);
+             background-color: $light-blue;
+             color: #fff;
+             border: 0;
+            }
+        
+
+        & .cinema__btn {
+          padding: 10px;
+          border: solid 1px $light-blue;
+          color: $light-blue;
+          list-style: none;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 5px;
+
+          &__activated {
+            background-color: $light-blue;
+            border: solid 1px $light-blue;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: default;
+          }
+
+        }
+      }
     }
   }
 

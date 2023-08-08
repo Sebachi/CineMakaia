@@ -12,16 +12,17 @@ const CinemaInfo = () => {
   const [staticState, setStaticState] = useState(false);
   const location = useLocation()
   const dataId = location.state;
-  const [params, setParams] = useState(false)
+  const [params, setParams] = useState(1)
 
 
   const [cinemaFunctions, setCinemaFunctions] = useState(false);
+  const [salasArray, setSalasArray] = useState([]) //dividir funciones por sala
 
   // const getServer = async (id) => {
   //   let server = await get_tickets(id)
   //   setCinemaFunctions(server)
   // }
-  const [showInfo, setShowInfo] = useState(0);
+  const [showInfo, setShowInfo] = useState(false);
   const [selectedClick, setSelectedClick] = useState({})
   const navigate = useNavigate()
   let dateFunction2 = localStorage.getItem("dateFunction")
@@ -47,10 +48,13 @@ const CinemaInfo = () => {
     let dateFunction = localStorage.getItem("dateFunction")
     setCinemaTheater(cinemaName)
     setCinemaDate(dateFunction)
-    setParams(dataId)
-  
-
-  }, [location, dataId])
+    if (params !== dataId) {
+      setParams(dataId)
+      console.log("params: ", params)
+      setShowInfo(!showInfo)
+      console.log("antes: ", params)
+    }
+  }, [dataId])
 
 
   useGetMovie(dataId, dateFunction2, setCinemaFunctions, staticState);
@@ -61,23 +65,37 @@ const CinemaInfo = () => {
     //getServer(params)
     console.log(cinemaFunctions);
     if (cinemaFunctions) {
+      let countSalas = []
 
       let tiqueteria = cinemaFunctions;
-      console.log(tiqueteria);
       let tiqueteria2 = []
       tiqueteria.forEach((element, index) => {
         if ((element.teatro.includes(cinemaTheater))) {
           tiqueteria2.push(element)
+          let newSala = element.sala;
+          if (!countSalas.includes(newSala)) {
+            countSalas.push(newSala)
+          }
+
         }
       });
-      setShowInfo(showInfo + 1)
-      if (showInfo < 20) {
+      setSalasArray(countSalas)
+      //console.log(salasArray)
+
+
+
+      if (cinemaFunctions != false) {
         setTicketData(tiqueteria2);
+        console.log(tiqueteria2)
+        console.log("despues: ", params)
       }
+
+    } else {
+      setShowInfo(!showInfo)
     }
     //console.log(ticketData)
-
-  }, [cinemaTheater, cinemaDate, ticketData, params, cinemaFunctions]);
+    //ticketData, cinemaFunctions,
+  }, [showInfo]);
 
 
   const handleCinema = (obj) => {
@@ -95,18 +113,29 @@ const CinemaInfo = () => {
           <h3 className='cinema__date' >Horarios disponibles {cinemaDate}</h3>
           <p className='cinema__text'>Elije el horario que prefieras.</p>
           <h4 className='cinema__theater'>{cinemaTheater}</h4>
-          <ul>
+          <section className='cinema__hall'>
             {
-              ticketData
-              .sort((a, b) => horariosEnMinutos[a.horario] - horariosEnMinutos[b.horario])
-              .map((time) => (
-                <li key={time.id} className={time.id == selectedClick.id ? "cinema__btn__activated" : "cinema__btn"} onClick={() => {
-                  handleCinema(time)
-                }} >{time.horario}</li>
+              salasArray.map((salaId, index) => (
+                <article key={index}>
+                  <p>sala # {salaId}</p>
+                  <ul>
+                    {ticketData
+                      .sort((a, b) => horariosEnMinutos[a.horario] - horariosEnMinutos[b.horario])
+                      .map((time) => (time.sala === salaId ?
+                        (
+                          <li key={time.id} className={time.id == selectedClick.id ? "cinema__btn__activated" : "cinema__btn"} onClick={() => {
+                            handleCinema(time)
+                          }} >{time.horario}</li>
+                        ) : ("")
+                      )
+                      )
+                    }
+                  </ul>
+                </article>
               ))
             }
 
-          </ul>
+          </section>
           {
             selectedClick?.horario ? <p className="cinema__continue__activated" onClick={handleContinue} >Seleccionar boletos</p> : <p className="cinema__continue">Seleccionar boletos</p>
           }

@@ -16,6 +16,8 @@ function BodyHome() {
   const handleMovieClick = (dataId) => {
     navigate(`/SelectFilm/${dataId}`, { state: dataId })
   }
+
+  
   return <>{moviesData ?
 <div className='bodyhome'>
   <main className="mainHome">

@@ -1,9 +1,9 @@
 import axios from "axios";
-const URL_FUNCTIONS = "http://localhost:3033/funciones";
+const URL_FUNCTIONS = "https://backend-cinemakaia.onrender.com/funciones";
 const URL_FUNCT_ID = (id) => {
   return `${URL_FUNCTIONS}?pelicula=${id}`
 }
-export const URL_QR = "http://localhost:3033/recibos/"
+export const URL_QR = "https://backend-cinemakaia.onrender.com/recibos/"
 
 
 const URL_FUNCT_ID2 = (id) => {

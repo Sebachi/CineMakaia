@@ -1,0 +1,199 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
+.ValidatePayout__container {
+  width: 100%;
+  height: auto;
+  padding: 40px 40px;
+  gap: 40px;
+  font-family: $Kanit;
+  display: flex;
+  flex-direction: column;
+  &__status {
+    border: $light-blue solid 1px;
+    background-color: $background-inv;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    & img {
+      height: 50px;
+    }
+
+    & p {
+      font-weight: bold;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+   
+    & .card__title {
+      display: flex;
+      @include mobile{
+        flex-wrap: wrap;
+      }
+      align-items: center;
+      justify-content: space-between;
+
+      & span {
+        color: $light-blue;
+        background-color: $lighter-blue;
+        font-weight: 400;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    }
+
+    & .card__box {
+     
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 40px 0px;
+      @include mobile {
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+      }
+      &__inside {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: auto;
+        @include mobile{
+          flex-direction: row;
+          gap: 0;
+        }
+
+        & p {
+          min-width: 100px;
+          color: $dark-gray;
+        }
+      }
+
+      & .special {
+        
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0px;
+
+        & p {
+          width: 100%;
+        }
+
+        & img {
+          height: 50px;
+        }
+
+        & span {
+          padding-left: 10px;
+        }
+      }
+    }
+
+  }
+
+  &__info {
+
+    width: auto;
+    max-width: 725px;
+    min-width: 300px;
+    padding: 30px;
+    background-color: $background-inv;
+    border-radius: 10px;
+    font-family: $Kanit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: center;
+    box-shadow: 0px 0px 10px $dark-gray ;
+
+
+    & .ValidatePayout__film {
+      width: 100%;
+      display: flex;
+      @include mobile{
+        flex-direction: column;
+      }
+      &__figure {
+        
+        width: 30%;
+        border: 10px #fff solid;
+        @include mobile{
+          border: 0;
+          width: 50%;
+          align-self: center;
+          padding-bottom: 20px;
+          padding-top: 20px;
+        }
+        & img {
+          width: 100%;
+        }
+      }
+
+      &__description {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0px 10px;
+        width: 70%;
+        @include mobile{
+          width: 100%;
+          padding-bottom: 20px;
+        }
+        & p {
+          font-weight: bold;
+
+          & span {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    & .ValidatePayout__cost {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      &__info {
+        font-weight: bold;
+      }
+
+      &__price {
+        font-weight: bold;
+        font-size: 28px;
+      }
+
+    }
+
+    & .ValidatePayout__continue {
+      padding: 10px;
+      width: 100%;
+      background-color: $lighter-blue;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      
+      &__activated {
+        padding: 10px;
+        width: 100%;
+        background-color: $light-blue;
+        color: white;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+        &:hover{
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.FuncionInfo__container {
+  width: 40%;
+@include mobile {
+  width: 100%;
+}
+
+  padding: 30px;
+  @include mobile{
+    padding: 10px;
+  }
+  background-color: $background-inv;
+  border-radius: 10px;
+  font-family: $Kanit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & .FuncionInfo__film {
+    width: 100%;
+    display: flex;
+
+    &__figure {
+      border: 10px #fff solid  ;
+      width: 20%;
+      @include mobile {
+        border: 0;
+      }
+      & img {
+        width: 100%;
+       
+      }
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0px 10px;
+
+      & p {
+        font-weight: bold;
+
+        & span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  & .FuncionInfo__cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__info {
+      font-weight: bold;
+    }
+
+    &__price {
+      font-weight: bold;
+      font-size: 28px;
+    }
+
+  }
+
+  & .FuncionInfo__continue {
+    padding: 10px;
+    width: 100%;
+    background-color: $dark-gray;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+
+    &__activated {
+      padding: 10px;
+      width: 100%;
+      background-color: $dark-blue;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

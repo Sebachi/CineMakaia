@@ -1,0 +1,11 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
+.bodySeat {
+  display: flex;
+  padding: 80px 40px;
+  @include mobile {
+    padding: 40px 40px;
+  }
+  gap: 40px;
+}

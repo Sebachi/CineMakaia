@@ -1,0 +1,85 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/reset.scss";
+
+.SelectSeat__container {
+  width: 60%;
+  @include mobile{
+    width: 100%;
+  }
+  font-family: $Kanit;
+  display: flex;
+  flex-direction: column;
+  
+  gap: 20px;
+
+  & .SelectSeat__template {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    @include mobile{
+     flex-direction: column;
+     align-items: flex-start;
+    }
+    &__container{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+
+    & span {
+      padding-right: 20px;
+      
+    }
+  }
+
+  & .SelectSeat__hr {
+    width: 100%;
+    border-bottom: 5px solid $light-blue;
+ 
+  }
+
+  & .SelectSeat__seat {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 550px;
+    min-width: 300px;
+    justify-content: center;
+    &__box {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+
+      &__fig {
+        cursor: pointer;
+        text-align: center;
+        &__img {
+          height: 100%;
+          cursor: pointer;
+        }
+
+        &__span {
+          color: white;
+          position: absolute;
+          top: 15%;
+          left: 35%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  & .SelectSeat__seat__img {
+    width: 50px;
+    height: 50px;
+
+  }
+}

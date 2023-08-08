@@ -1,0 +1,40 @@
+@import "../../../assets/styles/variables.scss";
+.background_admin{
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    top: 0;
+    z-index: -999;
+    background-color: #d2dae2;
+}
+
+.mainHomeAdmin{
+    margin: 20px 20px;
+}
+.topNav_admin{
+    margin: 20px;
+  
+    & .topNav_UI_user{
+        display: flex;
+        width: auto;
+        gap: 10px;
+        &_figure {
+            width: 45px;
+        }
+        &_inf{
+            display: flex;
+            flex-direction: column;
+            
+            &_name{
+                color: $dark-blue;
+                font-family: $kanitBolder;
+                font-size: calc(12px + 0.3vw);
+            }
+            &_des{
+                color: $font-gray;
+                font-weight: 500;
+                font-size: calc(9px + 0.3vw);
+            }
+        }
+    }
+}

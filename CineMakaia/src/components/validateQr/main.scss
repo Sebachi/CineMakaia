@@ -1,0 +1,112 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
+.validateQr__container {
+  width: 100%;
+  padding: 100px 40px;
+  @include mobile{
+    padding: 50px 40px;
+  }
+  font-family: $Kanit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 10px 10px 10px;
+    background-color: $dark-blue;
+    border-radius: 10px;
+    box-shadow: $shadow-card;
+    max-width: 725px;
+    width: 50vw;
+    gap: 20px;
+    padding: 60px;
+    padding-top: 80px;
+    @include mobile{
+      width: 100%;
+      padding: 50px;
+      padding-top: 50px;
+    }
+    & .validateQr__title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      @include mobile{
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+      & h3 {
+        font-family: $kanitBolder;
+        color: $font-body-color;
+        font-size: calc(18px + 0.4vw);
+        font-weight: 900;
+      }
+
+      & div {
+        color: $font-body-color;
+        font-size: calc(12px + 0.4vw);
+      }
+    }
+
+    & .validateQr__film {
+
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      @include mobile{
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+      &__figure {
+        width: 30%;
+        border: 10px #fff solid;
+        @include mobile{
+          width: 100%;
+        }
+        & img {
+          width: 100%;
+        }
+      }
+
+      &__description {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0px 10px;
+        @include mobile{
+          width: 100%;
+          gap: 0;
+          flex-wrap: wrap;
+        }
+        & p {
+          font-weight: bold;
+          color: #fff;
+
+          & span {
+            padding-left: 10px;
+            font-weight: 400;
+            color: $light-cyan;
+           
+          }
+        }
+      }
+    }
+
+    & .validateQr__qr {
+      margin-top: 30px;
+      align-self: center;
+      border: 10px #fff solid;
+    }
+  }
+
+
+
+}

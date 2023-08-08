@@ -1,33 +1,20 @@
-import { useEffect, useState } from 'react'
-import { get_movie } from '../../services/request';
+//import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import Header from '../header/main.jsx'
+import "./main.scss"
+import BodyHome from './body/main.jsx';
+import { Outlet, useParams } from 'react-router-dom';
+import FormLogin from '../Login/forms/main.jsx';
 
 
-function  Main() {
-const [movieData, setMovieData] = useState(null);
-useEffect(() => {
-  get_movie(667538)
-  .then(data => {
-    setMovieData(data);
-  })
-  .catch(error => {
-    console.error('Error al obtener los datos de la película:', error);
-  });
-}, [])
-
-  return (
-    <>
-     <h1>Movie Details</h1>
-      {movieData ? (
-        <div>
-          <h2>{movieData.title}</h2>
-          <p>{movieData.overview}</p>
-          <figure><img src='' alt="" /></figure>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </>
-  )
+function  Home({signIn, login}) {
+  return(
+      <>
+      <Header isHome={true} signIn={signIn} login={login}/>
+     
+      <Outlet/>
+      </>
+    )
 }
 
-export default Main
+export default Home

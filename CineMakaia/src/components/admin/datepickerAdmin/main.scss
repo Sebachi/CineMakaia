@@ -1,0 +1,42 @@
+@import "../../../assets/styles/variables.scss";
+
+.MuiStack-root {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    overflow-x: hidden !important;
+   
+  }
+ .picker_admin{
+  & .MuiInputBase-input {
+    display: none;
+ }
+
+
+} 
+  .css-1pduc5x-MuiStack-root>.MuiTextField-root {
+    min-width: 85px !important;
+    @include mobile{
+      min-width: 0px !important;
+      max-width: 130px;
+      width: 33px;
+   
+    
+    & .MuiOutlinedInput-notchedOutline{
+      border: none;
+      border-radius: 0;
+    //  border-bottom: 1px solid $font-body-color;
+    }
+  }
+}
+.MuiInputBase-input {
+  font-family: $font-Makaia !important;
+
+}
+.css-ap0ol5-MuiFormControl-root-MuiTextField-root {
+  border: 0 !important;
+}
+
+.css-1pduc5x-MuiStack-root > .MuiTextField-root {
+    min-width: 0px !important;
+}

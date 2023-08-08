@@ -1,0 +1,556 @@
+@import "../../../assets/styles/variables.scss";
+
+.movieEditor {
+  &_top {
+    display: flex;
+    @include mobile {
+      flex-wrap: wrap;
+      height: auto;
+      justify-content: center;
+      padding: 0;
+    }
+    position: relative;
+    gap: 20px;
+    padding: 10px 60px 0 40px;
+    height: 600px;
+    &_figure {
+      min-height: 200px;
+      height: 650px;
+      width: auto;
+      @include mobile{
+        width: auto;
+        height: 400px;
+      }
+      & > img {
+        height: 100%;
+        // width: 100%;
+        aspect-ratio: 674/1011;
+        box-shadow: $shadow-card;
+      }
+    }
+    &_trailer {
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      @include mobile{
+        width: auto;
+        height: 400px;
+      }
+      &:hover {
+        .movieEditor_top_trailer_text {
+          display: none;
+        }
+        .movieEditor_top_trailer_play {
+          display: none;
+        }
+      }
+      &_iframe {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        //z-index: 1;
+        filter: brightness(40%) saturate(20%);
+        cursor: pointer;
+        &:hover {
+          filter: none;
+        }
+      }
+      &_text {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        gap: 10px;
+        //  z-index: 2;
+        color: #d9d9d9;
+       
+        // height: 300px;
+        @include mobile{
+         margin-bottom: 10px;
+          margin-left: 10px;
+          padding: 0;
+          gap: 10px;
+        }
+        left: 0;
+        bottom: 0;
+        padding: 40px;
+        font-family: $Kanit;
+
+      }
+      &_play {
+        position: absolute;
+        height: 100px;
+        top: 42%;
+        right: 47%;
+        @include mobile{
+          height: 60px;
+          top: 42%;
+        right: 40%;
+        }
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  // Text Iframe style
+  &_release,
+  &_genres {
+    font-size: calc(9px + 0.5vw);
+    font-weight: 900;
+    @include mobile{
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &_rated,
+  &_runtime {
+    font-family: $Kanit;
+    margin-top: 5px;
+    font-size: calc(7px + 0.5vw);
+    border: 1px solid #fff;
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
+    font-weight: 900;
+    padding: 5px;
+    @include mobile{
+    padding: 3px;
+    margin: 0;
+    }
+  }
+  &_runtime {
+    margin-left: 10px;
+  }
+  &_title {
+    color: #fff;
+    font-size: calc(50px + 0.3vw);
+    font-weight: 900;
+    width: 40%;
+    line-height: 60px;
+    padding-bottom: 10px;
+    @include mobile{
+      font-size: calc(30px + 0.3vw);
+      width: 100%;
+      line-height: 30px;
+      padding-bottom: 0px;
+    }
+  }
+  &_genres {
+    padding-bottom: 15px;
+  }
+
+  // Bottom section
+  &_bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 120px 40px;
+    font-family: $Kanit;
+    @include mobile{
+      flex-wrap: wrap;
+      padding: 50px 40px;
+      gap: 30px;
+    }
+    &_text {
+      font-weight: 900;
+      text-transform: capitalize;
+      padding-right: 120px;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include mobile{
+        width: 100%;
+        //
+        padding-right: 0px;
+      }
+      &_container {
+        display: flex;
+        flex-direction: column;
+      }
+      &_subtitle {
+        color: #78819a;
+      }
+      &_inf {
+        color: #989ca5;
+      }
+    }
+    &_editor {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      &_calendar {
+        &_container {
+          display: flex;
+          gap: 20px;
+          height: 90px;
+          align-items: flex-end;
+          position: relative;
+          @include mobile{
+            width: 100%;
+            gap: 5px; 
+          }
+        }
+        &_days {
+          display: flex;
+          gap: 20px;
+          @include mobile{
+            width: 100%;
+            gap: 5px;
+          }
+          & > li {
+            cursor: pointer;
+            height: 60px;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            background-color: $lighter-blue;
+            padding: 10px 20px;
+            @include mobile{
+              padding: 12px;
+              
+            }
+            text-align: center;
+            text-transform: uppercase;
+            font-family: $Kanit;
+            font-weight: 900;
+            color: #fff;
+            line-height: 20px;
+            &:hover {
+              transform: scale(1.1);
+              background-color: $light-blue;
+            }
+            & .movie_dayNumber {
+              font-size: calc(14px + 0.5vw);
+              letter-spacing: 2px;
+            }
+            & .movie_dayName {
+              font-size: calc(7px + 0.5vw);
+              font-weight: 500;
+            }
+          }
+          & .active_date {
+            background-color: $light-blue;
+          }
+          & .movie_ActualMoth {
+            color: $light-blue;
+            text-transform: uppercase;
+            font-weight: 900;
+            position: absolute;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// CALENDAR EDITOR
+.movieEditor_calendar_button {
+  width: 90px;
+  height: 60px;
+  position: relative;
+  overflow-y: hidden;
+  @include mobile{
+    width: 60px;
+  }
+  &:hover {
+    overflow-y: hidden;
+  }
+  & .MuiSvgIcon-root {
+   width: 40px;
+    position: absolute;
+    @include mobile{
+    
+ 
+    }
+   height: 60px;
+    fill: #92abc8 !important;
+    &:hover {
+      transform: scale(1.1);
+      fill: $light-blue !important;
+    }
+  }
+  & .MuiOutlinedInput-notchedOutline {
+    border: 0;
+  }
+  & .MuiFormControl-root {
+    height: 67px !important;
+    &:hover {
+      border: 0 !important;
+    }
+  }
+  & .MuiInputBase-root {
+    border: 0 !important;
+  }
+}
+
+.editor_functions {
+ 
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px #f6f6f6 solid;
+  border-radius: 5px;
+  @include mobile{
+   
+  }
+  &_header {
+    padding: 30px calc(30px + 1vw);
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    align-items: center;
+    font-weight: 900;
+    font-size: calc(8px + 0.5vw);
+    @include mobile{
+     
+      padding: 0
+    }
+  }
+  &_body {
+    padding: 20px calc(30px + 1vw) 20px 70px;
+    font-weight: 900;
+    font-size: calc(8px + 0.5vw);
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    align-items: center;
+    @include mobile{
+      padding: 10px
+    }
+  }
+  &_arrow {
+    height: calc(20px + 0.5vw);
+    border: 1px $light-blue solid;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: start;
+    text-align: center;
+    background-color: #fff;
+    @include mobile{
+      height: calc(15px + 0.5vw);
+    }
+    &:hover {
+      // text-decoration: underline $light-blue;
+      transform: scale(1.1);
+    }
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &_button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px $light-blue solid;
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: $light-blue;
+    font-size: calc(4px + 0.5vw);
+    background-color: #fff;
+    font-weight: 600;
+    @include mobile{
+      font-size: calc(7px + 0.5vw);
+      padding: 8px;
+    }
+    &:hover {
+      // text-decoration: underline $light-blue;
+      transform: scale(1.1);
+    }
+    & > img {
+      height: calc(20px + 0.5vw);
+    }
+  }
+}
+
+// EDITOR
+.editor {
+  padding: 25px 50px;
+  @include mobile{
+    font-size: calc(7px + 0.5vw);
+    padding: 8px;
+  }
+}
+.editor_time{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px $light-blue solid;
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: $light-blue;
+    font-size: calc(4px + 0.5vw);
+    background-color: #fff;
+    font-weight: 600;
+    @include mobile{
+      font-size: calc(7px + 0.5vw);
+      padding: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    &_input{
+      width: 60px;
+      border: none;
+      color: $light-blue;
+    }
+    &:hover {
+      // text-decoration: underline $light-blue;
+      transform: scale(1.1);
+    }
+    & > img {
+      height: calc(20px + 0.5vw);
+    }
+}
+.editor_salas {
+  display: flex;
+  justify-content: space-between;
+  &_input{
+    width: 60px;
+    border: none;
+    text-decoration: underline;
+    font-size: calc(12px + 0.3vw);
+    font-family: $Kanit;
+    padding-bottom: 15px;
+  }
+  &_sala {
+    font-size: calc(12px + 0.3vw);
+    border-radius: 20px;
+  }
+  &_container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+}
+.editor_horarios {
+  display: flex;
+  gap: 10px;
+}
+
+
+.editor_functions_hovers{
+  display: flex;
+  gap: 5px;
+  &_button{
+    height: 16px;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.1);
+    }
+    & > img {
+      height: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// HEADER BACKGROUND
+.background_movieEditor {
+  position: absolute;
+  width: 100%;
+  height: 68%;
+  @include mobile{
+    height: 850px;
+  }
+  top: 0;
+  z-index: -999;
+  background-color: #d2dae2;
+}
+
+//SWEETALERT STYLES
+.swal2-container {
+  font-family: $Kanit !important;
+  & .swal2-modal {
+    background-color: #d2dae2;
+    //height: 60%;
+    width: 30rem;
+    color: #000;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    gap: 20px;
+  }
+  & .swal2-title {
+    font-size: calc(20px + 0.5vw);
+    margin: 0;
+    //text-transform: uppercase;
+  }
+  & .swal2-actions {
+    margin: 0;
+  }
+  & .swal2-confirm {
+    background-color: transparent;
+    color: $dark-cyan ;
+    border: 1px $dark-cyan solid;
+    font-family: $Kanit !important;
+    font-weight: 900;
+    margin-right: 20px;
+    border-radius: 20px;
+    font-size: calc(8px + 0.5vw) !important;
+    transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+      color: $light-blue;
+      //background-color: transparent !important;
+    }
+  }
+  & .swal2-select {
+    width: 100%;
+    margin: 0;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px $font-gray solid;
+    font-size: calc(8px + 0.5vw);
+    & option {
+      font-family: $Kanit !important;
+      cursor: pointer;
+    }
+  }
+  & .swal2-cancel {
+    background-color: transparent;
+    color: $dark-cyan ;
+    border-radius: 20px;
+    font-family: $Kanit !important;
+    border: 1px $dark-cyan solid;
+    font-weight: 900;
+    font-size: calc(8px + 0.5vw);
+    transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+      background-color: transparent;
+      color: $light-blue;
+    }
+  }
+}

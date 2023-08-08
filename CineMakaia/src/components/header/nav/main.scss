@@ -1,0 +1,181 @@
+@import "../../../assets/styles/variables.scss";
+@font-face
+{
+    font-family: 'font Makaia';
+    font-weight: normal;
+    font-style: normal;
+    src: '/fontMakaia.woff2'  format('woff2');
+}
+
+.topNav{
+    margin: 0;
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $Kanit;
+    font-weight: 600;
+    padding-right: 10px;
+    &_logo{
+        display: flex;
+        align-items: center;
+        padding-left: 40px;
+        cursor: pointer;
+        @include mobile{
+            padding-left: 10px;
+        }
+        &_text{
+            font-family: $Kanit;
+            font-weight: 600;
+            color: $dark-blue;
+            font-size: calc(12px + 0.4vw);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        &_figure{
+            height: calc(25px + 0.4vw);
+            & img{
+                height: 100%;
+            }
+        }
+    }
+    &_categories{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-self: center;
+        &_button{
+            background-color: $dark-cyan;
+            color: #fff;
+            border: 1px $font-body-color solid;
+            border-radius: 20px;
+            padding: calc(1px + 0.3vw)  calc(3px + 0.5vw);
+            font-size: calc(7px + 0.5vw);
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 300ms ease;
+            &:hover{
+                font-weight: 800;
+                border-color: #000;
+            }
+        }
+        @include mobile{
+            display: none;
+        }
+    }
+    &_UI{
+        display: flex;
+        padding-right: 40px;
+        @include mobile{
+            padding-right: 10px;
+        }
+        gap: 20px;
+        align-items: center;
+        &_function{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            @include mobile {
+                justify-content: end;
+                &_cinemas, &_dates{
+                    text-align: end;
+                }
+            }
+            &_cinemas{
+                display: flex;
+                flex-direction: column;
+                font-size: calc(8px + 0.5vw);
+                & select {
+                    border: 1px $font-body-color solid;
+                    max-width: 200px;
+                    min-width: 150px;
+                    font-size: calc(7px + 0.5vw);
+                    @include mobile {
+                        min-width: 60px;
+                    }
+                    border-radius: 5px;
+                    height: 30px;
+                    font-family: $Kanit;
+                    font-weight: 600;
+                    cursor: pointer;
+                    padding-left: 5px;
+                    &:focus{
+                        filter: contrast(90%);
+                      border-color: $dark-cyan;
+                      color: $dark-blue;
+                    }
+                    & option{
+                       color: blue;
+                       &:checked{
+                        border-color: $light-cyan;
+                        background-color: $light-cyan;
+                       }
+                    }
+                }
+            }
+            &_dates{
+                display: flex;
+                flex-direction: column;
+                font-size: calc(8px + 0.5vw);
+                &_picker {
+                    border: 1px $font-body-color solid;
+                    width: 100px;
+                    min-width: 120px;
+                    font-size: calc(7px + 0.5vw);
+                    @include mobile {
+                        min-width: 60px;
+                    }
+                    border-radius: 5px;
+                    height: 30px;
+                    font-family: $Kanit;
+                    font-weight: 600;
+                    cursor: pointer;
+                    padding-left: 5px;
+                    &:focus{
+                        filter: contrast(90%);
+                      border-color: $dark-cyan;
+                      color: $dark-blue;
+                    }
+                    & option{
+                       color: blue;
+                       &:checked{
+                        color: #000;
+                        background-color: $light-cyan;
+                       }
+                    }
+                }
+            }
+        }
+        &_user{
+            cursor: pointer;
+            height: 45px;
+            width: 45px;
+            
+            @include mobile{
+                width: 35px;
+                min-width: 35px;
+            }
+            &_figure{
+               height: 100%;
+               width: 100%;
+                & img{
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                    transition: all 300ms ease;
+                    &:hover {
+                        border: #000 1px solid;
+                        scale: 1.1;
+                    }
+                }
+            }
+        }
+    }
+}
+.activeCategory{
+    font-weight: 800;
+    border-color: #000;
+}

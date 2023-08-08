@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Kanit:ital,wght@0,100;0,200;1,500;1,900&family=Noto+Sans:wght@800&display=swap');
+
+
+$font-Makaia: 'font Makaia', sans-serif;
+$Kanit: "Kanit", sans-serif;
+$kanit2: "Bree Serif", serif;
+$kanitBolder: "Noto Sans", sans-serif;
+$dark-blue: #03203A;
+$light-cyan: #91CCD1;
+$dark-cyan: #0098BC;
+$light-blue: #094891;
+$dark-gray: hsl(0, 0%, 55%);
+$very-dark-gray: hsl(0, 0%, 41%);
+$font-body-color: #a5a5a5;
+$shadow-card: 0px 0px 30px #000;
+$font-gray: #7f838e;
+$lighter-blue: #92abc8;
+$background-inv: #f3f4f6;
+$special-background: #F4F4F4FF;
+
+@mixin mobile {
+  @media (max-width: 725px) {
+    @content;
+  }
+}

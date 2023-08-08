@@ -1,0 +1,16 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/reset.scss";
+
+
+.bodyfilm {
+  padding: 100px 50px;
+  @include mobile {
+    padding: 50px 50px;
+  }
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: 1px red solid;
+}

@@ -1,0 +1,10 @@
+@import "../../assets/styles/variables.scss";
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d2dae2;
+    gap: 40px;
+    width: 100%;
+}

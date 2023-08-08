@@ -1,0 +1,313 @@
+@import "../../../assets/styles/variables.scss";
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  height: auto;
+  max-width: 1500px;
+  gap: 1px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &_button {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    width: 100%;
+    align-items: center;
+    &_left,
+    &_right {
+      height: 2vw;
+      cursor: pointer;
+      filter: contrast(50%);
+      opacity: 1;
+      transition: height 0.3s ease, filter 0.3s, opacity 0.3s;
+      &:hover {
+        height: 3vw;
+        filter: contrast(80%);
+        opacity: 1;
+      }
+      & img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  &_card {
+    background-color: transparent;
+    filter: contrast(90%) saturate(80%) brightness(85%);
+    // opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    // max-height: 300px;
+    flex-grow: 1;
+    object-fit: contain;
+    position: relative;
+    box-shadow: $shadow-card;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    transition: all 300ms ease;
+    &:hover {
+      z-index: 1;
+      cursor: pointer;
+      // opacity: 1;
+      & .carousel_card_img {
+        filter: contrast(30%) brightness(50%);
+
+        transform: scale(1.2);
+        // filter: brightness(100%);
+      }
+      & .carousel_card_text {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        bottom: calc(16px + 0.5vw);
+        max-width: 90%;
+        gap: 5px;
+        color: #fff;
+        font-family: $Kanit;
+        &_title {
+          font-family: $kanitBolder;
+          font-weight: bolder;
+          text-transform: uppercase;
+          font-size: calc(12px + 0.5vw);
+          color: #f0f0f0;
+        }
+        &_subtitle {
+          font-size: calc(6px + 0.5vw);
+          font-weight: 600;
+        }
+        &_release,
+        &_genres {
+          font-size: calc(12px + 0.5vw);
+          font-weight: 500;
+          color: #f0f0f0;
+        }
+
+        &_runtime {
+          font-family: $kanitBolder;
+          margin-top: 5px;
+          font-size: calc(12px + 0.5vw);
+          border: 1px solid #fff;
+          color: #000;
+          background-color: #fff;
+          border-radius: 5px;
+        }
+      }
+    }
+    &_img {
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 674/1011;
+      border-radius: 8px;
+      position: sticky;
+    }
+    &_1{
+      transition:  height 0.3s ease, filter 0.3s, opacity 0.3s;
+    }
+    &_2,
+    &_4 {
+      //  max-height: 350px;
+      height: 105%;
+      transition: all 300ms ease;
+      &:hover {
+        height: 100%;
+      }
+    }
+    &_3 {
+      //  max-height: 380px;
+      height: 110%;
+      transition: all 300ms ease;
+      &:hover {
+        height: 100%;
+      }
+    }
+    &_text {
+      display: none;
+    }
+  }
+}
+@media (max-width: 725px) {
+  .carousel {
+    &_card {
+      &:hover {
+        & .carousel_card_text {
+          display: flex;
+          justify-self: center;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          position: absolute;
+          bottom: 0;
+          max-width: 80%;
+          gap: 5px;
+          color: #fff;
+          font-family: $Kanit;
+          &_title {
+            font-family: $kanitBolder;
+            font-weight: 200;
+            text-transform: capitalize;
+            font-size: calc(7px + 0.5vw);
+            color: #f0f0f0;
+          }
+          &_subtitle {
+            font-size: calc(6px + 0.5vw);
+            font-weight: 600;
+            display: none;
+          }
+          &_genres {
+            font-size: calc(8px + 0.5vw);
+            font-weight: 500;
+            color: #f0f0f0;
+            line-height: 12px;
+            //  display: none;
+          }
+          &_release {
+            display: none;
+          }
+
+          &_runtime {
+            font-family: $kanitBolder;
+            margin-top: 5px;
+            font-size: calc(6px + 0.5vw);
+            border: 1px solid #fff;
+            color: #000;
+            background-color: #fff;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Animaciones carrusel
+
+
+/* Desplazamiento inicial de la tarjeta actual hacia la izquierda */
+.fade-enter {
+ // opacity: 0.1;
+  transform: translateX(100%);
+  max-height: 100%;
+  & .carrousel_card {
+    &_1 {
+      opacity: 0;
+    }
+    &_3,
+    &_5 {
+      max-height: 105%;
+    }
+    &_4 {
+      max-height: 110%;
+    }
+  }
+}
+
+/* Desplazamiento de la tarjeta actual hacia la izquierda al salir */
+.fade-exit {
+  transform: translateX(0);
+ //opacity: 1;
+  max-height: 110%; /* Un valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+}
+
+/* Transición durante la entrada y la salida de la tarjeta actual */
+.fade-enter-active,
+.fade-exit-active {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); /* Utilizamos una función de curva de velocidad más suave */
+  max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+}
+
+/* Desplazamiento final de la tarjeta actual cuando entra */
+.fade-enter-active {
+ transform: translateX(0);
+  //opacity: 1;
+  max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+}
+
+/* Desplazamiento final de la tarjeta actual cuando sale */
+.fade-exit-active {
+ // transform: translateX(-10%);
+  //opacity: 0.1;
+  max-height: 100%;
+  & .carrousel_card {
+    &_1 {
+      opacity: 0;
+    }
+    &_3,
+    &_5 {
+      max-height: 105%;
+    }
+    &_4 {
+      max-height: 110%;
+    }
+  }
+}
+
+/* Ocultar la siguiente tarjeta hasta que entre en la vista */
+.fade-enter-done {
+  transform: translateX(0);
+}
+
+/* Desplazamiento inicial de la siguiente tarjeta hacia la derecha */
+.fade-next-enter {
+  transform: translateX(-100%);
+  max-height: 100%;
+  & .carrousel_card {
+    &_1 {
+      opacity: 0;
+    }
+    &_3,
+    &_5 {
+      max-height: 105%;
+    }
+    &_4 {
+      max-height: 110%;
+    }
+  }
+}
+
+/* Transición durante la entrada de la siguiente tarjeta */
+.fade-next-enter-active {
+  transform: translateX(0);
+  max-height: 110%; /* Valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+}
+
+/* Estado final de la siguiente tarjeta cuando entra (ya en la vista) */
+.fade-next-enter-done {
+  transform: translateX(0);
+}
+
+/* Desplazamiento de la siguiente tarjeta hacia la izquierda al salir */
+.fade-next-exit {
+  transform: translateX(0);
+  max-height: 110%; /* Un valor lo suficientemente grande para asegurar que todas las tarjetas se muestren completamente */
+}
+
+/* Transición durante la salida de la siguiente tarjeta */
+.fade-next-exit-active {
+  transform: translateX(-10%);
+  max-height: 100%;
+  & .carrousel_card {
+    &_1 {
+      opacity: 0;
+    }
+    &_3,
+    &_5 {
+      max-height: 105%;
+    }
+    &_4 {
+      max-height: 110%;
+    }
+  }
+}
+
+/* Estado final de la siguiente tarjeta cuando sale (completamente fuera de la vista) */
+.fade-next-exit-done {
+  transform: translateX(-100%);
+}

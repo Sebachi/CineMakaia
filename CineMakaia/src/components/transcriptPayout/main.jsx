@@ -77,7 +77,7 @@ const TranscriptPayout = ({ signIn, login }) => {
     newArray1.map((element) => newArray2.push(
       {
         id: element,
-        status: "ocupied"
+        status: "occupied"
       }
     ))
     console.log("array post arreglo a objeto")
@@ -138,11 +138,11 @@ const TranscriptPayout = ({ signIn, login }) => {
                   <input type="text" placeholder='ingrese su correo electronico' {...register("userEmail")} />
                 </div>
                 <div className='form__box'>
-                  <label htmlFor="userName">Nombre en la targeta</label>
-                  <input type="text" placeholder='ingrese nombre en la targeta' {...register("userName")} />
+                  <label htmlFor="userName">Nombre en la tarjeta</label>
+                  <input type="text" placeholder='ingrese nombre en la tarjeta' {...register("userName")} />
                 </div>
                 <div className='form__box'>
-                  <label htmlFor="userCard">Numero de la targeta</label>
+                  <label htmlFor="userCard">Numero de la tarjeta</label>
                   <input type="number" placeholder='1234 1234 1234 1234' {...register("userCard")} />
                 </div>
                 <div className='form__box special'>

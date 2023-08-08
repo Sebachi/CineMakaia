@@ -1,43 +1,65 @@
 import React, { useContext, useEffect, useState } from "react";
-import { formatterDate } from "../../../services/formatterDates";
 import "./main.scss";
 import { AppContext } from "../../../services/Appcontex";
 import { get_movie } from "../../../services/request";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { get_trailer } from "../../../services/getTrailer";
 
 const FilmInfo = () => {
-  const location = useLocation()
+  const location = useLocation();
   const [moviesData, setMoviesData] = useState(null);
-  const first = useContext(AppContext)
-  //const [dataId, setDataId] = useState(1)
+  const first = useContext(AppContext);
   let dataId = location.state;
-  const [repeatCont, setRepeatCont] = useState(0)
   const [trailer, setTrailer] = useState(null);
-  useEffect(() => {
-    if (first.length > 0) {
-      setMoviesData([[], ...first])
-      //console.log(moviesData);
-    }
-    if (moviesData != null) {
-      console.log(moviesData[dataId])
-    }
+  const [trailerLoaded, setTrailerLoaded] = useState(false);
+  
+  const [idMovie, setIdMovie] = useState(useParams())
 
-  }, [first]);
 
+  // MOVIE TMDB INF
   useEffect(() => {
     const getMovieInf = async () => {
-      try {
-        const trailerUrl = await get_trailer(moviesData[dataId].id);
-        setTrailer(trailerUrl);
-      } catch (error) {
-        console.error("Error al obtener los datos de la película", error);
-        setRepeatCont(repeatCont + 1)
+      if (first.length > 0) {
+        setMoviesData([[], ...first]);
       }
     };
     getMovieInf();
-  }, [first, dataId, repeatCont]);
+  }, [first]);
 
+  //TRAILER
+  useEffect(() => {
+    const getTrailer = async () => {
+      if (moviesData && dataId !== null) {
+        try {
+          const trailerURL = await get_trailer(moviesData[dataId].id);
+          setTrailer(trailerURL);
+          setTrailerLoaded(true);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    getTrailer();
+  }, [dataId, moviesData, idMovie.selectFilm]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <>
       {moviesData ? (
@@ -62,20 +84,23 @@ const FilmInfo = () => {
           </section>
           <section className="film__container__trailer">
             <h4>Trailer</h4>
-            <iframe
-              id="youtube-player"
-              className="movieEditor_top_trailer_iframe"
-              src={trailer}
-              title="youtube-player"
-              allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+            {trailerLoaded ? (
+              <iframe
+                id="youtube-player"
+                className="movieEditor_top_trailer_iframe"
+                src={trailer}
+                title="youtube-player"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <p>Loading trailer...</p>
+            )}
           </section>
           <section className="film__container__description">
-            <h4>Sinopsis</h4>
-            <p>{moviesData[dataId].overview}</p>
+            {/* ... (your existing code) */}
           </section>
-        </main >
+        </main>
       ) : (
         <p>Loading...</p>
       )}

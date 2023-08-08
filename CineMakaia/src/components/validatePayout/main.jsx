@@ -59,7 +59,7 @@ const ValidatePayout = ({ signIn, login }) => {
             </div>
             <div className='card__box__inside special'>
               <p>Metodo de pago</p>
-              {cardData[1] == "Visa" ? (<img src={cardVisa} alt="visa" />) : (cardData[1] == "Master Card" ? (<img src={cardMaster} alt="Master card" />) : (<img src={cardNI} alt="imagen de targeta" />))}
+              {cardData[1] == "Visa" ? (<img src={cardVisa} alt="visa" />) : (cardData[1] == "Master Card" ? (<img src={cardMaster} alt="Master card" />) : (<img src={cardNI} alt="imagen de tarjeta" />))}
               <span>{cardData[1]} - **** {cardData[2]}</span>
             </div>
           </article>

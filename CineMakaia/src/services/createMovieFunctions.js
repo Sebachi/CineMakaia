@@ -7,20 +7,21 @@ export const getMovieFunctions = async (idJSONMovie, date) => {
     try {
         const { data } = await axios.get(`${endpointCinema.functions}?pelicula=${idJSONMovie}`)
         const movieFirstFilter = data.filter((item) => item.fecha === date);
-        if (movieFirstFilter.length === 0) {
+        if (movieFirstFilter.length < 1) {
             // Obtener objetos únicos con diferentes valores de "horario", "sala" y "teatro"
             const uniqueFunctions = [];
             const uniqueFunctionKeys = new Set();
 
-            data.forEach((item) => {
+            for (let i = 0; i < data.length; i++) {
+                const item = data[i];
                 const { horario, sala, teatro } = item;
                 const key = `${horario}-${sala}-${teatro}`;
-
+              
                 if (!uniqueFunctionKeys.has(key)) {
-                    uniqueFunctionKeys.add(key);
-                    uniqueFunctions.push({ horario, sala, teatro });
+                  uniqueFunctionKeys.add(key);
+                  uniqueFunctions.push({ horario, sala, teatro });
                 }
-            });
+              }
 
             // Agregar las propiedades "fecha" y "asientos" a cada objeto único
             const functionsWithDateAndSeats = uniqueFunctions.map((func) => ({

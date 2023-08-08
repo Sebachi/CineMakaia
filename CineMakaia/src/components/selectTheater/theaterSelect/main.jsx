@@ -170,7 +170,7 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
           <article className='SelectSeat__seat'>
             {seatStatus.map((seat, index) => (
               <div key={index} className='SelectSeat__seat__box'>
-                {seat.status == "ocupied" ?
+                {seat.status == "occupied" ?
                   (<figure className='SelectSeat__seat__box__fig__img'>
                     <img src={chairOcupied} alt='asiento ocupado' className='SelectSeat__seat__box__fig__img' />
                     <p className='SelectSeat__seat__box__fig__span'>{seat.id}</p>

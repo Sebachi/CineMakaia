@@ -23,7 +23,7 @@ const ValidatePayout = ({ signIn, login }) => {
   const [actualDate, setActualDate] = useState("")
 
   useEffect(() => {
-    console.log(location.state)
+    //console.log(location.state)
   }, [])
 
   const handleContinue = () => {

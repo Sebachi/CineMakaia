@@ -17,10 +17,10 @@ const SeatInfoExtra = ({ actualSeat, setActualSeat, seatId, seatArray }) => {
 
   useEffect(() => {
     if ((location.state).length > 2) {
-      //console.log(location.state)
+      ////console.log(location.state)
       setValidAccess(true)
     }
-    console.log(ticketInfo)
+    //console.log(ticketInfo)
   }, [])
 
   const handleContinue = () => {

@@ -20,20 +20,20 @@ const FuncionInfo = ({ totalTicketPrice, totalTicketAmount, childTicket, adultTi
 
   //validacion de pelicula
   useEffect(() => {
-    console.log(functionContent)
+    //console.log(functionContent)
 
     if (first.length > 0) {
       setMoviesData([[], ...first])
-      //console.log("info context")
-      //console.log(moviesData);
+      ////console.log("info context")
+      ////console.log(moviesData);
     }
-    //console.log("informacion funcion e Id")
-    //console.log(functionContent)
-    //console.log(filmId)
+    ////console.log("informacion funcion e Id")
+    ////console.log(functionContent)
+    ////console.log(filmId)
 
     if (moviesData !== null) {
       setFilmContent(moviesData[filmId])
-      //console.log(filmContent)
+      ////console.log(filmContent)
     } else {
       setShowCounter(showCounter + 1)
     }

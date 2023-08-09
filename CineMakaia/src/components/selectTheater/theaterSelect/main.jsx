@@ -25,12 +25,12 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
 
   const getServer = async (id) => {
     let server = await get_tickets2(id)
-    //console.log(server)
+    ////console.log(server)
     if (server[1] == 200) {
       setSeatArray(server[0].asientos)
       setShowContainer3(1)
-      console.log("lista de sillas")
-      console.log(seatArray)
+      //console.log("lista de sillas")
+      //console.log(seatArray)
     } else {
       setShowContainer(showContainer + 1)
     }
@@ -38,18 +38,18 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
 
   // useEffect(() => {
   //   //recibir la info de los asientos
-  //   console.log(functionId)
+  //   //console.log(functionId)
   //   if (seatArray.length == 0) {
   //     getServer(functionId)
   //     setShowContainer(showContainer + 1)
   //   }
-  //   console.log("lista de sillas")
-  //   console.log(seatArray)
+  //   //console.log("lista de sillas")
+  //   //console.log(seatArray)
   // }, [showContainer])
 
   useEffect(() => {
     //recibir la info de los asientos
-    console.log(functionId)
+    //console.log(functionId)
     getServer(functionId)
   }, [showContainer])
 
@@ -73,7 +73,7 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
   //       }
   //     }
   //     setSeatStatus(newArray)
-  //     console.log("se actualizo")
+  //     //console.log("se actualizo")
   //   }
   //   if (seatStatus.length == 0) {
   //     setShowContainer2(showContainer2 + 1)
@@ -98,20 +98,20 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
       }
 
       setSeatStatus(newArray)
-      console.log("se actualizo")
-      console.log(newArray)
+      //console.log("se actualizo")
+      //console.log(newArray)
     }
     if (seatStatus.length == 0) {
       setShowContainer2(showContainer2 + 1)
     } else {
-      //console.log(seatStatus)
+      ////console.log(seatStatus)
     }
   }, [showContainer2])
 
   const handleSeatAvailable = (ind) => {
-    console.log(`clickeaste en la silla azul #${ind + 1}`)
-    console.log(maxSeat)
-    console.log(actualSeat)
+    //console.log(`clickeaste en la silla azul #${ind + 1}`)
+    //console.log(maxSeat)
+    //console.log(actualSeat)
     if (actualSeat < maxSeat) {
       // const editList = seatStatus.map(item => item.id === id ? item.status : "selected")
       // setSeatStatus(editList)
@@ -125,17 +125,17 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
       editList2.push(editList3)
       setSeatId(editList2)
 
-      console.log("estado de las sillas")
-      console.log(seatStatus)
+      //console.log("estado de las sillas")
+      //console.log(seatStatus)
       setShowContainer3(showContainer3 + 1)
       setActualSeat(actualSeat + 1)
     } else {
-      console.log("limite maximo alcanzado")
+      //console.log("limite maximo alcanzado")
     }
 
   }
   const handleSeatSelected = (ind) => {
-    console.log(`clickeaste en la silla naranja #${ind + 1}`)
+    //console.log(`clickeaste en la silla naranja #${ind + 1}`)
     const editList = seatStatus;
     editList[ind].status = "available"
     setSeatStatus(editList)
@@ -144,8 +144,8 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
     const editList3 = editList2.filter((item) => item != seatStatus[ind].id)
     setSeatId(editList3)
 
-    console.log("estado de las sillas")
-    console.log(seatStatus)
+    //console.log("estado de las sillas")
+    //console.log(seatStatus)
     setShowContainer3(showContainer3 + 1)
     setActualSeat(actualSeat - 1)
   }
@@ -160,11 +160,11 @@ const SelectSeatTheater = ({ actualSeat, setActualSeat, seatId, setSeatId, seatA
           <p>Para cambiar tu lugar asignado da click en el asiento deseado</p>
           <figure className='SelectSeat__template'>
             <div className='SelectSeat__template__container'><img src={chairSelected} alt="Seleccion" />
-            <span>Seleccion</span></div>
+              <span>Seleccion</span></div>
             <div className='SelectSeat__template__container'><img src={chairOcupied} alt="Ocupado" />
-            <span>Ocupado</span></div>
-           <div className='SelectSeat__template__container'><img src={chairAvailable} alt="Disponible" />
-            <span>Disponible</span></div> 
+              <span>Ocupado</span></div>
+            <div className='SelectSeat__template__container'><img src={chairAvailable} alt="Disponible" />
+              <span>Disponible</span></div>
           </figure>
           <div className='SelectSeat__hr'></div>
           <article className='SelectSeat__seat'>

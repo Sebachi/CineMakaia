@@ -15,7 +15,7 @@ const ValidateQr = ({ signIn, login }) => {
   const cardData = location.state[5];
 
   useEffect(() => {
-    console.log(location.state)
+    //console.log(location.state)
   }, [])
 
   return (

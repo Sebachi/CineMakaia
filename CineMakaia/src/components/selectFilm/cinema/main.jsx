@@ -44,13 +44,13 @@ const CinemaInfo = () => {
 
 
   useEffect(() => {
-    console.log(dataId)
+    //console.log(dataId)
     let cinemaName = JSON.parse(localStorage.cinemaSelected);
     let dateFunction = localStorage.getItem("dateFunction")
     setCinemaTheater(cinemaName)
     setCinemaDate(dateFunction)
-    console.log(cinemaTheater)
-    console.log(cinemaDate)
+    //console.log(cinemaTheater)
+    //console.log(cinemaDate)
     if (params !== dataId) {
       setShowInfo(!showInfo)
       setParams(dataId)
@@ -64,7 +64,7 @@ const CinemaInfo = () => {
 
     //proceso de validacion de teatro y fecha
     //getServer(params)
-    //console.log(cinemaFunctions);
+    ////console.log(cinemaFunctions);
     if (cinemaFunctions !== false) {
       let countSalas = []
 
@@ -73,27 +73,27 @@ const CinemaInfo = () => {
       for (let index = 0; index < tiqueteria.length; index++) {
         const element = tiqueteria[index];
         if (element.teatro.includes(cinemaTheater)) {
-            tiqueteria2.push(element);
-            let newSala = element.sala;
-            if (!countSalas.includes(newSala)) {
-                countSalas.push(newSala);
-            }
+          tiqueteria2.push(element);
+          let newSala = element.sala;
+          if (!countSalas.includes(newSala)) {
+            countSalas.push(newSala);
+          }
         }
-    }
+      }
       setSalasArray(countSalas)
 
       setTicketData(tiqueteria2);
-      console.log(tiqueteria2)
-      console.log("params antes", params)
+      //console.log(tiqueteria2)
+      //console.log("params antes", params)
 
 
     } else if (cinemaFunctions === false) {
       setShowInfo(!showInfo)
-      console.log("fallo")
-      console.log("dataId: ", dataId)
-      console.log("params: ", params)
+      //console.log("fallo")
+      //console.log("dataId: ", dataId)
+      //console.log("params: ", params)
     }
-    //console.log(ticketData)
+    ////console.log(ticketData)
     //ticketData, cinemaFunctions,
   }, [showInfo, cinemaFunctions]);
 

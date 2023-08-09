@@ -21,8 +21,8 @@ function SelectSeat({ signIn, login }) {
   useEffect(() => {
     setTotalTicketPrice((baseChild * childTicket) + (baseAdult * adultTicket) + (baseGrand * grandTicket))
     setTotalTicketAmount(childTicket + adultTicket + grandTicket)
-    // console.log(totalTicketPrice)
-    // console.log(totalTicketAmount)
+    //console.log(totalTicketPrice)
+    //console.log(totalTicketAmount)
   }, [childTicket, adultTicket, grandTicket])
 
   return (

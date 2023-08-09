@@ -30,13 +30,13 @@ const TranscriptPayout = ({ signIn, login }) => {
 
   let watchFields = watch(["userEmail", "userName", "userCard", "userExp", "cvv"])
   useEffect(() => {
-    console.log(watchFields)
+    //console.log(watchFields)
     if (watchFields[0]) {
-      console.log("userEmail ", watchFields[0].length)
-      console.log("userName ", watchFields[1].length)
-      console.log("userCard ", watchFields[2].length)
-      console.log("userExp ", watchFields[3].length)
-      console.log("cvv ", watchFields[4].length)
+      //console.log("userEmail ", watchFields[0].length)
+      //console.log("userName ", watchFields[1].length)
+      //console.log("userCard ", watchFields[2].length)
+      //console.log("userExp ", watchFields[3].length)
+      //console.log("cvv ", watchFields[4].length)
       if ((watchFields[1].length > 5) && (watchFields[2].length == 16) && (watchFields[3].length == 7) && (watchFields[4].length == 3)) {
         setValidPayout(true)
         cardFirstDigit = Number(watchFields[2].charAt(0));
@@ -54,15 +54,15 @@ const TranscriptPayout = ({ signIn, login }) => {
         setValidPayout(false)
       }
     }
-    console.log("pago validado? ", validPayout)
+    //console.log("pago validado? ", validPayout)
 
   }, [watch, watchFields])
 
   useEffect(() => {
-    console.log(location.state)
+    //console.log(location.state)
     let newNumber = Math.trunc(Math.random() * 100000000);
     setRamdomN(newNumber)
-    console.log(ramdomN)
+    //console.log(ramdomN)
   }, [])
 
   //para crear el nuevo array a hacer patch
@@ -72,16 +72,16 @@ const TranscriptPayout = ({ signIn, login }) => {
     serverArray.map((element) => newArray1.push(element.id))
     seatId.map((element) => newArray1.push(element))
     newArray1.sort((a, b) => a - b)
-    console.log("array post sort y pre objeto")
-    console.log(newArray1)
+    //console.log("array post sort y pre objeto")
+    //console.log(newArray1)
     newArray1.map((element) => newArray2.push(
       {
         id: element,
         status: "occupied"
       }
     ))
-    console.log("array post arreglo a objeto")
-    console.log(newArray2)
+    //console.log("array post arreglo a objeto")
+    //console.log(newArray2)
     setPatchArray(newArray2)
 
   }, [])
@@ -119,7 +119,7 @@ const TranscriptPayout = ({ signIn, login }) => {
   }
 
   const onSubmit = (data) => {
-    console.log(data)
+    //console.log(data)
   }
 
   return (

@@ -86,7 +86,7 @@ const CinemaInfo = () => {
       //console.log("params antes", params)
 
 
-    } else if (cinemaFunctions === false) {
+    } else {
       setShowInfo(!showInfo)
       //console.log("fallo")
       //console.log("dataId: ", dataId)
@@ -110,7 +110,7 @@ const CinemaInfo = () => {
 
   return (
     <>
-      {ticketData ? (
+      {ticketData.length > 0 ? (
         <aside className='cinema__container'>
           <h3 className='cinema__date' >Horarios disponibles {cinemaDate}</h3>
           <p className='cinema__text'>Elije el horario que prefieras.</p>

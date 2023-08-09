@@ -65,9 +65,8 @@ const CinemaInfo = () => {
     //proceso de validacion de teatro y fecha
     //getServer(params)
     ////console.log(cinemaFunctions);
-    if (cinemaFunctions !== false) {
+    if (cinemaFunctions) {
       let countSalas = []
-
       let tiqueteria = cinemaFunctions;
       let tiqueteria2 = []
       for (let index = 0; index < tiqueteria.length; index++) {

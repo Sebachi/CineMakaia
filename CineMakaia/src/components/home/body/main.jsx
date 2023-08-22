@@ -6,19 +6,24 @@ import { useNavigate } from "react-router-dom";
 
 function BodyHome() {
   const  navigate = useNavigate()
-  const [moviesData, setMoviesData] = useState(null);
+  const [moviesData, setMoviesData] = useState([]);
   const first = useContext(AppContext)
   useEffect(() => {
    
-    if (first !== null) {setMoviesData(first) }
-
+    if (first !== null) {setMoviesData(first) 
+    }
   }, [first]);
   const handleMovieClick = (dataId) => {
     navigate(`/SelectFilm/${dataId}`, { state: dataId })
   }
-
+  useEffect(() => {
+   if(moviesData.length > 1){
+    console.log(moviesData);
+   }
+  }, [moviesData])
   
-  return <>{moviesData ?
+  
+  return <>{moviesData.length > 1 ?
 <div className='bodyhome'>
   <main className="mainHome">
     <p className="mainHome_text">
@@ -37,7 +42,6 @@ function BodyHome() {
                 <h3>{movie.title}</h3>
                 <span>
                     <strong>Estreno:</strong> {formatterDate(movie.release_date)} <br />
-                    <strong>Genero:</strong> {movie.genres[0].name}, {movie.genres[1].name}{movie.genres[2] && `, ${movie.genres[2].name}`}
                 </span>
 
                 <p className="mainHome_cards_child_text_runtime"> <strong>{movie.runtime} Minutos</strong> </p>

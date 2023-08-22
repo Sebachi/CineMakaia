@@ -47,7 +47,7 @@ function AdminHome({signIn, login}) {
                 <h3>{movie.title}</h3>
                 <span>
                     <strong>Estreno:</strong> {formatterDate(movie.release_date)} <br />
-                    <strong>Genero:</strong> {movie.genres[0].name}, {movie.genres[1].name}{movie.genres[2] && `, ${movie.genres[2].name}`} {movie.genres[3] && `, ${movie.genres[3].name}`}
+      
                 </span>
             </div>
 
